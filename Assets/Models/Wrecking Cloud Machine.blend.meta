@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: 9df498d027945491a9bce1f909d8003c
+timeCreated: 1467773411
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BLADE_ARM_left
+    100002: BLADE_ARMS_right
+    100004: Blade_left
+    100006: Blade_right
+    100008: Cage
+    100010: Chain
+    100012: glass_cocpit
+    100014: glass_door
+    100016: jaw_arm
+    100018: jaw_arm_right
+    100020: JAW_HOLDER_LOWER
+    100022: Jaw_tip_left
+    100024: Jaw_tip_right
+    100026: Prop_Left
+    100028: Prop_Right
+    100030: Rope_Joiner
+    100032: Smash_Sheild
+    100034: Vehicle_BODY
+    100036: WB_cap
+    100038: WB_handle
+    100040: //RootNode
+    100042: Wrecking_Ball
+    400000: BLADE_ARM_left
+    400002: BLADE_ARMS_right
+    400004: Blade_left
+    400006: Blade_right
+    400008: Cage
+    400010: Chain
+    400012: glass_cocpit
+    400014: glass_door
+    400016: jaw_arm
+    400018: jaw_arm_right
+    400020: JAW_HOLDER_LOWER
+    400022: Jaw_tip_left
+    400024: Jaw_tip_right
+    400026: Prop_Left
+    400028: Prop_Right
+    400030: Rope_Joiner
+    400032: Smash_Sheild
+    400034: Vehicle_BODY
+    400036: WB_cap
+    400038: WB_handle
+    400040: //RootNode
+    400042: Wrecking_Ball
+    2300000: BLADE_ARM_left
+    2300002: BLADE_ARMS_right
+    2300004: Blade_left
+    2300006: Blade_right
+    2300008: Cage
+    2300010: Chain
+    2300012: glass_cocpit
+    2300014: glass_door
+    2300016: jaw_arm
+    2300018: jaw_arm_right
+    2300020: JAW_HOLDER_LOWER
+    2300022: Jaw_tip_left
+    2300024: Jaw_tip_right
+    2300026: Prop_Left
+    2300028: Prop_Right
+    2300030: Rope_Joiner
+    2300032: Smash_Sheild
+    2300034: Vehicle_BODY
+    2300036: WB_cap
+    2300038: WB_handle
+    2300040: Wrecking_Ball
+    3300000: BLADE_ARM_left
+    3300002: BLADE_ARMS_right
+    3300004: Blade_left
+    3300006: Blade_right
+    3300008: Cage
+    3300010: Chain
+    3300012: glass_cocpit
+    3300014: glass_door
+    3300016: jaw_arm
+    3300018: jaw_arm_right
+    3300020: JAW_HOLDER_LOWER
+    3300022: Jaw_tip_left
+    3300024: Jaw_tip_right
+    3300026: Prop_Left
+    3300028: Prop_Right
+    3300030: Rope_Joiner
+    3300032: Smash_Sheild
+    3300034: Vehicle_BODY
+    3300036: WB_cap
+    3300038: WB_handle
+    3300040: Wrecking_Ball
+    4300000: Rope_Joiner
+    4300002: Cage
+    4300004: Smash_Sheild
+    4300006: glass_door
+    4300008: glass_cocpit
+    4300010: BLADE_ARMS_right
+    4300012: Prop_Right
+    4300014: Chain
+    4300016: WB_handle
+    4300018: WB_cap
+    4300020: Blade_right
+    4300022: Blade_left
+    4300024: jaw_arm_right
+    4300026: Jaw_tip_right
+    4300028: JAW_HOLDER_LOWER
+    4300030: Jaw_tip_left
+    4300032: jaw_arm
+    4300034: Prop_Left
+    4300036: BLADE_ARM_left
+    4300038: Wrecking_Ball
+    4300040: Vehicle_BODY
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

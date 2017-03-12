@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: 7418f3e8db08c4cc1a037002d0bf7152
+timeCreated: 1467774254
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Blade left
+    100002: Blade right
+    100004: BLADE_ARM left
+    100006: BLADE_ARMS right
+    100008: Cage
+    100010: Chain
+    100012: glass cocpit
+    100014: glass door
+    100016: jaw arm
+    100018: jaw arm right
+    100020: JAW HOLDER LOWER
+    100022: Jaw tip left
+    100024: Jaw tip right
+    100026: Prop Left
+    100028: Prop Right
+    100030: Rope Joiner
+    100032: Smash_Sheild
+    100034: Vehicle BODY
+    100036: WB cap
+    100038: WB handle
+    100040: Wrecking Ball
+    100042: //RootNode
+    400000: Blade left
+    400002: Blade right
+    400004: BLADE_ARM left
+    400006: BLADE_ARMS right
+    400008: Cage
+    400010: Chain
+    400012: glass cocpit
+    400014: glass door
+    400016: jaw arm
+    400018: jaw arm right
+    400020: JAW HOLDER LOWER
+    400022: Jaw tip left
+    400024: Jaw tip right
+    400026: Prop Left
+    400028: Prop Right
+    400030: Rope Joiner
+    400032: Smash_Sheild
+    400034: Vehicle BODY
+    400036: WB cap
+    400038: WB handle
+    400040: Wrecking Ball
+    400042: //RootNode
+    2300000: Blade left
+    2300002: Blade right
+    2300004: BLADE_ARM left
+    2300006: BLADE_ARMS right
+    2300008: Cage
+    2300010: Chain
+    2300012: glass cocpit
+    2300014: glass door
+    2300016: jaw arm
+    2300018: jaw arm right
+    2300020: JAW HOLDER LOWER
+    2300022: Jaw tip left
+    2300024: Jaw tip right
+    2300026: Prop Left
+    2300028: Prop Right
+    2300030: Rope Joiner
+    2300032: Smash_Sheild
+    2300034: Vehicle BODY
+    2300036: WB cap
+    2300038: WB handle
+    2300040: Wrecking Ball
+    3300000: Blade left
+    3300002: Blade right
+    3300004: BLADE_ARM left
+    3300006: BLADE_ARMS right
+    3300008: Cage
+    3300010: Chain
+    3300012: glass cocpit
+    3300014: glass door
+    3300016: jaw arm
+    3300018: jaw arm right
+    3300020: JAW HOLDER LOWER
+    3300022: Jaw tip left
+    3300024: Jaw tip right
+    3300026: Prop Left
+    3300028: Prop Right
+    3300030: Rope Joiner
+    3300032: Smash_Sheild
+    3300034: Vehicle BODY
+    3300036: WB cap
+    3300038: WB handle
+    3300040: Wrecking Ball
+    4300000: Rope Joiner
+    4300002: Cage
+    4300004: Smash_Sheild
+    4300006: glass door
+    4300008: glass cocpit
+    4300010: BLADE_ARMS right
+    4300012: Prop Right
+    4300014: Chain
+    4300016: WB handle
+    4300018: WB cap
+    4300020: Blade right
+    4300022: Blade left
+    4300024: jaw arm right
+    4300026: Jaw tip right
+    4300028: JAW HOLDER LOWER
+    4300030: Jaw tip left
+    4300032: jaw arm
+    4300034: Prop Left
+    4300036: BLADE_ARM left
+    4300038: Wrecking Ball
+    4300040: Vehicle BODY
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
