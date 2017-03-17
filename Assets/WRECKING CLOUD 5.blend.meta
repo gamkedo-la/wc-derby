@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: 15cd3a3f4764b47c6a13c71a5c17280a
+timeCreated: 1489781137
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Blade_left
+    100002: Blade_right
+    100004: Cage
+    100006: Cube
+    100008: Cube_001
+    100010: Cylinder
+    100012: Cylinder_001
+    100014: glass_cocpit
+    100016: glass_door
+    100018: jaw_arm
+    100020: jaw_arm_right
+    100022: JAW_HOLDER_LOWER
+    100024: Jaw_tip_left
+    100026: Jaw_tip_right
+    100028: Smash_Sheild
+    100030: Vehicle_BODY
+    100032: //RootNode
+    400000: Blade_left
+    400002: Blade_right
+    400004: Cage
+    400006: Cube
+    400008: Cube_001
+    400010: Cylinder
+    400012: Cylinder_001
+    400014: glass_cocpit
+    400016: glass_door
+    400018: jaw_arm
+    400020: jaw_arm_right
+    400022: JAW_HOLDER_LOWER
+    400024: Jaw_tip_left
+    400026: Jaw_tip_right
+    400028: Smash_Sheild
+    400030: Vehicle_BODY
+    400032: //RootNode
+    2300000: Blade_left
+    2300002: Blade_right
+    2300004: Cage
+    2300006: Cube
+    2300008: Cube_001
+    2300010: Cylinder
+    2300012: Cylinder_001
+    2300014: glass_cocpit
+    2300016: glass_door
+    2300018: jaw_arm
+    2300020: jaw_arm_right
+    2300022: JAW_HOLDER_LOWER
+    2300024: Jaw_tip_left
+    2300026: Jaw_tip_right
+    2300028: Smash_Sheild
+    2300030: Vehicle_BODY
+    3300000: Blade_left
+    3300002: Blade_right
+    3300004: Cage
+    3300006: Cube
+    3300008: Cube_001
+    3300010: Cylinder
+    3300012: Cylinder_001
+    3300014: glass_cocpit
+    3300016: glass_door
+    3300018: jaw_arm
+    3300020: jaw_arm_right
+    3300022: JAW_HOLDER_LOWER
+    3300024: Jaw_tip_left
+    3300026: Jaw_tip_right
+    3300028: Smash_Sheild
+    3300030: Vehicle_BODY
+    4300000: Cylinder_001
+    4300002: Cylinder
+    4300004: Cage
+    4300006: Smash_Sheild
+    4300008: glass_door
+    4300010: glass_cocpit
+    4300012: Blade_right
+    4300014: Blade_left
+    4300016: jaw_arm_right
+    4300018: Jaw_tip_right
+    4300020: JAW_HOLDER_LOWER
+    4300022: Jaw_tip_left
+    4300024: jaw_arm
+    4300026: Vehicle_BODY
+    4300028: Cube_001
+    4300030: Cube
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
