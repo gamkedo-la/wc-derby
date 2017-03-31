@@ -40,6 +40,8 @@ ModelImporter:
     100064: spring_left
     100066: spring_right
     100068: //RootNode
+    100070: body__Left_Panel_x
+    100072: body__Right_Panel_x
     400000: blade
     400002: body__Back_Panel
     400004: body__frame
@@ -75,6 +77,8 @@ ModelImporter:
     400064: spring_left
     400066: spring_right
     400068: //RootNode
+    400070: body__Left_Panel_x
+    400072: body__Right_Panel_x
     2300000: blade
     2300002: body__Back_Panel
     2300004: body__frame
@@ -109,6 +113,8 @@ ModelImporter:
     2300062: right_jet_F
     2300064: spring_left
     2300066: spring_right
+    2300068: body__Left_Panel_x
+    2300070: body__Right_Panel_x
     3300000: blade
     3300002: body__Back_Panel
     3300004: body__frame
@@ -143,6 +149,8 @@ ModelImporter:
     3300062: right_jet_F
     3300064: spring_left
     3300066: spring_right
+    3300068: body__Left_Panel_x
+    3300070: body__Right_Panel_x
     4300000: body__Right_Panel
     4300002: body__Left_Panel
     4300004: body__Top_Panel
@@ -177,6 +185,8 @@ ModelImporter:
     4300062: spring_left
     4300064: Jet_left_light
     4300066: hercules
+    4300068: body__Left_Panel_x
+    4300070: body__Right_Panel_x
     7400000: Default Take
     9500000: //RootNode
   materials:
