@@ -22,7 +22,7 @@ public class ScatterSpawn : MonoBehaviour {
 				domeCenter
 				+ Vector3.right * Mathf.Cos(randAng)*randScatterDist
 				+ Vector3.forward * Mathf.Sin(randAng)*randScatterDist, 
-				Quaternion.AngleAxis(randAng+Mathf.PI,Vector3.up)); // point inward at first
+				Quaternion.AngleAxis(randAng*Mathf.Rad2Deg+180.0f,Vector3.up)); // point inward at first
 			spawnedList.Add(nextSpawned);
 		}
 	}

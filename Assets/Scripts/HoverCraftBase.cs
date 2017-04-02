@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HoverCraftBase : MonoBehaviour {
-	static Vector3 domeCenter;
-	static float domeRadius = 0.0f;
+	static protected Vector3 domeCenter;
+	static protected float domeRadius = 0.0f;
 
 	Vector3 momentum;
 	public Transform bodyToTilt;
