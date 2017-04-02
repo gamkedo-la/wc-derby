@@ -45,6 +45,12 @@ ModelImporter:
     100074: Cylinder_017
     100076: Cylinder_017_MeshPart0
     100078: Cylinder_017_MeshPart1
+    100080: btcylinder
+    100082: Cylinder
+    100084: Cylinder_001
+    100086: Hercules_engine
+    100088: Hercules_engine_MeshPart0
+    100090: Hercules_engine_MeshPart1
     400000: blade
     400002: body__Back_Panel
     400004: body__frame
@@ -85,6 +91,12 @@ ModelImporter:
     400074: Cylinder_017
     400076: Cylinder_017_MeshPart0
     400078: Cylinder_017_MeshPart1
+    400080: btcylinder
+    400082: Cylinder
+    400084: Cylinder_001
+    400086: Hercules_engine
+    400088: Hercules_engine_MeshPart0
+    400090: Hercules_engine_MeshPart1
     2300000: blade
     2300002: body__Back_Panel
     2300004: body__frame
@@ -123,6 +135,11 @@ ModelImporter:
     2300070: body__Right_Panel_x
     2300072: Cylinder_017_MeshPart0
     2300074: Cylinder_017_MeshPart1
+    2300076: btcylinder
+    2300078: Cylinder
+    2300080: Cylinder_001
+    2300082: Hercules_engine_MeshPart0
+    2300084: Hercules_engine_MeshPart1
     3300000: blade
     3300002: body__Back_Panel
     3300004: body__frame
@@ -161,6 +178,11 @@ ModelImporter:
     3300070: body__Right_Panel_x
     3300072: Cylinder_017_MeshPart0
     3300074: Cylinder_017_MeshPart1
+    3300076: btcylinder
+    3300078: Cylinder
+    3300080: Cylinder_001
+    3300082: Hercules_engine_MeshPart0
+    3300084: Hercules_engine_MeshPart1
     4300000: body__Right_Panel
     4300002: body__Left_Panel
     4300004: body__Top_Panel
@@ -199,6 +221,11 @@ ModelImporter:
     4300070: body__Right_Panel_x
     4300072: Cylinder_017_MeshPart0
     4300074: Cylinder_017_MeshPart1
+    4300076: Cylinder_001
+    4300078: Cylinder
+    4300080: btcylinder
+    4300082: Hercules_engine_MeshPart0
+    4300084: Hercules_engine_MeshPart1
     7400000: Default Take
     9500000: //RootNode
   materials:
