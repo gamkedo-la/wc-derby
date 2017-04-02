@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\EnemyDrive.cs" />
      <Compile Include="Assets\Scripts\HoverCraftBase.cs" />
      <Compile Include="Assets\Scripts\PlayerDrive.cs" />
+     <Compile Include="Assets\Scripts\ScatterSpawn.cs" />
      <Compile Include="Assets\Wwise\Deployment\API\Generated\Common\AKRESULT.cs" />
      <Compile Include="Assets\Wwise\Deployment\API\Generated\Common\AkActionOnEventType.cs" />
      <Compile Include="Assets\Wwise\Deployment\API\Generated\Common\AkAudioFormat.cs" />

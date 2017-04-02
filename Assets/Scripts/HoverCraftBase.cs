@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HoverCraftBase : MonoBehaviour {
+	static Vector3 domeCenter;
+	static float domeRadius = 0.0f;
+
 	Vector3 momentum;
 	public Transform bodyToTilt;
 
@@ -23,6 +26,12 @@ public class HoverCraftBase : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if(domeRadius == 0.0f) {
+			GameObject theDome = GameObject.Find("domeMeasure");
+			domeCenter = theDome.transform.position;
+			domeRadius = theDome.transform.localScale.y * 0.5f;
+		}
+
 		momentum = Vector3.zero;
 		ignoreVehicleLayerMask = ~LayerMask.GetMask("Player","Enemy");
 		Init();
@@ -59,7 +68,8 @@ public class HoverCraftBase : MonoBehaviour {
 			impendingCrashDetectionNormal = rhInfo.normal.y;
 		}
 
-		if(impendingCrashDetectionNormal < 0.1f) {
+		if(impendingCrashDetectionNormal < 0.1f ||
+			OutOfDome(transform.position + transform.forward * gasControl * 10.0f)) {
 			momentum *= 0.5f;
 			enginePower = -1.0f;
 		} else {
@@ -84,7 +94,24 @@ public class HoverCraftBase : MonoBehaviour {
 		Vector3 newPos = transform.position;
 		newPos.y = Mathf.Max(newPos.y, minHeightHere);
 		transform.position = newPos;
+
+		transform.position = ForceIntoDome(transform.position);
 	}
+
+	Vector3 ForceIntoDome(Vector3 whereAt) {
+		Vector3 centerDelta = (whereAt - domeCenter);
+		if(centerDelta.magnitude > domeRadius) {
+			return domeCenter + domeRadius * centerDelta.normalized;
+		} else {
+			return whereAt;
+		}
+	}
+
+	bool OutOfDome(Vector3 whereAt) {
+		Vector3 centerDelta = (whereAt - domeCenter);
+		return (centerDelta.magnitude > domeRadius);
+	}
+
 	void FixedUpdate() {
 		float minHeightHere = heightUnderMe(transform.position)+0.9f;
 		float goalHeightHere = minHeightHere + 1.7f;
