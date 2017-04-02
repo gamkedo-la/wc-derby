@@ -6,6 +6,7 @@ public class HoverCraftBase : MonoBehaviour {
 	static protected Vector3 domeCenter;
 	static protected float domeRadius = 0.0f;
 
+	public GameObject deathEffectGO;
 	Vector3 momentum;
 	public Transform bodyToTilt;
 
@@ -16,6 +17,12 @@ public class HoverCraftBase : MonoBehaviour {
 
 	protected float turnControl = 0.0f;
 	protected float gasControl = 0.7f;
+
+	[HideInInspector]
+	public bool sprintRamming = false;
+
+	[HideInInspector]
+	public Transform lockFocus;
 
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
@@ -48,9 +55,36 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 	}
 
+	public void Destruction() {
+		GameObject.Instantiate(deathEffectGO, transform.position, Quaternion.identity);
+		Destroy(gameObject);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		Tick();
+
+		if(sprintRamming) {
+			if(lockFocus == null) {
+				sprintRamming = false;
+			} else {
+				/*float angFacingNow = Mathf.Atan2(transform.forward.z, transform.forward.x);
+				Vector3 vectToFocus = lockFocus.transform.position - transform.position;
+				float angFacingFocus = Mathf.Atan2(vectToFocus.z, vectToFocus.x);
+				turnControl = Mathf.DeltaAngle(angFacingNow, angFacingFocus) / -1.0f;*/
+
+				Vector3 heightMatched = lockFocus.transform.position;
+				heightMatched.y = transform.position.y;
+				transform.LookAt(heightMatched);
+				turnControl = 0.0f;
+				float distTo = (lockFocus.transform.position - transform.position).magnitude;
+				if(distTo < 10.0f) {
+					lockFocus.SendMessage("Destruction");
+					lockFocus = null;
+					sprintRamming = false;
+				}
+			}
+		}
 
 		transform.Rotate(Vector3.up, turnControl * 80.0f * Time.deltaTime);
 		momentum *= 0.94f;
@@ -72,8 +106,13 @@ public class HoverCraftBase : MonoBehaviour {
 			OutOfDome(transform.position + transform.forward * gasControl * 10.0f)) {
 			momentum *= 0.5f;
 			enginePower = -1.0f;
+			sprintRamming = false;
 		} else {
-			enginePower = gasControl;
+			if(sprintRamming) {
+				enginePower = 2.0f;
+			} else {
+				enginePower = gasControl;
+			}
 		}
 
 		momentum += transform.forward * enginePower * 9.0f * Time.deltaTime;
