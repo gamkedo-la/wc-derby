@@ -50,6 +50,10 @@ public class ScatterSpawn : MonoBehaviour {
 		}
 
 		if(radarArea) {
+			while(allRadarPt.Count > spawnedList.Count) {
+				Destroy(allRadarPt[0]);
+				allRadarPt.RemoveAt(0);
+			}
 			for(int i=0;i<spawnedList.Count;i++) {
 				allRadarPt[i].rectTransform.localPosition = WorldToRadarCoord(spawnedList[i]);
 			}
