@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A780EED7-355E-4734-9A8A-89CB46A3500B}" SchemaVersion="75">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{A780EED7-355E-4734-9A8A-89CB46A3500B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A780EED7-355E-4734-9A8A-89CB46A3500B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="wrecking cloud music scratch track" ID="{B16EA8CF-C98C-475B-889B-C6F37557F817}" ShortID="580784306" Type="SoundFX">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-11</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="wrecking cloud music scratch track" ID="{3AB5E407-6E49-4505-9484-2BF57AD5743A}" ShortID="876509183">
+							<Language>SFX</Language>
+							<AudioFile>wrecking cloud music scratch track.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="wrecking cloud music scratch track" ID="{3AB5E407-6E49-4505-9484-2BF57AD5743A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

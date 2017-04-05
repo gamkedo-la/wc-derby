@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	775327610	wcforward			\Default Work Unit\wcforward	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	876509183	wrecking cloud music scratch track	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\wrecking cloud music scratch track_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wrecking cloud music scratch track		17640064
+
