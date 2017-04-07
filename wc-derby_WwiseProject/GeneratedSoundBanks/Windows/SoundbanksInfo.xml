@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="120">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -21,6 +21,7 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>

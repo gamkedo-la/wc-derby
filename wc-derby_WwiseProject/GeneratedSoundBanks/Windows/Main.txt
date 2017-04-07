@@ -1,6 +1,14 @@
 Event	ID	Name			Wwise Object Path	Notes
 	775327610	wcforward			\Default Work Unit\wcforward	
+	3791634299	Play_PlayerEngine			\Default Work Unit\Play_PlayerEngine	
+
+Effect plug-ins	ID	Name	Type				Notes
+	154380635	Wwise Guitar Distortion (Custom)	Wwise Guitar Distortion			
+	1008402193	Low_Pass_20KHz	Wwise Parametric EQ			
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	427528907	Wwise Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Engine Base\Wwise Tone Generator	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	876509183	wrecking cloud music scratch track	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\wrecking cloud music scratch track_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wrecking cloud music scratch track		17640064
+	876509183	wrecking cloud music scratch track	C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\wrecking cloud music scratch track_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\wrecking cloud music scratch track		17640064
 
