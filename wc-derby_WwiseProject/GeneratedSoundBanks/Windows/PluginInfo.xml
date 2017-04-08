@@ -4,5 +4,6 @@
 		<Plugin Name="Wwise Tone Generator" ID="6684674" DLL="ToneGen"/>
 		<Plugin Name="Wwise Parametric EQ" ID="6881283" DLL="ParametricEQ"/>
 		<Plugin Name="Wwise Guitar Distortion" ID="8257539" DLL="AkGuitarDistortion"/>
+		<Plugin Name="Wwise Harmonizer" ID="9043971" DLL="AkHarmonizer"/>
 	</Plugins>
 </PluginInfo>

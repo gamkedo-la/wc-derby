@@ -29,28 +29,67 @@
 						<ActiveSource Name="wrecking cloud music scratch track" ID="{3AB5E407-6E49-4505-9484-2BF57AD5743A}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<ActorMixer Name="Player Engine" ID="{C75B4FCA-87A5-4AF2-977A-77879FF83995}" ShortID="855739997">
+				<BlendContainer Name="Player Engine" ID="{5E6DE5C1-33FA-41E4-ABDD-68EE01DE86D1}" ShortID="900945088">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
 						</Reference>
-						<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-							<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						<Reference Name="Effect0">
+							<Custom>
+								<Effect Name="Wwise Parametric EQ (Custom)" ID="{8C486934-A9C4-4322-BA9A-739EA4802736}" ShortID="835031432" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<PropertyList>
+										<Property Name="FilterTypeBand2" Type="int32" Value="0"/>
+										<Property Name="FrequencyBand1" Type="Real32" Value="60"/>
+										<Property Name="FrequencyBand2" Type="Real32" Value="80">
+											<RTPCList>
+												<RTPC Name="" ID="{18ED1CDD-2C5C-4CE1-9983-96F9BE4645EB}" ShortID="970843940">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Player_Velocity" ID="{73F9AC3F-1949-4D0F-8A48-C43D8DBA5221}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{987A2D60-CA82-43F5-AFC5-DBBE16D5AE3C}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>80</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>600</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="GainBand1" Type="Real32" Value="3"/>
+										<Property Name="OnOffBand3" Type="bool" Value="False"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
 						</Reference>
 						<Reference Name="Effect1">
 							<Custom>
-								<Effect Name="Wwise Guitar Distortion (Custom)" ID="{EF5FBBE0-6C43-4847-85E3-7CCE4DCCAACA}" ShortID="154380635" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+								<Effect Name="Wwise Guitar Distortion (Custom)" ID="{C67A2A12-71EB-4310-9226-A9E14421979A}" ShortID="942585773" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
 									<PropertyList>
-										<Property Name="DistortionDrive" Type="Real32" Value="52"/>
-										<Property Name="DistortionTone" Type="Real32" Value="49"/>
 										<Property Name="DistortionType" Type="int32" Value="1"/>
-										<Property Name="PostEQBand1Enable" Type="bool" Value="True"/>
-										<Property Name="PostEQBand1Frequency" Type="Real32" Value="95"/>
-										<Property Name="PostEQBand1Gain" Type="Real32" Value="5.5"/>
-										<Property Name="PostEQBand3Enable" Type="bool" Value="True"/>
-										<Property Name="PostEQBand3FilterType" Type="int32" Value="3"/>
-										<Property Name="PostEQBand3Frequency" Type="Real32" Value="878"/>
-										<Property Name="Rectification" Type="Real32" Value="46"/>
+										<Property Name="OutputLevel" Type="Real32" Value="-4"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Effect2">
+							<Custom>
+								<Effect Name="Wwise Harmonizer (Custom)" ID="{61E3C5A7-02CA-4ED9-8445-CF10E8F8C964}" ShortID="232755663" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
+									<PropertyList>
+										<Property Name="Voice1Gain" Type="Real32" Value="-6"/>
+										<Property Name="Voice1Pitch" Type="Real32" Value="200"/>
 									</PropertyList>
 								</Effect>
 							</Custom>
@@ -60,10 +99,34 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Engine Base" ID="{47FE2ABB-EEA1-4FBB-BB4C-4024469A91A2}" ShortID="331252039" Type="SoundFX">
+						<Sound Name="Engine White Noise" ID="{47FE2ABB-EEA1-4FBB-BB4C-4024469A91A2}" ShortID="331252039" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+								</Reference>
+								<Reference Name="Effect1">
+									<Custom>
+										<Effect Name="Wwise Guitar Distortion (Custom)" ID="{2A0700D4-E8C9-43A3-A86B-27705EBABBD5}" ShortID="734438292" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+											<PropertyList>
+												<Property Name="DistortionDrive" Type="Real32" Value="52"/>
+												<Property Name="DistortionTone" Type="Real32" Value="49"/>
+												<Property Name="DistortionType" Type="int32" Value="1"/>
+												<Property Name="PostEQBand1Enable" Type="bool" Value="True"/>
+												<Property Name="PostEQBand1Frequency" Type="Real32" Value="95"/>
+												<Property Name="PostEQBand1Gain" Type="Real32" Value="5.5"/>
+												<Property Name="PostEQBand3Enable" Type="bool" Value="True"/>
+												<Property Name="PostEQBand3FilterType" Type="int32" Value="3"/>
+												<Property Name="PostEQBand3Frequency" Type="Real32" Value="878"/>
+												<Property Name="Rectification" Type="Real32" Value="46"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
@@ -72,7 +135,6 @@
 							<ChildrenList>
 								<SourcePlugin Name="Wwise Tone Generator" ID="{B1211768-9AD4-4383-ABDF-A2068B03A65F}" ShortID="427528907" PluginName="Wwise Tone Generator" CompanyID="0" PluginID="102">
 									<PropertyList>
-										<Property Name="DurMode" Type="int32" Value="1"/>
 										<Property Name="SustainTime" Type="Real32" Value="10"/>
 										<Property Name="WaveType" Type="int32" Value="4"/>
 									</PropertyList>
@@ -83,8 +145,120 @@
 								<ActiveSource Name="Wwise Tone Generator" ID="{B1211768-9AD4-4383-ABDF-A2068B03A65F}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="Engine Sawtooth" ID="{7228AA85-BF65-4836-BE4F-DB7F1026C78C}" ShortID="490393076" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-380</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+								</Reference>
+								<Reference Name="Effect1">
+									<Custom>
+										<Effect Name="Wwise Guitar Distortion (Custom)" ID="{A42611C8-5FE9-487F-BA1C-2B979C7E7FFC}" ShortID="788131289" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+											<PropertyList>
+												<Property Name="DistortionDrive" Type="Real32" Value="52"/>
+												<Property Name="DistortionTone" Type="Real32" Value="49"/>
+												<Property Name="DistortionType" Type="int32" Value="1"/>
+												<Property Name="PostEQBand1Enable" Type="bool" Value="True"/>
+												<Property Name="PostEQBand1Frequency" Type="Real32" Value="95"/>
+												<Property Name="PostEQBand1Gain" Type="Real32" Value="5.5"/>
+												<Property Name="PostEQBand3Enable" Type="bool" Value="True"/>
+												<Property Name="PostEQBand3FilterType" Type="int32" Value="3"/>
+												<Property Name="PostEQBand3Frequency" Type="Real32" Value="878"/>
+												<Property Name="Rectification" Type="Real32" Value="46"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Tone Generator" ID="{B1B47493-B552-414C-B053-F7D069C16FCC}" ShortID="941951411" PluginName="Wwise Tone Generator" CompanyID="0" PluginID="102">
+									<PropertyList>
+										<Property Name="StartFreq" Type="Real32" Value="30"/>
+										<Property Name="StopFreq" Type="Real32" Value="64"/>
+										<Property Name="StopFreqRandMax" Type="Real32" Value="200"/>
+										<Property Name="StopFreqRandMin" Type="Real32" Value="-200"/>
+										<Property Name="SweepFreqType" Type="int32" Value="1"/>
+										<Property Name="WaveGain" Type="Real32" Value="-25"/>
+										<Property Name="WaveType" Type="int32" Value="3"/>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Tone Generator" ID="{B1B47493-B552-414C-B053-F7D069C16FCC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Engine Sawtooth 2" ID="{6B2F2E6D-AF1C-4F2E-909E-23DC9B5CE178}" ShortID="687213054" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-380</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+								</Reference>
+								<Reference Name="Effect1">
+									<Custom>
+										<Effect Name="Wwise Guitar Distortion (Custom)" ID="{4C0E07AF-C96C-47FF-928C-0F6F0C085DE1}" ShortID="1035369423" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+											<PropertyList>
+												<Property Name="DistortionDrive" Type="Real32" Value="52"/>
+												<Property Name="DistortionTone" Type="Real32" Value="49"/>
+												<Property Name="DistortionType" Type="int32" Value="1"/>
+												<Property Name="PostEQBand1Enable" Type="bool" Value="True"/>
+												<Property Name="PostEQBand1Frequency" Type="Real32" Value="95"/>
+												<Property Name="PostEQBand1Gain" Type="Real32" Value="5.5"/>
+												<Property Name="PostEQBand3Enable" Type="bool" Value="True"/>
+												<Property Name="PostEQBand3FilterType" Type="int32" Value="3"/>
+												<Property Name="PostEQBand3Frequency" Type="Real32" Value="878"/>
+												<Property Name="Rectification" Type="Real32" Value="46"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Tone Generator" ID="{D2AF5FFF-7922-4F09-83FC-667EDFBFC7BE}" ShortID="404445436" PluginName="Wwise Tone Generator" CompanyID="0" PluginID="102">
+									<PropertyList>
+										<Property Name="StartFreq" Type="Real32" Value="50"/>
+										<Property Name="StopFreq" Type="Real32" Value="64"/>
+										<Property Name="StopFreqRandMax" Type="Real32" Value="200"/>
+										<Property Name="StopFreqRandMin" Type="Real32" Value="-200"/>
+										<Property Name="SweepFreqType" Type="int32" Value="1"/>
+										<Property Name="WaveGain" Type="Real32" Value="-25"/>
+										<Property Name="WaveType" Type="int32" Value="3"/>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Tone Generator" ID="{D2AF5FFF-7922-4F09-83FC-667EDFBFC7BE}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
-				</ActorMixer>
+				</BlendContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

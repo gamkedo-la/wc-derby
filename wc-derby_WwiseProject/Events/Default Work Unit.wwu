@@ -19,7 +19,7 @@
 						<Action Name="Play" ID="{AF58DF94-EC2E-47F2-B7B2-8795842612FC}" ShortID="168883096" Type="Play" Scope="One" Global="false">
 							<ElementList>
 								<Element ID="{E9F8EDB0-B055-42B4-97CC-CD4BA02E7452}" Global="false">
-									<ObjectRef Name="Engine Base" ID="{47FE2ABB-EEA1-4FBB-BB4C-4024469A91A2}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+									<ObjectRef Name="Player Engine" ID="{5E6DE5C1-33FA-41E4-ABDD-68EE01DE86D1}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
 								</Element>
 							</ElementList>
 						</Action>
