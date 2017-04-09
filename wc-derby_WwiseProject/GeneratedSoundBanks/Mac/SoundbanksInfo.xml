@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="120">
 	<RootPaths>
-		<ProjectRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/GeneratedSoundBanks/Mac/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Mac\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/GeneratedSoundBanks/Mac/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -21,12 +21,13 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="876509183" Language="SFX">
 					<ShortName>wrecking cloud music scratch track.wav</ShortName>
-					<Path>SFX\wrecking cloud music scratch track_9E69E797.wem</Path>
+					<Path>SFX/wrecking cloud music scratch track_9E69E797.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

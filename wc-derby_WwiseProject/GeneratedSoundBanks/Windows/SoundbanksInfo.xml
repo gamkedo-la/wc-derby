@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="120">
 	<RootPaths>
-		<ProjectRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/GeneratedSoundBanks/Windows/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/gamkedo/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Documents/Unity Projects/wc-derby/wc-derby_WwiseProject/GeneratedSoundBanks/Windows/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -27,7 +27,7 @@
 			<IncludedMemoryFiles>
 				<File Id="876509183" Language="SFX">
 					<ShortName>wrecking cloud music scratch track.wav</ShortName>
-					<Path>SFX\wrecking cloud music scratch track_9E69E797.wem</Path>
+					<Path>SFX/wrecking cloud music scratch track_9E69E797.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
