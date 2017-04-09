@@ -11,6 +11,9 @@ public class EnemyDrive : HoverCraftBase {
 		while(true) {
 			Vector3 vectToCenter = domeCenter - transform.position;
 			bool returnTowardMiddle = vectToCenter.magnitude > 0.7f * domeRadius;
+
+			sprintRamming = !sprintRamming;
+
 			if(returnTowardMiddle) {
 				float angFacingNow = Mathf.Atan2(transform.forward.z, transform.forward.x);
 				float angFacingCenter = Mathf.Atan2(vectToCenter.z, vectToCenter.x);

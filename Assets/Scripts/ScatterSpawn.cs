@@ -14,7 +14,6 @@ public class ScatterSpawn : MonoBehaviour {
 	public Image radarArea;
 	public GameObject prefabRadar;
 	private List<Image> allRadarPt = new List<Image>();
-	public GameObject playerCraft;
 	public Image playerRadarPt;
 
 	Vector3 domeCenter;
@@ -37,9 +36,11 @@ public class ScatterSpawn : MonoBehaviour {
 				Quaternion.AngleAxis(randAng*Mathf.Rad2Deg+180.0f,Vector3.up)); // point inward at first
 			spawnedList.Add(nextSpawned);
 
-			GameObject nextRadarPt = GameObject.Instantiate(prefabRadar);
-			nextRadarPt.transform.SetParent(radarArea.transform);
-			allRadarPt.Add(nextRadarPt.GetComponent<Image>());
+			if(playerRadarPt == null) {
+				GameObject nextRadarPt = GameObject.Instantiate(prefabRadar);
+				nextRadarPt.transform.SetParent(radarArea.transform);
+				allRadarPt.Add(nextRadarPt.GetComponent<Image>());
+			}
 		}
 	}
 
@@ -50,16 +51,21 @@ public class ScatterSpawn : MonoBehaviour {
 		}
 
 		if(radarArea) {
-			while(allRadarPt.Count > spawnedList.Count) {
-				Destroy(allRadarPt[0]);
-				allRadarPt.RemoveAt(0);
+			if(playerRadarPt) {
+				if(spawnedList.Count>0 && spawnedList[0] != null) {
+					playerRadarPt.rectTransform.rotation = Quaternion.AngleAxis(
+						-spawnedList[0].transform.eulerAngles.y, Vector3.forward);
+					playerRadarPt.rectTransform.localPosition = WorldToRadarCoord(spawnedList[0]);
+				}
+			} else {
+				while(allRadarPt.Count > spawnedList.Count) {
+					Destroy(allRadarPt[0]);
+					allRadarPt.RemoveAt(0);
+				}
+				for(int i = 0; i < spawnedList.Count; i++) {
+					allRadarPt[i].rectTransform.localPosition = WorldToRadarCoord(spawnedList[i]);
+				}
 			}
-			for(int i=0;i<spawnedList.Count;i++) {
-				allRadarPt[i].rectTransform.localPosition = WorldToRadarCoord(spawnedList[i]);
-			}
-			playerRadarPt.rectTransform.rotation = Quaternion.AngleAxis(
-				-playerCraft.transform.eulerAngles.y, Vector3.forward);
-			playerRadarPt.rectTransform.localPosition = WorldToRadarCoord(playerCraft);
 		}
 	}
 
@@ -70,10 +76,10 @@ public class ScatterSpawn : MonoBehaviour {
 		return scaledPos;
 	}
 
-	public Transform nearestAheadOf(Transform relativeTo) {
+	public HoverCraftBase nearestAheadOf(Transform relativeTo) {
 		spawnedList.RemoveAll(delegate (GameObject o) { return o == null; });
 
-		Transform toRet = null;
+		HoverCraftBase toRet = null;
 		float coneAhead = 35.0f;
 		float nearestDistance = 300.0f;
 		foreach(GameObject craft in spawnedList) {
@@ -82,7 +88,10 @@ public class ScatterSpawn : MonoBehaviour {
 			float distInFront = relativeTo.transform.InverseTransformPoint(craft.transform.position).z;
 			if(distInFront > 5.0f && distInFront < nearestDistance && angleTo < coneAhead) {
 				nearestDistance = distInFront;
-				toRet = craft.transform;
+				toRet = (HoverCraftBase)craft.GetComponent<PlayerDrive>();
+				if(toRet == null) {
+					toRet = (HoverCraftBase)craft.GetComponent<EnemyDrive>();
+				}
 			}
 		}
 		return toRet;

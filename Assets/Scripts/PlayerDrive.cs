@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerDrive : HoverCraftBase {
 	private float targetFOV = 60.0f;
-	protected override void Init () {
-	
-	}
 
 	protected override void Tick () {
 		if(Input.GetKeyDown(KeyCode.Space)) {
@@ -21,4 +18,5 @@ public class PlayerDrive : HoverCraftBase {
 			gasControl = Input.GetAxis("Vertical");
 		}
 	}
+
 }

@@ -18,11 +18,13 @@ public class HoverCraftBase : MonoBehaviour {
 	protected float turnControl = 0.0f;
 	protected float gasControl = 0.7f;
 
+	LineRenderer cableHook;
+
 	[HideInInspector]
 	public bool sprintRamming = false;
 
 	[HideInInspector]
-	public Transform lockFocus;
+	public HoverCraftBase lockFocus;
 
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
@@ -33,6 +35,8 @@ public class HoverCraftBase : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		cableHook = GetComponent<LineRenderer>();
+
 		if(domeRadius == 0.0f) {
 			GameObject theDome = GameObject.Find("domeMeasure");
 			domeCenter = theDome.transform.position;
@@ -57,6 +61,9 @@ public class HoverCraftBase : MonoBehaviour {
 
 	public void Destruction() {
 		GameObject.Instantiate(deathEffectGO, transform.position, Quaternion.identity);
+		if(GetComponentInChildren<Camera>() != null) {
+			Camera.main.transform.SetParent(null);
+		}
 		Destroy(gameObject);
 	}
 
@@ -179,6 +186,25 @@ public class HoverCraftBase : MonoBehaviour {
 					Quaternion.LookRotation(pointAhead, rhInfo.normal),
 					0.07f);
 		}
+	}
 
+	void LateUpdate() {
+		if(lockFocus != null && lockFocus.sprintRamming) { // break if sprinting
+			lockFocus = null;
+		}
+
+		if(lockFocus == null) {
+			sprintRamming = false;
+		}
+
+		if(sprintRamming) {
+			cableHook.SetPosition(0, transform.position);
+			cableHook.SetPosition(1, lockFocus.transform.position+Vector3.up*(-0.7f));
+			if(cableHook.enabled == false) { 
+				cableHook.enabled = true;
+			}
+		} else if(cableHook.enabled) {
+			cableHook.enabled = false;
+		}
 	}
 }
