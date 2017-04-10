@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="75">
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="2378798487" DateHigh="30584981"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="2928683464" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="2928748671" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="2928944212" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="2929079578" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="2929194858" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="2929550771" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Effects\Default Work Unit.wwu" DateLow="2929861613" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Effects\Factory Effects.wwu" DateLow="2378938849" DateHigh="30584981"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Events\Default Work Unit.wwu" DateLow="2379009074" DateHigh="30584981"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="2930473244" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="2931069800" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="2931195159" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="2931395681" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="2931485916" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Presets\Default Work Unit.wwu" DateLow="2931546068" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Queries\Default Work Unit.wwu" DateLow="2931681427" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Queries\Factory Queries.wwu" DateLow="2931746601" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="2390780332" DateHigh="30584981"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="2931881960" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\States\Default Work Unit.wwu" DateLow="2932021794" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Switches\Default Work Unit.wwu" DateLow="2932076954" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="2932167185" DateHigh="30583799"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.v-adcrof.wsettings" DateLow="1564911079" DateHigh="30584982"/>
-	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.wproj" DateLow="2932503073" DateHigh="30583799"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1011793817" DateHigh="30585406"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1249157271" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1249182253" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1249212745" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1249242730" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1249272743" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1249312751" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1249322725" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Effects\Factory Effects.wwu" DateLow="3567845700" DateHigh="30584816"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Events\Default Work Unit.wwu" DateLow="1011828810" DateHigh="30585406"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1011863809" DateHigh="30585406"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1281442215" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1281512173" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1281582179" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1281632158" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1290732087" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1290772068" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Queries\Factory Queries.wwu" DateLow="1290812099" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="3567625700" DateHigh="30584816"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1291187165" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\States\Default Work Unit.wwu" DateLow="1291237195" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1291267177" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1291297173" DateHigh="30584814"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.v-adcrof.wsettings" DateLow="1015893757" DateHigh="30585406"/>
+	<ValidationCacheItem File="C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.wproj" DateLow="1311734728" DateHigh="30584814"/>
 </ValidationCache>

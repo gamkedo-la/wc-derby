@@ -16,6 +16,7 @@ public class PlayerDrive : HoverCraftBase {
 		if(sprintRamming == false) {
 			turnControl = Input.GetAxis("Horizontal");
 			gasControl = Input.GetAxis("Vertical");
+            AkSoundEngine.SetRTPCValue("Player_Velocity", gasControl);
 		}
 	}
 

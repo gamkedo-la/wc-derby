@@ -54,12 +54,19 @@
 														</PropertyList>
 														<PointList>
 															<Point>
-																<XPos>0</XPos>
-																<YPos>80</YPos>
+																<XPos>-1</XPos>
+																<YPos>600</YPos>
 																<Flags>5</Flags>
+																<SegmentShape>Log1</SegmentShape>
 															</Point>
 															<Point>
-																<XPos>100</XPos>
+																<XPos>-0</XPos>
+																<YPos>70</YPos>
+																<Flags>0</Flags>
+																<SegmentShape>Exp1</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
 																<YPos>600</YPos>
 																<Flags>37</Flags>
 															</Point>
