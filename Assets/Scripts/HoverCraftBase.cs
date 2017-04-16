@@ -10,6 +10,9 @@ public class HoverCraftBase : MonoBehaviour {
 	Vector3 momentum;
 	public Transform bodyToTilt;
 
+	private float timeSinceLastPuff = 0.0f;
+	private float timeBetweenPuffs = 0.6f;
+
 	public TrailRenderer[] trList;
 	public Light[] engineLights;
 	public bool boostDrawing = true;
@@ -26,6 +29,8 @@ public class HoverCraftBase : MonoBehaviour {
 	[HideInInspector]
 	public HoverCraftBase lockFocus;
 
+	private static GameObject snowPuffPfxPrefab;
+
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
 	}
@@ -35,6 +40,9 @@ public class HoverCraftBase : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if(snowPuffPfxPrefab == null) {
+			snowPuffPfxPrefab = Resources.Load("SnowPuff") as GameObject;
+		}
 		cableHook = GetComponent<LineRenderer>();
 
 		if(domeRadius == 0.0f) {
@@ -137,6 +145,16 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 
 		float minHeightHere = heightUnderMe(transform.position)+0.9f;
+
+		timeSinceLastPuff += Time.deltaTime;
+		if(transform.position.y < minHeightHere) {
+			if(timeSinceLastPuff > timeBetweenPuffs) {
+				Debug.Log("snow puffed by "+name);
+				GameObject.Instantiate(snowPuffPfxPrefab, transform.position, Quaternion.identity, transform);
+				timeSinceLastPuff = 0.0f;
+			}
+		}
+
 		Vector3 newPos = transform.position;
 		newPos.y = Mathf.Max(newPos.y, minHeightHere);
 		transform.position = newPos;
