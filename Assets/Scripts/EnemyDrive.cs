@@ -12,7 +12,9 @@ public class EnemyDrive : HoverCraftBase {
 			Vector3 vectToCenter = domeCenter - transform.position;
 			bool returnTowardMiddle = vectToCenter.magnitude > 0.7f * domeRadius;
 
-			sprintRamming = !sprintRamming;
+			if(Random.Range(0, 12) < 1) {
+				sprintRamming = !sprintRamming;
+			}
 
 			if(returnTowardMiddle) {
 				float angFacingNow = Mathf.Atan2(transform.forward.z, transform.forward.x);

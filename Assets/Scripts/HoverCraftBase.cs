@@ -21,6 +21,10 @@ public class HoverCraftBase : MonoBehaviour {
 	protected float turnControl = 0.0f;
 	protected float gasControl = 0.7f;
 
+	private float timeSinceHookFired = 0.0f;
+
+	private float percHookOut = 0.0f;
+
 	LineRenderer cableHook;
 
 	[HideInInspector]
@@ -28,6 +32,7 @@ public class HoverCraftBase : MonoBehaviour {
 
 	[HideInInspector]
 	public HoverCraftBase lockFocus;
+	private Vector3 endPt;
 
 	private static GameObject snowPuffPfxPrefab;
 
@@ -75,28 +80,40 @@ public class HoverCraftBase : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
+	protected bool HaveEnemyHooked() {
+		return (sprintRamming && percHookOut >= 1.0f);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		Tick();
+		RaycastHit rhInfo;
 
 		if(sprintRamming) {
 			if(lockFocus == null) {
 				sprintRamming = false;
 			} else {
-				/*float angFacingNow = Mathf.Atan2(transform.forward.z, transform.forward.x);
-				Vector3 vectToFocus = lockFocus.transform.position - transform.position;
-				float angFacingFocus = Mathf.Atan2(vectToFocus.z, vectToFocus.x);
-				turnControl = Mathf.DeltaAngle(angFacingNow, angFacingFocus) / -1.0f;*/
-
-				Vector3 heightMatched = lockFocus.transform.position;
-				heightMatched.y = transform.position.y;
-				transform.LookAt(heightMatched);
-				turnControl = 0.0f;
-				float distTo = (lockFocus.transform.position - transform.position).magnitude;
-				if(distTo < 10.0f) {
-					lockFocus.SendMessage("Destruction");
-					lockFocus = null;
+				Vector3 posDiff = (lockFocus.transform.position-transform.position);
+				if(Physics.Raycast(transform.position+Vector3.up*2.0f, // give a little headroom
+					posDiff,out rhInfo,posDiff.magnitude,ignoreVehicleLayerMask)) {
+					lockFocus = null; // LOS blocked, break line
 					sprintRamming = false;
+				} else if(percHookOut < 1.0f) {
+					float angFacingNow = Mathf.Atan2(transform.forward.z, transform.forward.x);
+					Vector3 vectToFocus = lockFocus.transform.position - transform.position;
+					float angFacingFocus = Mathf.Atan2(vectToFocus.z, vectToFocus.x);
+					turnControl = Mathf.DeltaAngle(angFacingNow, angFacingFocus) * -3.0f;
+				} else {
+					Vector3 heightMatched = lockFocus.transform.position;
+					heightMatched.y = transform.position.y;
+					transform.LookAt(heightMatched);
+					turnControl = 0.0f;
+					float distTo = (lockFocus.transform.position - transform.position).magnitude;
+					if(distTo < 14.0f) {
+						lockFocus.SendMessage("Destruction");
+						lockFocus = null;
+						sprintRamming = false;
+					}
 				}
 			}
 		}
@@ -108,7 +125,6 @@ public class HoverCraftBase : MonoBehaviour {
 
 		float enginePower;
 
-		RaycastHit rhInfo;
 		float impendingCrashDetectionNormal = 1.0f;
 		if(Physics.Raycast(transform.position,
 			transform.forward, out rhInfo, 10.0f, ignoreVehicleLayerMask)) {
@@ -123,7 +139,7 @@ public class HoverCraftBase : MonoBehaviour {
 			enginePower = -1.0f;
 			sprintRamming = false;
 		} else {
-			if(sprintRamming) {
+			if( HaveEnemyHooked() ) {
 				enginePower = 2.0f;
 			} else {
 				enginePower = gasControl;
@@ -149,7 +165,7 @@ public class HoverCraftBase : MonoBehaviour {
 		timeSinceLastPuff += Time.deltaTime;
 		if(transform.position.y < minHeightHere) {
 			if(timeSinceLastPuff > timeBetweenPuffs) {
-				Debug.Log("snow puffed by "+name);
+				// Debug.Log("snow puffed by "+name);
 				GameObject.Instantiate(snowPuffPfxPrefab, transform.position, Quaternion.identity, transform);
 				timeSinceLastPuff = 0.0f;
 			}
@@ -204,6 +220,14 @@ public class HoverCraftBase : MonoBehaviour {
 					Quaternion.LookRotation(pointAhead, rhInfo.normal),
 					0.07f);
 		}
+
+		if(sprintRamming == false && cableHook.enabled) {
+			timeSinceHookFired = 0.0f;
+			percHookOut *= 0.65f;
+			if(percHookOut < 0.03f) {
+				cableHook.enabled = false;
+			}
+		}
 	}
 
 	void LateUpdate() {
@@ -216,13 +240,19 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 
 		if(sprintRamming) {
-			cableHook.SetPosition(0, transform.position);
-			cableHook.SetPosition(1, lockFocus.transform.position+Vector3.up*(-0.7f));
+			timeSinceHookFired += Time.deltaTime;
+			percHookOut = Mathf.Min(timeSinceHookFired*2.0f,1.0f);
+			endPt = lockFocus.transform.position + Vector3.up * (-0.7f);
 			if(cableHook.enabled == false) { 
 				cableHook.enabled = true;
 			}
-		} else if(cableHook.enabled) {
-			cableHook.enabled = false;
+		}
+
+		if(cableHook.enabled) {
+			cableHook.SetPosition(0, transform.position + Vector3.up*(-0.6f));
+			Vector3 hookPt = transform.position * (1.0f - percHookOut) +
+				endPt * percHookOut;
+			cableHook.SetPosition(1, hookPt);
 		}
 	}
 }
