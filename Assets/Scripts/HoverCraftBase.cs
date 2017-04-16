@@ -34,6 +34,7 @@ public class HoverCraftBase : MonoBehaviour {
 	public HoverCraftBase lockFocus;
 	private Vector3 endPt;
 
+	private static GameObject hookSparkPfxPrefab;
 	private static GameObject snowPuffPfxPrefab;
 
 	protected virtual void Init() {
@@ -48,6 +49,10 @@ public class HoverCraftBase : MonoBehaviour {
 		if(snowPuffPfxPrefab == null) {
 			snowPuffPfxPrefab = Resources.Load("SnowPuff") as GameObject;
 		}
+		if(hookSparkPfxPrefab == null) {
+			hookSparkPfxPrefab = Resources.Load("HookSpark") as GameObject;
+		}
+
 		cableHook = GetComponent<LineRenderer>();
 
 		if(domeRadius == 0.0f) {
@@ -140,7 +145,7 @@ public class HoverCraftBase : MonoBehaviour {
 			sprintRamming = false;
 		} else {
 			if( HaveEnemyHooked() ) {
-				enginePower = 2.0f;
+				enginePower = 3.0f;
 			} else {
 				enginePower = gasControl;
 			}
@@ -241,8 +246,16 @@ public class HoverCraftBase : MonoBehaviour {
 
 		if(sprintRamming) {
 			timeSinceHookFired += Time.deltaTime;
-			percHookOut = Mathf.Min(timeSinceHookFired*2.0f,1.0f);
 			endPt = lockFocus.transform.position + Vector3.up * (-0.7f);
+
+			float wasPercHookOut = percHookOut;
+			percHookOut = Mathf.Min(timeSinceHookFired*2.0f,1.0f);
+			if(wasPercHookOut < 1.0f && percHookOut >= 1.0f) {
+				Vector3 posDiffNorm = (lockFocus.transform.position-transform.position).normalized;
+				Vector3 sparkPt = endPt - posDiffNorm * 1.5f;
+				GameObject.Instantiate(hookSparkPfxPrefab, sparkPt, 
+					Quaternion.LookRotation(posDiffNorm), lockFocus.transform);
+			}
 			if(cableHook.enabled == false) { 
 				cableHook.enabled = true;
 			}

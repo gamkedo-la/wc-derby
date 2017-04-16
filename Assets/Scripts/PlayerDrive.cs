@@ -16,6 +16,9 @@ public class PlayerDrive : HoverCraftBase {
 		float cameraK = 0.8f;
 		Camera.main.fieldOfView = cameraK * Camera.main.fieldOfView + (1.0f-cameraK) * targetFOV;
 
+		Camera.main.transform.localRotation = Quaternion.AngleAxis(
+			(HaveEnemyHooked() ? 2.0f : 0.15f)*Random.Range(-1.0f,1.0f)*gasControl,Vector3.forward);
+
 		if(sprintRamming == false) {
 			turnControl = Input.GetAxis("Horizontal");
 			gasControl = Input.GetAxis("Vertical");
