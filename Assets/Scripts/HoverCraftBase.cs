@@ -37,6 +37,8 @@ public class HoverCraftBase : MonoBehaviour {
 	private static GameObject hookSparkPfxPrefab;
 	private static GameObject snowPuffPfxPrefab;
 
+	private Terrain theActiveTerrain;
+
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
 	}
@@ -52,6 +54,9 @@ public class HoverCraftBase : MonoBehaviour {
 		if(hookSparkPfxPrefab == null) {
 			hookSparkPfxPrefab = Resources.Load("HookSpark") as GameObject;
 		}
+
+		if (theActiveTerrain == null)
+			theActiveTerrain = Terrain.activeTerrain;
 
 		cableHook = GetComponent<LineRenderer>();
 
@@ -72,8 +77,13 @@ public class HoverCraftBase : MonoBehaviour {
 		if(Physics.Raycast(atPos+Vector3.up*lookdownFromAboveHeight,
 			-Vector3.up*lookdownFromAboveHeight,out rhInfo,200.0f,ignoreVehicleLayerMask)) {
 			return rhInfo.point.y;
-		} else {
-			return Terrain.activeTerrain.SampleHeight(atPos);
+		}
+		else if (theActiveTerrain != null) {
+			return theActiveTerrain.SampleHeight(atPos);
+		}
+		else {
+			// there may be no terrain in the scene
+			return lookdownFromAboveHeight; // nothing underneath us
 		}
 	}
 
