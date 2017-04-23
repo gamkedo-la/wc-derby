@@ -6,12 +6,20 @@ public class PlayerDrive : HoverCraftBase {
 	private float targetFOV = 60.0f;
 
 	protected override void Init () {
+		if(useCarCollisionTuning) {
+			Vector3 camPosHigher = Camera.main.transform.localPosition;
+			camPosHigher.y *= 1.3f;
+			Camera.main.transform.localPosition = camPosHigher;
+
+			UpdateLockIndicator uliScript = GetComponentInChildren<UpdateLockIndicator>();
+			uliScript.TurnOff();
+		}
 	}
 
 	protected override void Tick () {
 		if(Input.GetKeyDown(KeyCode.Space)) {
 			sprintRamming = !sprintRamming;
-			targetFOV = (HaveEnemyHooked() ? 77.0f : 60.0f);
+			targetFOV = ((useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ? 77.0f : 60.0f);
 		}
 		float cameraK = 0.8f;
 		Camera.main.fieldOfView = cameraK * Camera.main.fieldOfView + (1.0f-cameraK) * targetFOV;
@@ -22,7 +30,12 @@ public class PlayerDrive : HoverCraftBase {
 		if(sprintRamming == false) {
 			turnControl = Input.GetAxis("Horizontal");
 			gasControl = Input.GetAxis("Vertical");
-            AkSoundEngine.SetRTPCValue("Player_Velocity", gasControl);
+			AkSoundEngine.SetRTPCValue("Player_Velocity", gasControl);
+		} else if(useCarCollisionTuning) {
+			turnControl = Input.GetAxis("Horizontal");
+			if(Input.GetAxis("Vertical") < 0.0f) {
+				sprintRamming = false;
+			}
 		}
 	}
 

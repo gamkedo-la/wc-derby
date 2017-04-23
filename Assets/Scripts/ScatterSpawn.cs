@@ -45,6 +45,8 @@ public class ScatterSpawn : MonoBehaviour {
 	}
 
 	void Update() {
+		spawnedList.RemoveAll(delegate (GameObject o) { return o == null; });
+
 		if(counterUI && lastShownSize != spawnedList.Count) {
 			lastShownSize = spawnedList.Count;
 			counterUI.text = lastShownSize + "/" + howMany;

@@ -10,13 +10,20 @@ public class UpdateLockIndicator : MonoBehaviour {
 	private HoverCraftBase forCraft;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if(isPlayerSoUseUI) {
 			lockBox = GameObject.Find("RamLockIndicator").GetComponent<Image>();
 			allEnemies = GameObject.Find("EnemySpawnerAndListMgmt").GetComponent<ScatterSpawn>();
 		} else {
 			allEnemies = GameObject.Find("PlayerSpawnerAndTargetLookup").GetComponent<ScatterSpawn>();
 		}
+	}
+
+	public void TurnOff() {
+		if(lockBox) {
+			lockBox.enabled = false;
+		}
+		this.enabled = false;
 	}
 	
 	// Update is called once per frame

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HoverCraftBase : MonoBehaviour {
+	protected bool useCarCollisionTuning = true;
+
 	static protected Vector3 domeCenter;
 	static protected float domeRadius = 0.0f;
 
@@ -39,6 +41,9 @@ public class HoverCraftBase : MonoBehaviour {
 
 	private Terrain theActiveTerrain;
 
+	protected float shipScale = 1.0f;
+	protected Rigidbody rb;
+
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
 	}
@@ -55,6 +60,8 @@ public class HoverCraftBase : MonoBehaviour {
 			hookSparkPfxPrefab = Resources.Load("HookSpark") as GameObject;
 		}
 
+		rb = GetComponent<Rigidbody>();
+
 		if (theActiveTerrain == null)
 			theActiveTerrain = Terrain.activeTerrain;
 
@@ -68,14 +75,20 @@ public class HoverCraftBase : MonoBehaviour {
 
 		momentum = Vector3.zero;
 		ignoreVehicleLayerMask = ~LayerMask.GetMask("Player","Enemy");
+
+		if(useCarCollisionTuning) {
+			shipScale = 20.0f;
+		}
+
 		Init();
+		transform.localScale *= shipScale;
 	}
 
 	float heightUnderMe(Vector3 atPos) {
-		float lookdownFromAboveHeight = 50.0f;
+		float lookdownFromAboveHeight = 50.0f*shipScale;
 		RaycastHit rhInfo;
 		if(Physics.Raycast(atPos+Vector3.up*lookdownFromAboveHeight,
-			-Vector3.up*lookdownFromAboveHeight,out rhInfo,200.0f,ignoreVehicleLayerMask)) {
+			-Vector3.up*lookdownFromAboveHeight,out rhInfo,200.0f*shipScale,ignoreVehicleLayerMask)) {
 			return rhInfo.point.y;
 		}
 		else if (theActiveTerrain != null) {
@@ -104,7 +117,7 @@ public class HoverCraftBase : MonoBehaviour {
 		Tick();
 		RaycastHit rhInfo;
 
-		if(sprintRamming) {
+		if(sprintRamming && useCarCollisionTuning == false) {
 			if(lockFocus == null) {
 				sprintRamming = false;
 			} else {
@@ -142,7 +155,7 @@ public class HoverCraftBase : MonoBehaviour {
 
 		float impendingCrashDetectionNormal = 1.0f;
 		if(Physics.Raycast(transform.position,
-			transform.forward, out rhInfo, 10.0f, ignoreVehicleLayerMask)) {
+			transform.forward, out rhInfo, 10.0f*shipScale, ignoreVehicleLayerMask)) {
 			//Debug.DrawLine(rhInfo.point, transform.position, Color.red);
 			//Debug.DrawLine(rhInfo.point, rhInfo.point+rhInfo.normal*3.0f, Color.green);
 			impendingCrashDetectionNormal = rhInfo.normal.y;
@@ -154,7 +167,7 @@ public class HoverCraftBase : MonoBehaviour {
 			enginePower = -1.0f;
 			sprintRamming = false;
 		} else {
-			if( HaveEnemyHooked() ) {
+			if( (useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ) {
 				enginePower = 3.0f;
 			} else {
 				enginePower = gasControl;
@@ -162,7 +175,9 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 
 		momentum += transform.forward * enginePower * 9.0f * Time.deltaTime;
-		transform.position += momentum;
+
+		Vector3 newPos = transform.position;
+		newPos += momentum;
 
 		boostDrawing = enginePower > 0.2f;
 
@@ -175,7 +190,7 @@ public class HoverCraftBase : MonoBehaviour {
 			engineLights[i].intensity= engineLight;
 		}
 
-		float minHeightHere = heightUnderMe(transform.position)+0.9f;
+		float minHeightHere = heightUnderMe(newPos)+0.9f;
 
 		timeSinceLastPuff += Time.deltaTime;
 		if(transform.position.y < minHeightHere) {
@@ -186,11 +201,11 @@ public class HoverCraftBase : MonoBehaviour {
 			}
 		}
 
-		Vector3 newPos = transform.position;
 		newPos.y = Mathf.Max(newPos.y, minHeightHere);
-		transform.position = newPos;
 
-		transform.position = ForceIntoDome(transform.position);
+		newPos = ForceIntoDome(newPos);
+
+		transform.position = newPos;
 	}
 
 	Vector3 ForceIntoDome(Vector3 whereAt) {
@@ -208,7 +223,7 @@ public class HoverCraftBase : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		float minHeightHere = heightUnderMe(transform.position)+0.9f;
+		float minHeightHere = heightUnderMe(transform.position)+0.9f*shipScale;
 		float goalHeightHere = minHeightHere + 1.7f;
 		RaycastHit rhInfo;
 
@@ -225,7 +240,7 @@ public class HoverCraftBase : MonoBehaviour {
 				heightUnderMe(transform.position + transform.forward * 15.0f),
 				heightUnderMe(transform.position + transform.forward * 25.0f));
 
-		if(Physics.Raycast(transform.position,-Vector3.up*8.0f,out rhInfo)) {
+		if(Physics.Raycast(transform.position,-Vector3.up*8.0f*shipScale,out rhInfo, ignoreVehicleLayerMask)) {
 			Vector3 pointAhead = transform.forward;
 			if(heightForward != 0.0f) {
 				pointAhead = transform.forward + Vector3.up * (heightForward - rhInfo.point.y)*0.1f;
@@ -246,6 +261,10 @@ public class HoverCraftBase : MonoBehaviour {
 	}
 
 	void LateUpdate() {
+		if(useCarCollisionTuning) {
+			return;
+		}
+
 		if(lockFocus != null && lockFocus.sprintRamming) { // break if sprinting
 			lockFocus = null;
 		}
@@ -276,6 +295,16 @@ public class HoverCraftBase : MonoBehaviour {
 			Vector3 hookPt = transform.position * (1.0f - percHookOut) +
 				endPt * percHookOut;
 			cableHook.SetPosition(1, hookPt);
+		}
+	}
+
+	void OnCollisionEnter(Collision collInfo) {
+		EnemyDrive edScript = collInfo.collider.GetComponentInParent<EnemyDrive>();
+		if(edScript) {
+			edScript.Destruction();
+			if(sprintRamming) {
+				sprintRamming = false;
+			}
 		}
 	}
 }
