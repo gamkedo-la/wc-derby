@@ -43,6 +43,8 @@ public class HoverCraftBase : MonoBehaviour {
 
 	protected float shipScale = 1.0f;
 	protected Rigidbody rb;
+	protected float enginePower = 0.0f;
+	protected float ramBoostMult = 3.0f;
 
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
@@ -82,6 +84,11 @@ public class HoverCraftBase : MonoBehaviour {
 
 		Init();
 		transform.localScale *= shipScale;
+
+		Light[] glowBulbs = GetComponentsInChildren<Light>();
+		for(int i = 0; i < glowBulbs.Length; i++) {
+			glowBulbs[i].range *= shipScale;
+		}
 	}
 
 	float heightUnderMe(Vector3 atPos) {
@@ -151,8 +158,6 @@ public class HoverCraftBase : MonoBehaviour {
 		momentum += transform.forward * bodyToTilt.forward.y * Time.deltaTime * -7.0f;
 		momentum += transform.right * bodyToTilt.right.y * Time.deltaTime * -10.0f;
 
-		float enginePower;
-
 		float impendingCrashDetectionNormal = 1.0f;
 		if(Physics.Raycast(transform.position,
 			transform.forward, out rhInfo, 10.0f*shipScale, ignoreVehicleLayerMask)) {
@@ -168,7 +173,7 @@ public class HoverCraftBase : MonoBehaviour {
 			sprintRamming = false;
 		} else {
 			if( (useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ) {
-				enginePower = 3.0f;
+				enginePower = ramBoostMult;
 			} else {
 				enginePower = gasControl;
 			}
@@ -206,6 +211,7 @@ public class HoverCraftBase : MonoBehaviour {
 		newPos = ForceIntoDome(newPos);
 
 		transform.position = newPos;
+		// rb.velocity = (newPos-transform.position)/Time.deltaTime;
 	}
 
 	Vector3 ForceIntoDome(Vector3 whereAt) {

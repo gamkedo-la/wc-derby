@@ -30,13 +30,13 @@ public class PlayerDrive : HoverCraftBase {
 		if(sprintRamming == false) {
 			turnControl = Input.GetAxis("Horizontal");
 			gasControl = Input.GetAxis("Vertical");
-			AkSoundEngine.SetRTPCValue("Player_Velocity", gasControl);
 		} else if(useCarCollisionTuning) {
 			turnControl = Input.GetAxis("Horizontal");
 			if(Input.GetAxis("Vertical") < 0.0f) {
 				sprintRamming = false;
 			}
 		}
+		AkSoundEngine.SetRTPCValue("Player_Velocity", enginePower / ramBoostMult);
 	}
 
 }
