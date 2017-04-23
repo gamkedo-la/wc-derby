@@ -7,8 +7,6 @@ public class HoverCraftBase : MonoBehaviour {
 
 	static protected Vector3 domeCenter;
 	static protected float domeRadius = 0.0f;
-
-	public GameObject deathEffectGO;
 	Vector3 momentum;
 	public Transform bodyToTilt;
 
@@ -41,10 +39,11 @@ public class HoverCraftBase : MonoBehaviour {
 
 	private Terrain theActiveTerrain;
 
-	protected float shipScale = 1.0f;
+	public float shipScale = 1.0f;
 	protected Rigidbody rb;
 	protected float enginePower = 0.0f;
 	protected float ramBoostMult = 3.0f;
+	public float totalActualSpeedNow = 0.0f;
 
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
@@ -107,13 +106,6 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 	}
 
-	public void Destruction() {
-		GameObject.Instantiate(deathEffectGO, transform.position, Quaternion.identity);
-		if(GetComponentInChildren<Camera>() != null) {
-			Camera.main.transform.SetParent(null);
-		}
-		Destroy(gameObject);
-	}
 
 	protected bool HaveEnemyHooked() {
 		return (sprintRamming && percHookOut >= 1.0f);
@@ -210,8 +202,9 @@ public class HoverCraftBase : MonoBehaviour {
 
 		newPos = ForceIntoDome(newPos);
 
+		totalActualSpeedNow = ((newPos-transform.position).magnitude)/Time.deltaTime;
+
 		transform.position = newPos;
-		// rb.velocity = (newPos-transform.position)/Time.deltaTime;
 	}
 
 	Vector3 ForceIntoDome(Vector3 whereAt) {
@@ -305,11 +298,12 @@ public class HoverCraftBase : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collInfo) {
-		EnemyDrive edScript = collInfo.collider.GetComponentInParent<EnemyDrive>();
-		if(edScript) {
-			edScript.Destruction();
-			if(sprintRamming) {
-				sprintRamming = false;
+		HoverCraftBase hcbScript = collInfo.collider.GetComponentInParent<HoverCraftBase>();
+		if(hcbScript) {
+			float otherSpeed = hcbScript.totalActualSpeedNow;
+			float selfSpeed = totalActualSpeedNow;
+			if(selfSpeed > otherSpeed) {
+				hcbScript.gameObject.SendMessage("Destruction");
 			}
 		}
 	}
