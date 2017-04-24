@@ -3,7 +3,7 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{F9B410C1-018C-42CD-8436-1F29E642C35E}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Micky\Desktop"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Micky\Desktop\Gamkedo\wc-derby\Assets\Audio\SFX impacts"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
@@ -22,7 +22,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value="UaPR0dyLtUKH6Cdf8vXWLFCUC8lX+TNPk/e3m/D13Fg="/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="SoXLMa732U6eXpt4PgF+2A=="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
-				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="w34ZHvWbkk6sfobv5YyE/wGOhAr/////pWy2SLid9EuzuhEVN1BqVQGOhAr/////"/>
+				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="pWy2SLid9EuzuhEVN1BqVQF2exX/////w34ZHvWbkk6sfobv5YyE/wF2exX/////"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="Mixing Desk\LastSession" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
@@ -55,6 +55,7 @@
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value="MUJy5EH1QE2gToKO3UzCPA=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_7_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_8_1" Type="string" Value=""/>
+				<Property Name="RTPC\GameParameterSimValue\{73F9AC3F-1949-4D0F-8A48-C43D8DBA5221}" Type="Real64" Value="0"/>
 				<Property Name="SoundBank Manager\x64_Expand States" Type="string" Value="MUJy5EH1QE2gToKO3UzCPA=="/>
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks\"/>
 				<Property Name="SoundBankPaths" Type="string">
