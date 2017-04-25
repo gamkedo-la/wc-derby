@@ -25,6 +25,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_PlayerImpact" ID="{5C74C38F-D5C5-49DE-B593-76AAA1B92050}">
+					<ChildrenList>
+						<Action Name="Play" ID="{390466A3-3A33-4C9D-B1DE-6B8EF52A4467}" ShortID="8577975" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{D566D508-E379-4FE4-8ECB-10873812A700}" Global="false">
+									<ObjectRef Name="Player Impacts" ID="{3485FA5B-8B9B-4A0E-8B75-FA635C802BBF}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

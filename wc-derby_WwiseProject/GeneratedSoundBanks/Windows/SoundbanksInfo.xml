@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="120">
 	<RootPaths>
-		<ProjectRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\v-adcrof\Documents\GitHub\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -22,12 +22,237 @@
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
+				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="19471307" Language="SFX">
+					<ShortName>2 2-Audio-2.wav</ShortName>
+					<Path>SFX\2 2-Audio-2_9E69E797.wem</Path>
+				</File>
+				<File Id="91171534" Language="SFX">
+					<ShortName>1 2-Audio-15.wav</ShortName>
+					<Path>SFX\1 2-Audio-15_9E69E797.wem</Path>
+				</File>
+				<File Id="102748787" Language="SFX">
+					<ShortName>2 2-Audio-5.wav</ShortName>
+					<Path>SFX\2 2-Audio-5_9E69E797.wem</Path>
+				</File>
+				<File Id="105961220" Language="SFX">
+					<ShortName>2 2-Audio-1.wav</ShortName>
+					<Path>SFX\2 2-Audio-1_9E69E797.wem</Path>
+				</File>
+				<File Id="138838819" Language="SFX">
+					<ShortName>2 2-Audio-31.wav</ShortName>
+					<Path>SFX\2 2-Audio-31_9E69E797.wem</Path>
+				</File>
+				<File Id="149786935" Language="SFX">
+					<ShortName>1 2-Audio-6.wav</ShortName>
+					<Path>SFX\1 2-Audio-6_9E69E797.wem</Path>
+				</File>
+				<File Id="154857351" Language="SFX">
+					<ShortName>3 2-Audio-1.wav</ShortName>
+					<Path>SFX\3 2-Audio-1_9E69E797.wem</Path>
+				</File>
+				<File Id="166373477" Language="SFX">
+					<ShortName>1 2-Audio-5.wav</ShortName>
+					<Path>SFX\1 2-Audio-5_9E69E797.wem</Path>
+				</File>
+				<File Id="170025284" Language="SFX">
+					<ShortName>2 2-Audio-8.wav</ShortName>
+					<Path>SFX\2 2-Audio-8_9E69E797.wem</Path>
+				</File>
+				<File Id="175449324" Language="SFX">
+					<ShortName>1 2-Audio-12.wav</ShortName>
+					<Path>SFX\1 2-Audio-12_9E69E797.wem</Path>
+				</File>
+				<File Id="226307827" Language="SFX">
+					<ShortName>2 2-Audio-30.wav</ShortName>
+					<Path>SFX\2 2-Audio-30_9E69E797.wem</Path>
+				</File>
+				<File Id="245300810" Language="SFX">
+					<ShortName>1 2-Audio-11.wav</ShortName>
+					<Path>SFX\1 2-Audio-11_9E69E797.wem</Path>
+				</File>
+				<File Id="266717227" Language="SFX">
+					<ShortName>2 2-Audio-3.wav</ShortName>
+					<Path>SFX\2 2-Audio-3_9E69E797.wem</Path>
+				</File>
+				<File Id="317367028" Language="SFX">
+					<ShortName>2 2-Audio-18.wav</ShortName>
+					<Path>SFX\2 2-Audio-18_9E69E797.wem</Path>
+				</File>
+				<File Id="334313104" Language="SFX">
+					<ShortName>2 2-Audio-13.wav</ShortName>
+					<Path>SFX\2 2-Audio-13_9E69E797.wem</Path>
+				</File>
+				<File Id="353746272" Language="SFX">
+					<ShortName>1 2-Audio-2.wav</ShortName>
+					<Path>SFX\1 2-Audio-2_9E69E797.wem</Path>
+				</File>
+				<File Id="385898652" Language="SFX">
+					<ShortName>2 2-Audio-23.wav</ShortName>
+					<Path>SFX\2 2-Audio-23_9E69E797.wem</Path>
+				</File>
+				<File Id="388341493" Language="SFX">
+					<ShortName>2 2-Audio-7.wav</ShortName>
+					<Path>SFX\2 2-Audio-7_9E69E797.wem</Path>
+				</File>
+				<File Id="394822619" Language="SFX">
+					<ShortName>2 2-Audio-32.wav</ShortName>
+					<Path>SFX\2 2-Audio-32_9E69E797.wem</Path>
+				</File>
+				<File Id="399225170" Language="SFX">
+					<ShortName>2 2-Audio-22.wav</ShortName>
+					<Path>SFX\2 2-Audio-22_9E69E797.wem</Path>
+				</File>
+				<File Id="406400539" Language="SFX">
+					<ShortName>2 2-Audio-17.wav</ShortName>
+					<Path>SFX\2 2-Audio-17_9E69E797.wem</Path>
+				</File>
+				<File Id="418450677" Language="SFX">
+					<ShortName>2 2-Audio-14.wav</ShortName>
+					<Path>SFX\2 2-Audio-14_9E69E797.wem</Path>
+				</File>
+				<File Id="435561200" Language="SFX">
+					<ShortName>3 2-Audio.wav</ShortName>
+					<Path>SFX\3 2-Audio_9E69E797.wem</Path>
+				</File>
+				<File Id="436870691" Language="SFX">
+					<ShortName>1 2-Audio-1-1.wav</ShortName>
+					<Path>SFX\1 2-Audio-1-1_9E69E797.wem</Path>
+				</File>
+				<File Id="454620572" Language="SFX">
+					<ShortName>2 2-Audio-12.wav</ShortName>
+					<Path>SFX\2 2-Audio-12_9E69E797.wem</Path>
+				</File>
+				<File Id="469257765" Language="SFX">
+					<ShortName>2 2-Audio-9.wav</ShortName>
+					<Path>SFX\2 2-Audio-9_9E69E797.wem</Path>
+				</File>
+				<File Id="474776011" Language="SFX">
+					<ShortName>2 2-Audio-19.wav</ShortName>
+					<Path>SFX\2 2-Audio-19_9E69E797.wem</Path>
+				</File>
+				<File Id="542638591" Language="SFX">
+					<ShortName>1 2-Audio-3.wav</ShortName>
+					<Path>SFX\1 2-Audio-3_9E69E797.wem</Path>
+				</File>
+				<File Id="552072547" Language="SFX">
+					<ShortName>2 2-Audio-26.wav</ShortName>
+					<Path>SFX\2 2-Audio-26_9E69E797.wem</Path>
+				</File>
+				<File Id="569491627" Language="SFX">
+					<ShortName>3 2-Audio-3.wav</ShortName>
+					<Path>SFX\3 2-Audio-3_9E69E797.wem</Path>
+				</File>
+				<File Id="587643821" Language="SFX">
+					<ShortName>2 2-Audio-24.wav</ShortName>
+					<Path>SFX\2 2-Audio-24_9E69E797.wem</Path>
+				</File>
+				<File Id="590006913" Language="SFX">
+					<ShortName>2 2-Audio-20.wav</ShortName>
+					<Path>SFX\2 2-Audio-20_9E69E797.wem</Path>
+				</File>
+				<File Id="633551660" Language="SFX">
+					<ShortName>2 2-Audio-10.wav</ShortName>
+					<Path>SFX\2 2-Audio-10_9E69E797.wem</Path>
+				</File>
+				<File Id="635993967" Language="SFX">
+					<ShortName>1 2-Audio-13.wav</ShortName>
+					<Path>SFX\1 2-Audio-13_9E69E797.wem</Path>
+				</File>
+				<File Id="639004152" Language="SFX">
+					<ShortName>1 2-Audio.wav</ShortName>
+					<Path>SFX\1 2-Audio_9E69E797.wem</Path>
+				</File>
+				<File Id="643610607" Language="SFX">
+					<ShortName>2 2-Audio-16.wav</ShortName>
+					<Path>SFX\2 2-Audio-16_9E69E797.wem</Path>
+				</File>
+				<File Id="645365499" Language="SFX">
+					<ShortName>1 2-Audio-14.wav</ShortName>
+					<Path>SFX\1 2-Audio-14_9E69E797.wem</Path>
+				</File>
+				<File Id="660383645" Language="SFX">
+					<ShortName>1 2-Audio-9.wav</ShortName>
+					<Path>SFX\1 2-Audio-9_9E69E797.wem</Path>
+				</File>
+				<File Id="684131474" Language="SFX">
+					<ShortName>3 2-Audio-2.wav</ShortName>
+					<Path>SFX\3 2-Audio-2_9E69E797.wem</Path>
+				</File>
+				<File Id="689873120" Language="SFX">
+					<ShortName>2 2-Audio-28.wav</ShortName>
+					<Path>SFX\2 2-Audio-28_9E69E797.wem</Path>
+				</File>
+				<File Id="749560738" Language="SFX">
+					<ShortName>2 2-Audio.wav</ShortName>
+					<Path>SFX\2 2-Audio_9E69E797.wem</Path>
+				</File>
+				<File Id="787832749" Language="SFX">
+					<ShortName>2 2-Audio-6.wav</ShortName>
+					<Path>SFX\2 2-Audio-6_9E69E797.wem</Path>
+				</File>
+				<File Id="809950615" Language="SFX">
+					<ShortName>1 2-Audio-1.wav</ShortName>
+					<Path>SFX\1 2-Audio-1_9E69E797.wem</Path>
+				</File>
+				<File Id="842915452" Language="SFX">
+					<ShortName>2 2-Audio-25.wav</ShortName>
+					<Path>SFX\2 2-Audio-25_9E69E797.wem</Path>
+				</File>
 				<File Id="876509183" Language="SFX">
 					<ShortName>wrecking cloud music scratch track.wav</ShortName>
 					<Path>SFX\wrecking cloud music scratch track_9E69E797.wem</Path>
+				</File>
+				<File Id="882138337" Language="SFX">
+					<ShortName>2 2-Audio-29.wav</ShortName>
+					<Path>SFX\2 2-Audio-29_9E69E797.wem</Path>
+				</File>
+				<File Id="903728029" Language="SFX">
+					<ShortName>2 2-Audio-27.wav</ShortName>
+					<Path>SFX\2 2-Audio-27_9E69E797.wem</Path>
+				</File>
+				<File Id="922835115" Language="SFX">
+					<ShortName>1 2-Audio-4.wav</ShortName>
+					<Path>SFX\1 2-Audio-4_9E69E797.wem</Path>
+				</File>
+				<File Id="926902787" Language="SFX">
+					<ShortName>2 2-Audio-15.wav</ShortName>
+					<Path>SFX\2 2-Audio-15_9E69E797.wem</Path>
+				</File>
+				<File Id="941204851" Language="SFX">
+					<ShortName>Cruise2.wav</ShortName>
+					<Path>SFX\Cruise2_A8899385.wem</Path>
+				</File>
+				<File Id="953432568" Language="SFX">
+					<ShortName>2 2-Audio-11.wav</ShortName>
+					<Path>SFX\2 2-Audio-11_9E69E797.wem</Path>
+				</File>
+				<File Id="1004576196" Language="SFX">
+					<ShortName>2 2-Audio-4.wav</ShortName>
+					<Path>SFX\2 2-Audio-4_9E69E797.wem</Path>
+				</File>
+				<File Id="1012967253" Language="SFX">
+					<ShortName>2 2-Audio-21.wav</ShortName>
+					<Path>SFX\2 2-Audio-21_9E69E797.wem</Path>
+				</File>
+				<File Id="1015639573" Language="SFX">
+					<ShortName>1 2-Audio-8.wav</ShortName>
+					<Path>SFX\1 2-Audio-8_9E69E797.wem</Path>
+				</File>
+				<File Id="1028303329" Language="SFX">
+					<ShortName>1 2-Audio-10.wav</ShortName>
+					<Path>SFX\1 2-Audio-10_9E69E797.wem</Path>
+				</File>
+				<File Id="1037698662" Language="SFX">
+					<ShortName>1 2-Audio-7.wav</ShortName>
+					<Path>SFX\1 2-Audio-7_9E69E797.wem</Path>
+				</File>
+				<File Id="1041269596" Language="SFX">
+					<ShortName>air.wav</ShortName>
+					<Path>SFX\air_4B8CC0C5.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
