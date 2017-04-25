@@ -10,6 +10,7 @@
 						<Property Name="Min" Type="Real64" Value="-1"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="Player_Elevation" ID="{7A0D7056-FD4E-4C1B-9AEB-494A123CB00E}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
