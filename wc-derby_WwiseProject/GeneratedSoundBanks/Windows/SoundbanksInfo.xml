@@ -22,6 +22,7 @@
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
+				<Event Id="3514445152" Name="Play_PlayerEngineElevation" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineElevation"/>
 				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward"/>
 			</IncludedEvents>
@@ -189,6 +190,10 @@
 				<File Id="749560738" Language="SFX">
 					<ShortName>2 2-Audio.wav</ShortName>
 					<Path>SFX\2 2-Audio_9E69E797.wem</Path>
+				</File>
+				<File Id="770316172" Language="SFX">
+					<ShortName>cruise deep.wav</ShortName>
+					<Path>SFX\cruise deep_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="787832749" Language="SFX">
 					<ShortName>2 2-Audio-6.wav</ShortName>

@@ -1,15 +1,20 @@
 Event	ID	Name			Wwise Object Path	Notes
 	775327610	wcforward			\Default Work Unit\wcforward	
 	2485643559	Play_PlayerImpact			\Default Work Unit\Play_PlayerImpact	
+	3514445152	Play_PlayerEngineElevation			\Default Work Unit\Play_PlayerEngineElevation	
 	3791634299	Play_PlayerEngine			\Default Work Unit\Play_PlayerEngine	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1833811084	Player_Velocity			\Default Work Unit\Player_Velocity	
+	2733734302	Player_Elevation			\Default Work Unit\Player_Elevation	
 
 Effect plug-ins	ID	Name	Type				Notes
 	232755663	Wwise Harmonizer (Custom)	Wwise Harmonizer			
+	763259177	Wwise Parametric EQ (Custom)	Wwise Parametric EQ			
 	835031432	Wwise Parametric EQ (Custom)	Wwise Parametric EQ			
 	942585773	Wwise Guitar Distortion (Custom)	Wwise Guitar Distortion			
+	1459522457	Brick_Wall_Minus_1dB_Peak_Fast_Release	Wwise Peak Limiter			
+	3043085106	High_Impact	Wwise Compressor			
 
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	404445436	Wwise Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Engine Sawtooth 2\Wwise Tone Generator	
@@ -58,6 +63,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	684131474	3 2-Audio-2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\3 2-Audio-2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\3 2-Audio-2		287996
 	689873120	2 2-Audio-28	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 2-Audio-28_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-28		399968
 	749560738	2 2-Audio	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 2-Audio_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio		121036
+	770316172	cruise deep	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\cruise deep_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Elevation\cruise deep		143092
 	787832749	2 2-Audio-6	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 2-Audio-6_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-6		217012
 	809950615	1 2-Audio-1	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\1 2-Audio-1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\1 2-Audio-1		225008
 	842915452	2 2-Audio-25	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 2-Audio-25_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-25		256000
