@@ -10,6 +10,8 @@ public class HoverCraftBase : MonoBehaviour {
 	Vector3 momentum;
 	public Transform bodyToTilt;
 
+	public Vector3 bangBackMomentum = Vector3.zero;
+
 	private float timeSinceLastPuff = 0.0f;
 	private float timeBetweenPuffs = 0.6f;
 
@@ -24,6 +26,8 @@ public class HoverCraftBase : MonoBehaviour {
 	private float timeSinceHookFired = 0.0f;
 
 	private float percHookOut = 0.0f;
+
+	public int health = 3;
 
 	LineRenderer cableHook;
 
@@ -114,6 +118,10 @@ public class HoverCraftBase : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Tick();
+		float stunnedBangMagnitude = 4.0f;
+		if(bangBackMomentum.magnitude > stunnedBangMagnitude) {
+			turnControl = gasControl = 0.0f;
+		}
 		RaycastHit rhInfo;
 
 		if(sprintRamming && useCarCollisionTuning == false) {
@@ -227,6 +235,8 @@ public class HoverCraftBase : MonoBehaviour {
 		RaycastHit rhInfo;
 
 		Vector3 newPos = transform.position;
+		newPos += bangBackMomentum;
+		bangBackMomentum *= 0.9f;
 		newPos.y += (goalHeightHere-newPos.y) * (goalHeightHere > newPos.y ? 3.0f : 1.0f ) * Time.deltaTime;
 		newPos.y = Mathf.Max(newPos.y, minHeightHere);
 		transform.position = newPos;
@@ -303,7 +313,53 @@ public class HoverCraftBase : MonoBehaviour {
 			float otherSpeed = hcbScript.totalActualSpeedNow;
 			float selfSpeed = totalActualSpeedNow;
 			if(selfSpeed > otherSpeed) {
-				hcbScript.gameObject.SendMessage("Destruction");
+				hcbScript.health--;
+				Transform modelTransform = hcbScript.GetComponentInChildren<Animator>().transform;
+				switch(hcbScript.health) {
+				case 2:
+					modelTransform.Find("body__Back_Panel").gameObject.SetActive(false);
+					modelTransform.Find("Gamkedo_Logo_top").gameObject.SetActive(false);
+					modelTransform.Find("body__Top_Panel").gameObject.SetActive(false);
+					modelTransform.Find("body__Right_Panel_x").gameObject.SetActive(false);
+					modelTransform.Find("body__Left_Panel_x").gameObject.SetActive(false);
+					modelTransform.Find("body__front_vent").gameObject.SetActive(false);
+					break;
+				case 1:
+					modelTransform.Find("blade").gameObject.SetActive(false);
+					modelTransform.Find("body__rear_vent").gameObject.SetActive(false);
+					modelTransform.Find("spring_left").gameObject.SetActive(false);
+					modelTransform.Find("spring_right").gameObject.SetActive(false);
+					break;
+				case 0:
+				default:
+					hcbScript.gameObject.SendMessage("Destruction");
+					break;
+				}
+				Vector3 pushVect = hcbScript.bodyToTilt.transform.position -
+					bodyToTilt.transform.position;
+				float bangBackPowerWinner = 10.0f;
+				float bangBackPowerDamaged = 20.0f;
+				float bangBackAngleMax = 60.0f;
+				pushVect = pushVect.normalized;
+				hcbScript.bangBackMomentum = pushVect * bangBackPowerDamaged;
+				bangBackMomentum = -pushVect * bangBackPowerWinner;
+				hcbScript.bodyToTilt.Rotate(Random.insideUnitCircle * bangBackAngleMax);
+				hcbScript.sprintRamming = false;
+				bodyToTilt.Rotate(Random.insideUnitCircle * bangBackAngleMax);
+				sprintRamming = false;
+
+				GameObject sparkGO = GameObject.Instantiate(hookSparkPfxPrefab, 
+					(transform.position+hcbScript.transform.position)*0.5f,
+					Quaternion.identity);
+				sparkGO.transform.localScale *= 2.0f;
+				GameObject snowGO = GameObject.Instantiate(snowPuffPfxPrefab, 
+					(transform.position+hcbScript.transform.position)*0.5f,
+					Quaternion.identity);
+				snowGO.transform.localScale *= 3.35f;
+				/*
+				pushVect = Quaternion.AngleAxis(90.0f, Vector3.up) * pushVect;
+				hcbScript.bodyToTilt.Rotate(pushVect,70.0f);
+				bodyToTilt.Rotate(pushVect,-70.0f);*/
 			}
 		}
 	}
