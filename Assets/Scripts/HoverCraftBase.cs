@@ -18,7 +18,7 @@ public class HoverCraftBase : MonoBehaviour {
 	public TrailRenderer[] trList;
 	public Light[] engineLights;
 	public bool boostDrawing = true;
-	int ignoreVehicleLayerMask;
+	public static int ignoreVehicleLayerMask;
 
 	protected float turnControl = 0.0f;
 	protected float gasControl = 0.7f;
@@ -95,7 +95,7 @@ public class HoverCraftBase : MonoBehaviour {
 	}
 
 	float heightUnderMe(Vector3 atPos) {
-		float lookdownFromAboveHeight = 50.0f*shipScale;
+		float lookdownFromAboveHeight = 2.0f*shipScale;
 		RaycastHit rhInfo;
 		if(Physics.Raycast(atPos+Vector3.up*lookdownFromAboveHeight,
 			-Vector3.up*lookdownFromAboveHeight,out rhInfo,8.0f*shipScale,ignoreVehicleLayerMask)) {
@@ -200,7 +200,6 @@ public class HoverCraftBase : MonoBehaviour {
 		timeSinceLastPuff += Time.deltaTime;
 		if(transform.position.y < minHeightHere) {
 			if(timeSinceLastPuff > timeBetweenPuffs) {
-				// Debug.Log("snow puffed by "+name);
 				GameObject.Instantiate(snowPuffPfxPrefab, transform.position, Quaternion.identity, transform);
 				timeSinceLastPuff = 0.0f;
 			}
@@ -215,7 +214,7 @@ public class HoverCraftBase : MonoBehaviour {
 		transform.position = newPos;
 	}
 
-	Vector3 ForceIntoDome(Vector3 whereAt) {
+	public static Vector3 ForceIntoDome(Vector3 whereAt) {
 		Vector3 centerDelta = (whereAt - domeCenter);
 		if(centerDelta.magnitude > domeRadius) {
 			return domeCenter + domeRadius * centerDelta.normalized;
