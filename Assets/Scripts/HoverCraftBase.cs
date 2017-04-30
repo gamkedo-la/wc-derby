@@ -94,7 +94,7 @@ public class HoverCraftBase : MonoBehaviour {
 		float lookdownFromAboveHeight = 50.0f*shipScale;
 		RaycastHit rhInfo;
 		if(Physics.Raycast(atPos+Vector3.up*lookdownFromAboveHeight,
-			-Vector3.up*lookdownFromAboveHeight,out rhInfo,200.0f*shipScale,ignoreVehicleLayerMask)) {
+			-Vector3.up*lookdownFromAboveHeight,out rhInfo,8.0f*shipScale,ignoreVehicleLayerMask)) {
 			return rhInfo.point.y;
 		}
 		else if (theActiveTerrain != null) {
@@ -239,7 +239,7 @@ public class HoverCraftBase : MonoBehaviour {
 				heightUnderMe(transform.position + transform.forward * 15.0f),
 				heightUnderMe(transform.position + transform.forward * 25.0f));
 
-		if(Physics.Raycast(transform.position,-Vector3.up*8.0f*shipScale,out rhInfo, ignoreVehicleLayerMask)) {
+		if(Physics.Raycast(transform.position,-Vector3.up*8.0f*shipScale,out rhInfo, 8.0f*shipScale, ignoreVehicleLayerMask)) {
 			Vector3 pointAhead = transform.forward;
 			if(heightForward != 0.0f) {
 				pointAhead = transform.forward + Vector3.up * (heightForward - rhInfo.point.y)*0.1f;
