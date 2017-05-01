@@ -524,7 +524,7 @@
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-12</Value>
+								<Value>-5</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -537,6 +537,9 @@
 						</Reference>
 						<Reference Name="Effect1" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
 							<ObjectRef Name="High_Impact" ID="{2AFD6FB0-C906-4683-A377-FEEEF72967B0}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
+						<Reference Name="Effect2" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+							<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>

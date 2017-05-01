@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="75">
-	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3226031226" DateHigh="30589640"/>
+	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="4282982608" DateHigh="30589642"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1868744831" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1868824884" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1868964985" DateHigh="30583697"/>
@@ -9,7 +9,7 @@
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1869135091" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1869185127" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Effects\Factory Effects.wwu" DateLow="3529903829" DateHigh="30588273"/>
-	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Events\Default Work Unit.wwu" DateLow="3435846486" DateHigh="30589638"/>
+	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Events\Default Work Unit.wwu" DateLow="208209562" DateHigh="30589642"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1294292340" DateHigh="30588432"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1870015724" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1870065759" DateHigh="30583697"/>
@@ -18,12 +18,12 @@
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1870215857" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1870255887" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Queries\Factory Queries.wwu" DateLow="1870315923" DateHigh="30583697"/>
-	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="555463731" DateHigh="30589641"/>
+	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="215644486" DateHigh="30589642"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\SoundBanks\Music.wwu" DateLow="2445180632" DateHigh="30584290"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1870415993" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\States\Default Work Unit.wwu" DateLow="1870476033" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1870521085" DateHigh="30583697"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1870531093" DateHigh="30583697"/>
-	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.Micky.wsettings" DateLow="816316402" DateHigh="30588436"/>
+	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.Micky.wsettings" DateLow="215789579" DateHigh="30589642"/>
 	<ValidationCacheItem File="C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\wc-derby_WwiseProject.wproj" DateLow="1870986406" DateHigh="30583697"/>
 </ValidationCache>
