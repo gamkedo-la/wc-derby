@@ -36,12 +36,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_PlayerEngineElevation" ID="{27C94F37-B4B6-44CE-AD56-DE67307CCC20}">
+				<Event Name="Play_PlayerEngineTilt" ID="{27C94F37-B4B6-44CE-AD56-DE67307CCC20}">
 					<ChildrenList>
 						<Action Name="Play" ID="{1B9ADF95-1666-44AF-A79A-B110EA846A3E}" ShortID="50083221" Type="Play" Scope="One" Global="false">
 							<ElementList>
 								<Element ID="{1EB6C018-E72F-425F-AE6F-63DE5C2C3E12}" Global="false">
-									<ObjectRef Name="Player Engine Elevation" ID="{47716C3E-DAFB-46E8-8BCD-EBD289DDFF07}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+									<ObjectRef Name="Player Engine Tilt" ID="{47716C3E-DAFB-46E8-8BCD-EBD289DDFF07}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
 								</Element>
 							</ElementList>
 						</Action>

@@ -2,8 +2,8 @@ Event	ID	Name			Wwise Object Path	Notes
 	266055352	Play_PlayerImpactMain			\Default Work Unit\Play_PlayerImpactMain	
 	775327610	wcforward			\Default Work Unit\wcforward	
 	2485643559	Play_PlayerImpact			\Default Work Unit\Play_PlayerImpact	
-	3514445152	Play_PlayerEngineElevation			\Default Work Unit\Play_PlayerEngineElevation	
 	3791634299	Play_PlayerEngine			\Default Work Unit\Play_PlayerEngine	
+	3887443310	Play_PlayerEngineTilt			\Default Work Unit\Play_PlayerEngineTilt	
 	4260765717	Play_PlayerDestroy			\Default Work Unit\Play_PlayerDestroy	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
@@ -67,7 +67,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	684131474	3 2-Audio-2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\3 2-Audio-2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\3 2-Audio-2		287996
 	689873120	2 2-Audio-28	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio-28_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-28		399968
 	749560738	2 2-Audio	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio		121036
-	770316172	cruise deep	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\cruise deep_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Elevation\cruise deep		143092
+	770316172	cruise deep	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\cruise deep_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Tilt\cruise deep		143092
 	787832749	2 2-Audio-6	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio-6_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-6		217012
 	809950615	1 2-Audio-1	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\1 2-Audio-1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\1 2-Audio-1		225008
 	842915452	2 2-Audio-25	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio-25_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-25		256000

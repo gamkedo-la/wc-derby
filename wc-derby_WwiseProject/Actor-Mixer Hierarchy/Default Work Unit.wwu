@@ -347,7 +347,7 @@
 						</Sound>
 					</ChildrenList>
 				</BlendContainer>
-				<BlendContainer Name="Player Engine Elevation" ID="{47716C3E-DAFB-46E8-8BCD-EBD289DDFF07}" ShortID="173107659">
+				<BlendContainer Name="Player Engine Tilt" ID="{47716C3E-DAFB-46E8-8BCD-EBD289DDFF07}" ShortID="173107659">
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -383,8 +383,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>8.94015</XPos>
-																<YPos>20</YPos>
+																<XPos>10.06234</XPos>
+																<YPos>26.74506</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
