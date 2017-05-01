@@ -47,6 +47,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_PlayerImpactMain" ID="{3E10900D-CD24-4E5D-94E3-D6A07BEA3D5C}">
+					<ChildrenList>
+						<Action Name="Play" ID="{9D156300-F104-414C-984E-691BA73D963A}" ShortID="912111492" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{C3E311B6-188E-4397-8A24-3C77CB8B9458}" Global="false">
+									<ObjectRef Name="Player Impacts" ID="{3485FA5B-8B9B-4A0E-8B75-FA635C802BBF}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PlayerDestroy" ID="{A8AF9F95-8917-4434-9F88-5BD716B84139}">
+					<ChildrenList>
+						<Action Name="Play" ID="{89E00566-7157-4946-A3A9-1086D30C4F14}" ShortID="283899009" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{45C8AC5C-554A-4A23-A4E8-5A0004CA33ED}" Global="false">
+									<ObjectRef Name="PlayerDestroy" ID="{8A842F5F-CA06-4A47-8F0E-7210B0D43D21}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

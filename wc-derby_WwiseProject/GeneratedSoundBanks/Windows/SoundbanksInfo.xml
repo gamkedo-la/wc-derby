@@ -21,9 +21,11 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="4260765717" Name="Play_PlayerDestroy" ObjectPath="\Events\Default Work Unit\Play_PlayerDestroy"/>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
 				<Event Id="3514445152" Name="Play_PlayerEngineElevation" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineElevation"/>
 				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact"/>
+				<Event Id="266055352" Name="Play_PlayerImpactMain" ObjectPath="\Events\Default Work Unit\Play_PlayerImpactMain"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -66,6 +68,10 @@
 				<File Id="175449324" Language="SFX">
 					<ShortName>1 2-Audio-12.wav</ShortName>
 					<Path>SFX\1 2-Audio-12_9E69E797.wem</Path>
+				</File>
+				<File Id="200028342" Language="SFX">
+					<ShortName>ground hit 2.wav</ShortName>
+					<Path>SFX\ground hit 2_9E69E797.wem</Path>
 				</File>
 				<File Id="226307827" Language="SFX">
 					<ShortName>2 2-Audio-30.wav</ShortName>

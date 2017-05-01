@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
+	266055352	Play_PlayerImpactMain			\Default Work Unit\Play_PlayerImpactMain	
 	775327610	wcforward			\Default Work Unit\wcforward	
 	2485643559	Play_PlayerImpact			\Default Work Unit\Play_PlayerImpact	
 	3514445152	Play_PlayerEngineElevation			\Default Work Unit\Play_PlayerEngineElevation	
 	3791634299	Play_PlayerEngine			\Default Work Unit\Play_PlayerEngine	
+	4260765717	Play_PlayerDestroy			\Default Work Unit\Play_PlayerDestroy	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1833811084	Player_Velocity			\Default Work Unit\Player_Velocity	
@@ -32,6 +34,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	166373477	1 2-Audio-5	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\1 2-Audio-5_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\1 2-Audio-5		120036
 	170025284	2 2-Audio-8	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio-8_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-8		164328
 	175449324	1 2-Audio-12	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\1 2-Audio-12_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\1 2-Audio-12		415960
+	200028342	ground hit 2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\ground hit 2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDestroy\ground hit 2		1829216
 	226307827	2 2-Audio-30	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio-30_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-30		639904
 	245300810	1 2-Audio-11	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\1 2-Audio-11_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\1 2-Audio-11		293328
 	266717227	2 2-Audio-3	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 2-Audio-3_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 2-Audio-3		224012

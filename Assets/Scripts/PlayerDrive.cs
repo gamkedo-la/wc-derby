@@ -51,7 +51,7 @@ public class PlayerDrive : HoverCraftBase {
 			}
 		}
 		AkSoundEngine.SetRTPCValue("Player_Velocity", enginePower / ramBoostMult);
-		AkSoundEngine.SetRTPCValue ("Player_Elevation", 50f);
+		AkSoundEngine.SetRTPCValue ("Player_Elevation", 1.0f);
 	}
 
 }
