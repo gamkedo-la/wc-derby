@@ -7,13 +7,54 @@
 					<PropertyList>
 						<Property Name="FullBandGain" Type="Real32">
 							<RTPCList>
-								<RTPC Name="" ID="{33D71D22-E3A7-437D-8429-9C8732C90EBE}" ShortID="43721639">
-									<ReferenceList/>
+								<RTPC Name="" ID="{33D71D22-E3A7-437D-8429-9C8732C90EBE}" ShortID="43721639"/>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Gain_01" ID="{A236156D-F464-4318-98D9-CDD8E332C1AB}" PluginName="Wwise Gain" CompanyID="0" PluginID="139" PluginType="3">
+					<PropertyList>
+						<Property Name="FullBandGain" Type="Real32">
+							<RTPCList>
+								<RTPC Name="" ID="{4BE08F35-2A75-43F8-BD2E-6ACC45BE98AD}" ShortID="903643155">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Player_Tilt" ID="{5637C591-7E81-4968-95F4-1FAA6CB17C84}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{705E3CA0-1CB3-46B4-B615-569A6CFE5CF9}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-1</XPos>
+												<YPos>-7.66613</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>-2.49377777777793E-03</XPos>
+												<YPos>-4.34553</YPos>
+												<Flags>0</Flags>
+											</Point>
+											<Point>
+												<XPos>0.16459</XPos>
+												<YPos>3.33677</YPos>
+												<Flags>0</Flags>
+											</Point>
+											<Point>
+												<XPos>1</XPos>
+												<YPos>7.99703</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
 								</RTPC>
 							</RTPCList>
 						</Property>
 					</PropertyList>
 				</Effect>
+				<Effect Name="Gain_DistancetoPlayer" ID="{8AB0B26B-4FD6-47FB-8B6F-4A43D6010F3C}" PluginName="Wwise Gain" CompanyID="0" PluginID="139" PluginType="3"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>

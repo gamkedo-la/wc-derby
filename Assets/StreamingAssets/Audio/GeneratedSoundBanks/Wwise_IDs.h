@@ -23,7 +23,9 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID PLAYER_DISTANCE = 487587012U;
         static const AkUniqueID PLAYER_ELEVATION = 2733734302U;
+        static const AkUniqueID PLAYER_TILT = 2676369772U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
     } // namespace GAME_PARAMETERS
 

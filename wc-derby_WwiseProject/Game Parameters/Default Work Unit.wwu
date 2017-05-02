@@ -11,6 +11,19 @@
 					</PropertyList>
 				</GameParameter>
 				<GameParameter Name="Player_Elevation" ID="{7A0D7056-FD4E-4C1B-9AEB-494A123CB00E}"/>
+				<GameParameter Name="Player_Tilt" ID="{5637C591-7E81-4968-95F4-1FAA6CB17C84}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+						<Property Name="Min" Type="Real64" Value="-1"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Player_Distance" ID="{F814E01B-05D8-4C8C-A261-DB4B6594F66B}">
+					<PropertyList>
+						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

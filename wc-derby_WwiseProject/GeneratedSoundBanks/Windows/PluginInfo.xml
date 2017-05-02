@@ -7,5 +7,6 @@
 		<Plugin Name="Wwise Peak Limiter" ID="7208963" DLL="AkPeakLimiter"/>
 		<Plugin Name="Wwise Guitar Distortion" ID="8257539" DLL="AkGuitarDistortion"/>
 		<Plugin Name="Wwise Harmonizer" ID="9043971" DLL="AkHarmonizer"/>
+		<Plugin Name="Wwise Gain" ID="9109507" DLL="AkGain"/>
 	</Plugins>
 </PluginInfo>

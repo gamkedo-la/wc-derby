@@ -351,7 +351,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-9</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -359,130 +359,8 @@
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
 						</Reference>
-						<Reference Name="Effect0">
-							<Custom>
-								<Effect Name="Wwise Parametric EQ (Custom)" ID="{820E05DF-E4CC-4CFD-BC3C-FAF3FB4CB30E}" ShortID="763259177" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-									<PropertyList>
-										<Property Name="FilterTypeBand2" Type="int32" Value="0"/>
-										<Property Name="FrequencyBand1" Type="Real32" Value="60">
-											<RTPCList>
-												<RTPC Name="" ID="{5CFE0F68-640C-4A91-8027-27F72B610D53}" ShortID="278447451">
-													<ReferenceList>
-														<Reference Name="ControlInput">
-															<ObjectRef Name="Player_Elevation" ID="{7A0D7056-FD4E-4C1B-9AEB-494A123CB00E}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
-														</Reference>
-													</ReferenceList>
-													<Curve Name="" ID="{3088B218-0D59-4C1A-AB16-42D662D86A23}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="5"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>20</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>10.06234</XPos>
-																<YPos>26.74506</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>50.02494</XPos>
-																<YPos>182.89214</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>100</XPos>
-																<YPos>18574.70541</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</RTPC>
-											</RTPCList>
-										</Property>
-										<Property Name="FrequencyBand2" Type="Real32">
-											<RTPCList>
-												<RTPC Name="" ID="{2CA0C3E0-317E-40A1-9C7F-4B748DBBEEB5}" ShortID="412390539">
-													<ReferenceList>
-														<Reference Name="ControlInput">
-															<ObjectRef Name="Player_Elevation" ID="{7A0D7056-FD4E-4C1B-9AEB-494A123CB00E}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
-														</Reference>
-													</ReferenceList>
-													<Curve Name="" ID="{74D5505E-9D67-4217-855A-3B31E9A04E33}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="5"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>20.91165</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>8.86534</XPos>
-																<YPos>20</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>48.52869</XPos>
-																<YPos>357.64914</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>100</XPos>
-																<YPos>16150.13939</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</RTPC>
-											</RTPCList>
-										</Property>
-										<Property Name="GainBand1" Type="Real32" Value="3"/>
-										<Property Name="GainBand2" Type="Real32">
-											<RTPCList>
-												<RTPC Name="" ID="{F3E20721-F619-4C44-9B4F-08F1DFD9659F}" ShortID="207935162">
-													<ReferenceList>
-														<Reference Name="ControlInput">
-															<ObjectRef Name="Player_Elevation" ID="{7A0D7056-FD4E-4C1B-9AEB-494A123CB00E}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
-														</Reference>
-													</ReferenceList>
-													<Curve Name="" ID="{1347520C-000B-4F73-BCAA-CEB75A345D5D}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="3"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>-24</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>8.91521</XPos>
-																<YPos>-24</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>56.38405</XPos>
-																<YPos>-1.77814</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>100</XPos>
-																<YPos>13.90822</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</RTPC>
-											</RTPCList>
-										</Property>
-										<Property Name="OnOffBand3" Type="bool" Value="False"/>
-									</PropertyList>
-								</Effect>
-							</Custom>
+						<Reference Name="Effect0" PluginName="Wwise Gain" CompanyID="0" PluginID="139" PluginType="3">
+							<ObjectRef Name="New_Wwise_Gain_01" ID="{A236156D-F464-4318-98D9-CDD8E332C1AB}" WorkUnitID="{0CD1F1E1-E5E7-4771-B7F4-A9E451264FE1}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
@@ -526,7 +404,7 @@
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-4</Value>
+								<Value>-14</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>

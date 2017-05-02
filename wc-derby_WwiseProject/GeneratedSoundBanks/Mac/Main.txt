@@ -8,15 +8,15 @@ Event	ID	Name			Wwise Object Path	Notes
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1833811084	Player_Velocity			\Default Work Unit\Player_Velocity	
-	2733734302	Player_Elevation			\Default Work Unit\Player_Elevation	
+	2676369772	Player_Tilt			\Default Work Unit\Player_Tilt	
 
 Effect plug-ins	ID	Name	Type				Notes
 	232755663	Wwise Harmonizer (Custom)	Wwise Harmonizer			
-	763259177	Wwise Parametric EQ (Custom)	Wwise Parametric EQ			
 	835031432	Wwise Parametric EQ (Custom)	Wwise Parametric EQ			
 	942585773	Wwise Guitar Distortion (Custom)	Wwise Guitar Distortion			
 	1008402193	Low_Pass_20KHz	Wwise Parametric EQ			
 	1459522457	Brick_Wall_Minus_1dB_Peak_Fast_Release	Wwise Peak Limiter			
+	1924437047	New_Wwise_Gain_01	Wwise Gain			
 	3043085106	High_Impact	Wwise Compressor			
 
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
