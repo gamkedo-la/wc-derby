@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0CD1F1E1-E5E7-4771-B7F4-A9E451264FE1}" SchemaVersion="75">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{0CD1F1E1-E5E7-4771-B7F4-A9E451264FE1}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{0CD1F1E1-E5E7-4771-B7F4-A9E451264FE1}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="New_Wwise_Gain" ID="{56488957-AA33-4DA0-B1B5-1643DE47F966}" PluginName="Wwise Gain" CompanyID="0" PluginID="139" PluginType="3">
+					<PropertyList>
+						<Property Name="FullBandGain" Type="Real32">
+							<RTPCList>
+								<RTPC Name="" ID="{33D71D22-E3A7-437D-8429-9C8732C90EBE}" ShortID="43721639">
+									<ReferenceList/>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>

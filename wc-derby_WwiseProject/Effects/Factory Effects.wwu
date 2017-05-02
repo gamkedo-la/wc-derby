@@ -620,9 +620,9 @@
 								<Effect Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 									<PropertyList>
 										<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
-										<Property Name="FrequencyBand1" Type="Real32" Value="77"/>
+										<Property Name="FrequencyBand1" Type="Real32" Value="70"/>
 										<Property Name="FrequencyBand3" Type="Real32" Value="806"/>
-										<Property Name="GainBand1" Type="Real32" Value="3"/>
+										<Property Name="GainBand1" Type="Real32" Value="4"/>
 										<Property Name="OnOffBand2" Type="bool" Value="False"/>
 									</PropertyList>
 								</Effect>
@@ -749,7 +749,7 @@
 								<Property Name="HFRatio" Type="Real32" Value="9.5"/>
 								<Property Name="NumberOfDelays" Type="int32" Value="12"/>
 								<Property Name="ReverbTime" Type="Real32" Value="5"/>
-								<Property Name="WetLevel" Type="Real32" Value="-30"/>
+								<Property Name="WetLevel" Type="Real32" Value="-24"/>
 							</PropertyList>
 						</Effect>
 						<Effect Name="Underground_Parking1" ID="{8DA66AA3-6CA0-41A0-B7A2-BB6FCABFCDA8}" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">

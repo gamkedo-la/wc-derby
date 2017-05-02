@@ -515,16 +515,18 @@
 				</BlendContainer>
 				<RandomSequenceContainer Name="Player Impacts" ID="{3485FA5B-8B9B-4A0E-8B75-FA635C802BBF}" ShortID="698929994">
 					<PropertyList>
+						<Property Name="3DPositionSource" Type="int16" Value="0"/>
 						<Property Name="Lowpass" Type="int16">
 							<ValueList>
 								<Value>14</Value>
 							</ValueList>
 						</Property>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-5</Value>
+								<Value>-4</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -553,7 +555,6 @@
 										<ModifierInfo>
 											<Modifier Name="" ID="{825842F3-F9E5-4B01-9748-C7321BA27B61}">
 												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
 													<Property Name="Min" Type="Real64" Value="-13"/>
 												</PropertyList>
 											</Modifier>
@@ -586,7 +587,6 @@
 										<ModifierInfo>
 											<Modifier Name="" ID="{19FE644B-1AC2-4979-BAA0-7DEAF81EAD46}">
 												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
 													<Property Name="Min" Type="Real64" Value="-13"/>
 												</PropertyList>
 											</Modifier>
@@ -619,7 +619,6 @@
 										<ModifierInfo>
 											<Modifier Name="" ID="{F57360D3-B49A-4BF0-9187-A065A90E1D96}">
 												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
 													<Property Name="Min" Type="Real64" Value="-11"/>
 												</PropertyList>
 											</Modifier>
@@ -657,7 +656,6 @@
 										<ModifierInfo>
 											<Modifier Name="" ID="{99BF57FF-E89E-497C-A32D-80CA012B6094}">
 												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
 													<Property Name="Min" Type="Real64" Value="-11"/>
 												</PropertyList>
 											</Modifier>
@@ -690,7 +688,6 @@
 										<ModifierInfo>
 											<Modifier Name="" ID="{8B4AFAF3-E8FB-4E07-9F13-02E5C7CBBD4B}">
 												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
 													<Property Name="Min" Type="Real64" Value="-15"/>
 												</PropertyList>
 											</Modifier>
@@ -1655,6 +1652,9 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{BC47D75A-628F-4469-99FA-03FB0CB6D285}"/>
+					</PositioningInfo>
 				</RandomSequenceContainer>
 				<BlendContainer Name="PlayerDestroy" ID="{8A842F5F-CA06-4A47-8F0E-7210B0D43D21}" ShortID="189406406">
 					<PropertyList>
