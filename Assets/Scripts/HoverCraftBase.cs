@@ -40,6 +40,7 @@ public class HoverCraftBase : MonoBehaviour {
 
 	private static GameObject hookSparkPfxPrefab;
 	private static GameObject snowPuffPfxPrefab;
+	private GameObject damage_smoke; // a particle system we turn on when damaged
 
 	private Terrain theActiveTerrain;
 
@@ -92,6 +93,9 @@ public class HoverCraftBase : MonoBehaviour {
 		for(int i = 0; i < glowBulbs.Length; i++) {
 			glowBulbs[i].range *= shipScale;
 		}
+
+		damage_smoke = transform.Find("damage_smoke").gameObject;
+		damage_smoke.SetActive(false); // hide
 	}
 
 	float heightUnderMe(Vector3 atPos) {
@@ -322,6 +326,7 @@ public class HoverCraftBase : MonoBehaviour {
 					modelTransform.Find("body__Right_Panel_x").gameObject.SetActive(false);
 					modelTransform.Find("body__Left_Panel_x").gameObject.SetActive(false);
 					modelTransform.Find("body__front_vent").gameObject.SetActive(false);
+					damage_smoke.SetActive(true); // unhide the smoke particle system
 					break;
 				case 1:
 					modelTransform.Find("blade").gameObject.SetActive(false);
