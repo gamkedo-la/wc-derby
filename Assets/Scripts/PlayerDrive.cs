@@ -50,8 +50,11 @@ public class PlayerDrive : HoverCraftBase {
 				sprintRamming = false;
 			}
 		}
+		float tiltAmt = Mathf.DeltaAngle(0.0f, bodyToTilt.eulerAngles.x);
+		float maxTiltDetected = 30.0f;
+		tiltAmt = Mathf.Clamp(tiltAmt, -maxTiltDetected, maxTiltDetected) / -maxTiltDetected;
 		AkSoundEngine.SetRTPCValue("Player_Velocity", enginePower / ramBoostMult);
-		AkSoundEngine.SetRTPCValue ("Player_Tilt", enginePower / ramBoostMult);
+		AkSoundEngine.SetRTPCValue ("Player_Tilt", tiltAmt);
 	}
 
 }
