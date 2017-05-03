@@ -29,22 +29,17 @@
 										<PointList>
 											<Point>
 												<XPos>-1</XPos>
-												<YPos>-7.66613</YPos>
+												<YPos>3.23671</YPos>
 												<Flags>5</Flags>
 											</Point>
 											<Point>
-												<XPos>-2.49377777777793E-03</XPos>
-												<YPos>-4.34553</YPos>
-												<Flags>0</Flags>
-											</Point>
-											<Point>
-												<XPos>0.16459</XPos>
-												<YPos>3.33677</YPos>
+												<XPos>-0.00136</XPos>
+												<YPos>0.34429</YPos>
 												<Flags>0</Flags>
 											</Point>
 											<Point>
 												<XPos>1</XPos>
-												<YPos>7.99703</YPos>
+												<YPos>8.27486</YPos>
 												<Flags>37</Flags>
 											</Point>
 										</PointList>

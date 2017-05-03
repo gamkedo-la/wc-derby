@@ -55,31 +55,31 @@
 														<PointList>
 															<Point>
 																<XPos>-1</XPos>
-																<YPos>158.86565</YPos>
+																<YPos>242.33469</YPos>
 																<Flags>5</Flags>
 																<SegmentShape>Log1</SegmentShape>
 															</Point>
 															<Point>
-																<XPos>-0.03312</XPos>
-																<YPos>103.78316</YPos>
+																<XPos>-0.03086</XPos>
+																<YPos>148.35402</YPos>
 																<Flags>0</Flags>
 																<SegmentShape>Exp1</SegmentShape>
 															</Point>
 															<Point>
-																<XPos>-0.00997</XPos>
-																<YPos>53.31341</YPos>
+																<XPos>0.00067</XPos>
+																<YPos>82.6142</YPos>
 																<Flags>0</Flags>
 																<SegmentShape>Exp1</SegmentShape>
 															</Point>
 															<Point>
-																<XPos>0.01779</XPos>
-																<YPos>98.19913</YPos>
+																<XPos>0.03113</XPos>
+																<YPos>149.17553</YPos>
 																<Flags>0</Flags>
 																<SegmentShape>Log1</SegmentShape>
 															</Point>
 															<Point>
 																<XPos>1</XPos>
-																<YPos>164.76347</YPos>
+																<YPos>246.90579</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -113,6 +113,47 @@
 								</Effect>
 							</Custom>
 						</Reference>
+						<Reference Name="Effect3">
+							<Custom>
+								<Effect Name="Wwise Pitch Shifter (Custom)" ID="{D0A13408-C5A4-4C2A-96F1-0C4691E2ACA4}" ShortID="194385839" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3">
+									<PropertyList>
+										<Property Name="Pitch" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{1F0F1F4B-2F9D-4E68-A7FB-D889B60E0DFF}" ShortID="967657872">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Player_Tilt" ID="{5637C591-7E81-4968-95F4-1FAA6CB17C84}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{282C8FE4-2A92-4471-BBB1-6A0E7482D062}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-1</XPos>
+																<YPos>15.53399</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0.00249</XPos>
+																<YPos>7.24403</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>341.74758</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
 						</Reference>
@@ -121,6 +162,16 @@
 						<Sound Name="Engine White Noise" ID="{47FE2ABB-EEA1-4FBB-BB4C-4024469A91A2}" ShortID="331252039" Type="SoundFX">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>730</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-1</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -170,6 +221,11 @@
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>-380</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -225,7 +281,7 @@
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
-										<Value>-380</Value>
+										<Value>-180</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -281,7 +337,12 @@
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
-										<Value>-50</Value>
+										<Value>930</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-16</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -308,7 +369,7 @@
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Lowpass" Type="int16">
 									<ValueList>
-										<Value>63</Value>
+										<Value>68</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Pitch" Type="int32">
@@ -361,6 +422,57 @@
 						</Reference>
 						<Reference Name="Effect0" PluginName="Wwise Gain" CompanyID="0" PluginID="139" PluginType="3">
 							<ObjectRef Name="New_Wwise_Gain_01" ID="{A236156D-F464-4318-98D9-CDD8E332C1AB}" WorkUnitID="{0CD1F1E1-E5E7-4771-B7F4-A9E451264FE1}"/>
+						</Reference>
+						<Reference Name="Effect1">
+							<Custom>
+								<Effect Name="Wwise Pitch Shifter (Custom)" ID="{93903088-AAC9-4015-BC89-CC4514E5CA4D}" ShortID="422413262" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3">
+									<PropertyList>
+										<Property Name="Pitch" Type="Real32" Value="600">
+											<RTPCList>
+												<RTPC Name="" ID="{C9AF6DC2-BA18-409A-94FF-B12F9DF19EB3}" ShortID="770708506">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Player_Tilt" ID="{5637C591-7E81-4968-95F4-1FAA6CB17C84}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{13CBD791-E12F-4671-BB6D-0AD1B351A0E3}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-1</XPos>
+																<YPos>357.28156</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>-0.38653</XPos>
+																<YPos>257.24161</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>-0</XPos>
+																<YPos>2.09186</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>0.39401</XPos>
+																<YPos>270.1667</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>481.55339</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+								</Effect>
+							</Custom>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>

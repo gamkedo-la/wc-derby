@@ -585,8 +585,41 @@
 							<ChildrenList>
 								<Effect Name="High_Pass_60Hz" ID="{F9627628-0B10-4272-BC30-D4C20423CB38}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 									<PropertyList>
-										<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
-										<Property Name="FrequencyBand1" Type="Real32" Value="60"/>
+										<Property Name="FilterTypeBand1" Type="int32" Value="5"/>
+										<Property Name="FrequencyBand1" Type="Real32" Value="4947"/>
+										<Property Name="FrequencyBand3" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{F54B4BC1-44CA-4B77-B5D1-8BC05EF7E2D1}" ShortID="633267249">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Player_Tilt" ID="{5637C591-7E81-4968-95F4-1FAA6CB17C84}" WorkUnitID="{B93E13AF-5F73-4FB4-BCEF-98BD84A8D198}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{1E152921-47B4-4D8B-95B1-7F909D571BBA}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-1</XPos>
+																<YPos>11475.29266</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>-0.00249</XPos>
+																<YPos>20</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>12000</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
 										<Property Name="OnOffBand2" Type="bool" Value="False"/>
 										<Property Name="OnOffBand3" Type="bool" Value="False"/>
 									</PropertyList>
