@@ -12,11 +12,6 @@
 						</Property>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
-						<Property Name="Lowpass" Type="int16">
-							<ValueList>
-								<Value>40</Value>
-							</ValueList>
-						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-17</Value>
@@ -46,11 +41,6 @@
 						<Property Name="Lowpass" Type="int16">
 							<ValueList>
 								<Value>12</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>1</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -436,7 +426,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-12</Value>
+								<Value>-9</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -507,7 +497,7 @@
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
-										<Value>37</Value>
+										<Value>24</Value>
 									</ValueList>
 								</Property>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
