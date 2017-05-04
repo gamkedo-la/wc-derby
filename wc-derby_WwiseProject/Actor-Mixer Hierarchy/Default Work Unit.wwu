@@ -5,9 +5,21 @@
 			<ChildrenList>
 				<Sound Name="wrecking cloud music scratch track" ID="{B16EA8CF-C98C-475B-889B-C6F37557F817}" ShortID="580784306" Type="SoundFX">
 					<PropertyList>
+						<Property Name="InitialDelay" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>40</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-11</Value>
+								<Value>-17</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -31,6 +43,11 @@
 				</Sound>
 				<BlendContainer Name="Player Engine" ID="{5E6DE5C1-33FA-41E4-ABDD-68EE01DE86D1}" ShortID="900945088">
 					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>1</Value>
@@ -469,7 +486,7 @@
 															</Point>
 															<Point>
 																<XPos>1</XPos>
-																<YPos>985.62864</YPos>
+																<YPos>954.56068</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -488,10 +505,20 @@
 					<ChildrenList>
 						<Sound Name="cruise deep" ID="{1F4F258B-230A-4F0C-8A06-AECADDA51E79}" ShortID="802331545" Type="SoundFX">
 							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>37</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Lowpass" Type="int16">
 									<ValueList>
 										<Value>44</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>4</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
