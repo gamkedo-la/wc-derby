@@ -163,14 +163,14 @@ public class HoverCraftBase : MonoBehaviour {
 		momentum += transform.right * bodyToTilt.right.y * Time.deltaTime * -10.0f;
 
 		float impendingCrashDetectionNormal = 1.0f;
-		if(Physics.Raycast(transform.position,
+		/*if(Physics.Raycast(transform.position,											//Removed while working on AI
 			transform.forward, out rhInfo, 10.0f*shipScale, ignoreVehicleLayerMask)) {
 			//Debug.DrawLine(rhInfo.point, transform.position, Color.red);
 			//Debug.DrawLine(rhInfo.point, rhInfo.point+rhInfo.normal*3.0f, Color.green);
 			impendingCrashDetectionNormal = rhInfo.normal.y;
-		}
+		}*/
 
-		if(impendingCrashDetectionNormal < 0.1f ||
+		if (impendingCrashDetectionNormal < 0.1f ||
 			OutOfDome(transform.position + transform.forward * gasControl * 10.0f)) {
 			momentum *= 0.5f;
 			enginePower = -1.0f;
