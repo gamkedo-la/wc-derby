@@ -30,6 +30,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<BlendContainer Name="Player Engine" ID="{5E6DE5C1-33FA-41E4-ABDD-68EE01DE86D1}" ShortID="900945088">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
@@ -142,7 +149,7 @@
 															</Point>
 															<Point>
 																<XPos>1</XPos>
-																<YPos>341.74758</YPos>
+																<YPos>264.07768</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -442,27 +449,27 @@
 														<PointList>
 															<Point>
 																<XPos>-1</XPos>
-																<YPos>424.99316</YPos>
+																<YPos>961.86506</YPos>
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>-0.23738</XPos>
-																<YPos>482.94694</YPos>
+																<XPos>-0.18766</XPos>
+																<YPos>663.5112</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>0</XPos>
-																<YPos>2.09186</YPos>
+																<XPos>-0</XPos>
+																<YPos>220.27368</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>0.20192</XPos>
-																<YPos>458.25447</YPos>
+																<XPos>0.1661</XPos>
+																<YPos>672.82169</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
 																<XPos>1</XPos>
-																<YPos>827.6349</YPos>
+																<YPos>985.62864</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -482,6 +489,11 @@
 						<Sound Name="cruise deep" ID="{1F4F258B-230A-4F0C-8A06-AECADDA51E79}" ShortID="802331545" Type="SoundFX">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>44</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
