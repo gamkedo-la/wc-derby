@@ -180,7 +180,7 @@ public class HoverCraftBase : MonoBehaviour {
 				enginePower = ramBoostMult;
 			} else {
 				enginePower = gasControl;
-			}
+			}																				//None of this will ever be called due to commenting out the part above
 		}
 
 		momentum += transform.forward * enginePower * 9.0f * Time.deltaTime;
@@ -218,9 +218,9 @@ public class HoverCraftBase : MonoBehaviour {
 		transform.position = newPos;
 	}
 
-	public static Vector3 ForceIntoDome(Vector3 whereAt) {
-		Vector3 centerDelta = (whereAt - domeCenter);
-		if(centerDelta.magnitude > domeRadius) {
+	public static Vector3 ForceIntoDome(Vector3 whereAt) {						
+		Vector3 centerDelta = (whereAt - domeCenter);							
+		if(centerDelta.magnitude > domeRadius) {								
 			return domeCenter + domeRadius * centerDelta.normalized;
 		} else {
 			return whereAt;
