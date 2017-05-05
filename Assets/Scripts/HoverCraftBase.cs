@@ -80,7 +80,7 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 
 		momentum = Vector3.zero;
-		ignoreVehicleLayerMask = ~LayerMask.GetMask("Player","Enemy");
+		ignoreVehicleLayerMask = ~LayerMask.GetMask("Player","Enemy","Obstacle");
 
 		if(useCarCollisionTuning) {
 			shipScale = 20.0f;
