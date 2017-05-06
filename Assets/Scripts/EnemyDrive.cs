@@ -6,9 +6,14 @@ using UnityEngine;
 
 public class EnemyDrive : HoverCraftBase {
 
-	private float whiskerRange = 75;
+	private bool showLinesInSceneView=true;
+	private float maxWhiskerRange = 100;
 	private float aggressionRange = 500;
 	private int obstacleLayer = 10;
+	private float distanceToClosestObstacle;
+	Vector3 closestObstacle;
+	bool obstacleDanger = false;
+	int emitterCycle = 0;
 
 	private Transform forwardEmitter;
 	private Transform foreRightEmitter;
@@ -29,25 +34,30 @@ public class EnemyDrive : HoverCraftBase {
 		rearRightEmitter = transform.FindChild("Raycast Emitters").FindChild("Rear-Right Emitter");
 		rearLeftEmitter = transform.FindChild("Raycast Emitters").FindChild("Rear-Left Emitter");
 		rearEmitter = transform.FindChild("Raycast Emitters").FindChild("Rear Emitter");
+		distanceToClosestObstacle = maxWhiskerRange;
 		StartCoroutine(AIbehavior());
 	}
 
 
 	protected override void Tick()
 	{
-
+		if (obstacleDanger) { ShowDebugLines(transform.position, closestObstacle, Color.red); }
 	}
+
+	
 
 	IEnumerator AIbehavior() {
 		while (true) {							
 			ResetDefaultDrivingControls();
-			AvoidObstacles();									//send out raycasts and adjust basic driving controls to avoid nearby obstacles
+			CheckForNearbyObstacles();
+			AvoidNearbyObstacles();
+			AdjustSpeedToAvoidObstacles();
 			//StrikeHoverCars();								//see if there's a hovercar in front, and activate springRam if there is (currently not working)
-			FollowNextWaypoint();                              //steer toward a particular destination.  (Raycast to it to make sure the way is clear?) (not implemented)
-			DecideNextWaypoint();                              // (not implemented)  (not quite sure what to do for this yet)
+			//FollowNextWaypoint();                              //steer toward a particular destination.  (Raycast to it to make sure the way is clear?) (not implemented)
+			//DecideNextWaypoint();                              // (not implemented)  (not quite sure what to do for this yet)
 
-			turnControl = Mathf.Clamp(turnControl, -1.0f, 1.0f);
-			yield return new WaitForSeconds(Random.Range(0.2f, 0.4f));
+			//turnControl = Mathf.Clamp(turnControl, -1.0f, 1.0f);
+			yield return new WaitForSeconds(Random.Range(0.20f,0.50f));
 		}
 	}
 
@@ -57,165 +67,124 @@ public class EnemyDrive : HoverCraftBase {
 		gasControl = 1.0f;
 		turnControl = 0.0f;
 		sprintRamming = false;
+		if (!obstacleDanger) { distanceToClosestObstacle = Mathf.Infinity; closestObstacle = Vector3.zero; }
 	}
 
 	
-	private void AvoidObstacles()
+	private void CheckForNearbyObstacles()
 	{
-		/*int randomEmitter = Random.Range(1, 9);
-		if (randomEmitter == 1) { ActivateEmitter(forwardEmitter, whiskerRange, obstacleLayer); }
-		if (randomEmitter == 2) { ActivateEmitter(foreRightEmitter, whiskerRange, obstacleLayer); }
-		if (randomEmitter == 3) { ActivateEmitter(foreLeftEmitter, whiskerRange, obstacleLayer); }
-		if (randomEmitter == 4) { ActivateEmitter(sideRightEmitter, whiskerRange, obstacleLayer); }
-		if (randomEmitter == 5) { ActivateEmitter(sideLeftEmitter, whiskerRange, obstacleLayer);}
-		if (randomEmitter == 6) { ActivateEmitter(rearLeftEmitter, whiskerRange, obstacleLayer);}
-		if (randomEmitter == 7) { ActivateEmitter(rearRightEmitter, whiskerRange, obstacleLayer);}
-		if (randomEmitter == 8) { ActivateEmitter(rearEmitter, whiskerRange, obstacleLayer);}
+		
+		//emitterCycle = Random.Range(1,9);
+		emitterCycle = emitterCycle + 1;
+		if (emitterCycle > 8) { emitterCycle = 1; }
+		if (emitterCycle == 1) { ActivateEmitter(forwardEmitter, maxWhiskerRange, obstacleLayer); }
+		if (emitterCycle == 2) { ActivateEmitter(foreRightEmitter, maxWhiskerRange, obstacleLayer); }
+		if (emitterCycle == 3) { ActivateEmitter(foreLeftEmitter, maxWhiskerRange, obstacleLayer); }
+		if (emitterCycle == 4) { ActivateEmitter(sideRightEmitter, maxWhiskerRange, obstacleLayer); }
+		if (emitterCycle == 5) { ActivateEmitter(sideLeftEmitter, maxWhiskerRange, obstacleLayer);}
+		if (emitterCycle == 6) { ActivateEmitter(rearLeftEmitter, maxWhiskerRange, obstacleLayer);}
+		if (emitterCycle == 7) { ActivateEmitter(rearRightEmitter, maxWhiskerRange, obstacleLayer);}
+		if (emitterCycle == 8) { ActivateEmitter(rearEmitter, maxWhiskerRange, obstacleLayer);}
+		
+		
+		/*
+		ActivateEmitter(forwardEmitter, whiskerRange, obstacleLayer); 
+		ActivateEmitter(foreRightEmitter, whiskerRange, obstacleLayer); 
+		ActivateEmitter(foreLeftEmitter, whiskerRange, obstacleLayer); 
+		ActivateEmitter(sideRightEmitter, whiskerRange, obstacleLayer); 
+		ActivateEmitter(sideLeftEmitter, whiskerRange, obstacleLayer);
+		ActivateEmitter(rearLeftEmitter, whiskerRange, obstacleLayer); 
+		ActivateEmitter(rearRightEmitter, whiskerRange, obstacleLayer); 
+		ActivateEmitter(rearEmitter, whiskerRange, obstacleLayer);
 		*/
 
-		ActivateEmitter(forwardEmitter, whiskerRange, obstacleLayer, 0.1f); 
-		ActivateEmitter(foreRightEmitter, whiskerRange, obstacleLayer, 0.1f); 
-		ActivateEmitter(foreLeftEmitter, whiskerRange, obstacleLayer, 0.1f); 
-		ActivateEmitter(sideRightEmitter, whiskerRange, obstacleLayer, 0.1f); 
-		ActivateEmitter(sideLeftEmitter, whiskerRange, obstacleLayer, 0.1f); 
-		ActivateEmitter(rearLeftEmitter, whiskerRange, obstacleLayer, null); 
-		ActivateEmitter(rearRightEmitter, whiskerRange, obstacleLayer, null); 
-		ActivateEmitter(rearEmitter, whiskerRange, obstacleLayer, null); 
 	}
 
-	void ActivateEmitter(Transform emitterLocation, float whiskerRange, int layerToSearchFor, float? newSpeedIfHitDetected)
+	private void ActivateEmitter(Transform emitterLocation, float whiskerRange, int layerToSearchFor)
+	{
+
+		bool emitForwardBeams = false;
+		bool emitLeftBeams = false;
+		bool emitRightBeams = false;
+		bool emitRearBeams = false;
+
+		if (emitterLocation == forwardEmitter || emitterLocation == foreRightEmitter || emitterLocation == foreLeftEmitter)		{ emitForwardBeams = true; }
+		if (emitterLocation == foreLeftEmitter || emitterLocation == sideLeftEmitter || emitterLocation == rearLeftEmitter)		{ emitLeftBeams = true; }
+		if (emitterLocation == foreRightEmitter || emitterLocation == sideRightEmitter || emitterLocation == rearRightEmitter)	{ emitRightBeams = true; }
+		if (emitterLocation == rearEmitter || emitterLocation == rearLeftEmitter || emitterLocation == rearRightEmitter)		{ emitRearBeams = true; }
+
+		if (emitForwardBeams == true)							{ CheckEmissions (emitterLocation, whiskerRange, layerToSearchFor, transform.forward); }
+		if (emitRearBeams == true)								{ CheckEmissions (emitterLocation, whiskerRange/4, layerToSearchFor, -transform.forward); }
+		if (emitRightBeams == true)								{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, transform.right); }
+		if (emitLeftBeams == true)								{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, -transform.right); }
+		if (emitRightBeams == true && emitRearBeams == true)	{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (transform.right - transform.forward).normalized); } 
+		if (emitRightBeams == true && emitForwardBeams == true)	{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (transform.right + transform.forward).normalized); }
+		if (emitLeftBeams == true && emitForwardBeams == true)	{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (-transform.right + transform.forward).normalized); }
+		if (emitLeftBeams == true && emitRearBeams == true)		{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (-transform.right - transform.forward).normalized); }
+	
+	}
+		
+	private void CheckEmissions( Transform emitterLocation, float beamRange, int layerToSearchFor, Vector3 emissionDirection)
 	{
 		RaycastHit hit;
-		bool forwardEmitterLoc = false;
-		bool leftEmitterLoc = false;
-		bool rightEmitterLoc = false;
-		bool rearEmitterLoc = false;
-
-		if (emitterLocation == forwardEmitter || emitterLocation == foreRightEmitter || emitterLocation == foreLeftEmitter) { forwardEmitterLoc = true; }
-		if (emitterLocation == foreLeftEmitter || emitterLocation == sideLeftEmitter || emitterLocation == rearLeftEmitter) { leftEmitterLoc = true; }
-		if (emitterLocation == foreRightEmitter || emitterLocation == sideRightEmitter || emitterLocation == rearRightEmitter) { rightEmitterLoc = true; }
-		if (emitterLocation == rearEmitter || emitterLocation == rearLeftEmitter || emitterLocation == rearRightEmitter) { rearEmitterLoc = true; }
-
-		
-		if (forwardEmitterLoc == true) 
+		if (Physics.Raycast(emitterLocation.position, emissionDirection, out hit, beamRange, 1 << layerToSearchFor))
 		{
-			if (Physics.Raycast(emitterLocation.position, transform.forward, out hit, whiskerRange, 1 << layerToSearchFor))
-			{ 
-				ShowDebugLines(emitterLocation.position, hit.point);
-				if (rightEmitterLoc) 
-				{ 
-					turnControl = turnControl - 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				} 
-			 
-				if (leftEmitterLoc) 
-				{ 
-					turnControl = turnControl + 0.8f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				} 
-				if (!leftEmitterLoc && !rightEmitterLoc)
-				{
-					Vector3 vectorToOrigin = (Vector3.zero - transform.position);
-					if (vectorToOrigin.x >= 0) 
-					{ 
-						turnControl = turnControl + 1f;
-						if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-					}
-					if (vectorToOrigin.x < 0) 
-					{ 
-						turnControl = turnControl - 1f;
-						if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-					}
-				}
-			} 				
-		}
-
-		if (rearEmitterLoc == true) 
-		{
-			if (Physics.Raycast(emitterLocation.position, -transform.forward, out hit, whiskerRange, 1 << layerToSearchFor))
+			ShowDebugLines(emitterLocation.position, hit.point, Color.white);
+			if (distanceToClosestObstacle > hit.distance)
 			{
-				ShowDebugLines(emitterLocation.position, hit.point);
-				if (rightEmitterLoc)
-				{
-					turnControl = turnControl - 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				}
-				if (leftEmitterLoc)
-				{
-					turnControl = turnControl + 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				}
+				obstacleDanger = true;
+				distanceToClosestObstacle = hit.distance;
+				closestObstacle = hit.point;
+				ShowDebugLines(emitterLocation.position, hit.point, Color.yellow);
 			}
-		}
-
-		if (leftEmitterLoc == true) 
-		{
-			if (Physics.Raycast(emitterLocation.position, -transform.right, out hit, whiskerRange, 1 << layerToSearchFor)) 
-			{
-				ShowDebugLines(emitterLocation.position, hit.point);
-				turnControl = turnControl + 1f;
-				if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-			}
-		}
-
-		if (rightEmitterLoc == true) 
-		{
-			if (Physics.Raycast(emitterLocation.position, transform.right, out hit, whiskerRange, 1 << layerToSearchFor)) 
-			{
-				ShowDebugLines(emitterLocation.position, hit.point);
-				turnControl = turnControl - 1f;
-				if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-			}
-		}
-
-		if (rightEmitterLoc == true && rearEmitterLoc == true) 
-		{
-				Vector3 diagnolRearRightDir = (transform.right - transform.forward).normalized;
-				if (Physics.Raycast(emitterLocation.position, diagnolRearRightDir, out hit, whiskerRange, 1 << layerToSearchFor))
-				{
-					ShowDebugLines(emitterLocation.position, hit.point);
-					turnControl = turnControl - 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				}
-		}
-
-		if (rightEmitterLoc == true && forwardEmitterLoc == true) 
-		{
-				Vector3 diagnolForwardRightDir = (transform.right + transform.forward).normalized;
-				if (Physics.Raycast(emitterLocation.position, diagnolForwardRightDir, out hit, whiskerRange, 1 << layerToSearchFor))
-				{
-					ShowDebugLines(emitterLocation.position, hit.point);
-					turnControl = turnControl - 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				}
-		}
-
-		if (leftEmitterLoc == true && forwardEmitterLoc == true) 
-		{
-				Vector3 diagnolForwardLeftDir = (-transform.right + transform.forward).normalized;
-				if (Physics.Raycast(emitterLocation.position, diagnolForwardLeftDir, out hit, whiskerRange, 1 << layerToSearchFor))
-				{
-					ShowDebugLines(emitterLocation.position, hit.point);
-					turnControl = turnControl + 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				}
-		}
-
-		if (leftEmitterLoc == true && rearEmitterLoc == true) 
-		{
-				Vector3 diagnolRearLeftDir = (-transform.right - transform.forward).normalized;
-				if (Physics.Raycast(emitterLocation.position, diagnolRearLeftDir, out hit, whiskerRange, 1 << layerToSearchFor))
-				{
-					ShowDebugLines(emitterLocation.position, hit.point); 
-					turnControl = turnControl + 1f;
-					if (newSpeedIfHitDetected != null) { gasControl = (float)newSpeedIfHitDetected; }
-				}
 		}
 	}
-	
-	private void ShowDebugLines(Vector3 emitterLocation, Vector3 hitPoint)
+
+
+
+	private void AdjustSpeedToAvoidObstacles()
 	{
-		Debug.DrawLine(emitterLocation, hitPoint);	
+		RaycastHit hitFore;
+		if (Physics.Raycast(forwardEmitter.position, transform.forward, out hitFore, maxWhiskerRange, 1 << obstacleLayer)) 
+		{ 
+			ShowDebugLines(forwardEmitter.position, hitFore.point, Color.blue);
+			gasControl = Mathf.Clamp((hitFore.distance / maxWhiskerRange), 0.1f, 1.0f);
+		}
+		else { gasControl = 1.0f; }
+
+	}
+
+
+
+	private void ShowDebugLines(Vector3 emitterLoc, Vector3 hitPoint, Color color)
+	{
+		if (showLinesInSceneView)
+		{
+		Debug.DrawLine(emitterLoc, hitPoint, color);                //All debug lines are centralized here so we can turn this on and off by adjusting the bool
+		}
+	}
+
+
+	private void AvoidNearbyObstacles()
+	{
+		if (obstacleDanger) 
+		{
+			distanceToClosestObstacle = Vector3.Distance(closestObstacle, transform.position);
+			if (distanceToClosestObstacle > maxWhiskerRange) 
+			{ 
+				obstacleDanger = false; 
+			}
+		}
+		if (obstacleDanger == false) { return; }
+
+		Vector3 vectorAwayFromObstacle = transform.position - closestObstacle;
+		Vector3 avoidancePoint = transform.position + vectorAwayFromObstacle;
+		ShowDebugLines(transform.position, avoidancePoint, Color.green);		
+		//float angleTowardAvoidanceVector = Vector3.Angle(vectorAwayFromObstacle, transform.forward);
+		if (transform.InverseTransformPoint(avoidancePoint).x > 0.1f) { turnControl = 1f; }
+		else if (transform.InverseTransformPoint(avoidancePoint).x < -0.1f) { turnControl = -1f; }
+		
+		//turnControl = Mathf.Clamp(angleTowardAvoidanceVector / 45f, -1f, 1f);
 	}
 
 
