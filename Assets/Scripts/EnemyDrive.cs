@@ -38,7 +38,7 @@ public class EnemyDrive : HoverCraftBase {
 		}
 
 		if(levelWayPointList != null) {
-			float nearestWPDist = 9999999.0f;
+			/*float nearestWPDist = 9999999.0f;
 			for(int listI=0;listI<levelWayPointList.Count;listI++) {
 				Transform wpEach = levelWayPointList[listI];
 				float distBetween = Vector3.Distance(wpEach.position, transform.position);
@@ -46,11 +46,20 @@ public class EnemyDrive : HoverCraftBase {
 					myWaypoint = listI;
 					nearestWPDist = distBetween;
 				}
-				listI++;
+			}*/
+			myWaypoint = Random.Range(0, levelWayPointList.Count);
+			int nextWP = myWaypoint+1;
+			if(nextWP >= levelWayPointList.Count) {
+				nextWP = 0;
 			}
-		}
+			// start ship at random spot between nearest waypoint and next (reduce collisions)
+			transform.position =
+				Vector3.Lerp(levelWayPointList[myWaypoint].position, levelWayPointList[nextWP].position, Random.Range(0.0f, 1.0f));
+			// and point toward the next waypoint
+			transform.LookAt(levelWayPointList[nextWP].position);
+			myWaypoint = nextWP;
 
-		// Debug.Log("my nearest waypoint is " + myWaypoint);
+		}
 
 		forwardEmitter = transform.FindChild("Raycast Emitters").FindChild("Forward Emitter");
 		foreRightEmitter = transform.FindChild("Raycast Emitters").FindChild("Fore-Right Emitter");
@@ -68,6 +77,8 @@ public class EnemyDrive : HoverCraftBase {
 	protected override void Tick()
 	{
 		if (obstacleDanger) { ShowDebugLines(transform.position, closestObstacle, Color.red); }
+
+		FollowNextWaypoint();
 	}
 
 	
@@ -75,17 +86,7 @@ public class EnemyDrive : HoverCraftBase {
 	IEnumerator AIbehavior() {
 		while (true) {
 
-			if(levelWayPointList != null) {
-				float distTo = Vector3.Distance(transform.position, levelWayPointList[myWaypoint].position);
-				if(distTo < 200.0f) {
-					myWaypoint++;
-					if(myWaypoint >= levelWayPointList.Count) {
-						myWaypoint = 0;
-					}
-				}
-				transform.LookAt(levelWayPointList[myWaypoint].position);
-				gasControl = 1.0f;
-			} else {
+			if(levelWayPointList == null) {
 				ResetDefaultDrivingControls();
 				CheckForNearbyObstacles();
 				AvoidNearbyObstacles();
@@ -244,9 +245,59 @@ public class EnemyDrive : HoverCraftBase {
 		}
 	}
 
+	// helper function borrowed from https://forum.unity3d.com/threads/turn-left-or-right-to-face-a-point.22235/
+	static float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
+		dirA = dirA - Vector3.Project(dirA, axis);
+		dirB = dirB - Vector3.Project(dirB, axis);
+		float angle = Vector3.Angle(dirA, dirB);
+		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
+	}
+
 	void FollowNextWaypoint()
 	{ 
-		//nothing implemented for this behavior yet
+		if(myWaypoint == -1) { // no waypoints were found in level
+			return;
+		}
+
+		float distTo = Vector3.Distance(transform.position, levelWayPointList[myWaypoint].position);
+		float closeEnoughToWaypoint = 100.0f;
+		if(distTo < closeEnoughToWaypoint) {
+			myWaypoint++;
+			if(myWaypoint >= levelWayPointList.Count) {
+				myWaypoint = 0;
+			}
+		}
+
+		float turnAmt = AngleAroundAxis(transform.forward,
+			levelWayPointList[myWaypoint].position - transform.position,Vector3.up);
+		float angDeltaForGentleTurn = 10.0f;
+		float angDeltaForSharpTurn = 30.0f;
+		float gentleTurn = 0.5f;
+		float sharpTurn = 1.0f;
+		float gentleTurnEnginePower = 0.9f;
+		float sharpTurnEnginePower = 0.6f;
+
+		if(turnAmt < -angDeltaForSharpTurn) {
+			turnControl = -sharpTurn;
+			gasControl = sharpTurnEnginePower;
+		} else if(turnAmt > angDeltaForSharpTurn) {
+			turnControl = sharpTurn;
+			gasControl = sharpTurnEnginePower;
+		} else if(turnAmt < -angDeltaForGentleTurn) {
+			turnControl = -gentleTurn;
+			gasControl = gentleTurnEnginePower;
+		} else if(turnAmt > angDeltaForGentleTurn) {
+			turnControl = gentleTurn;
+			gasControl = gentleTurnEnginePower;
+		} else {
+			turnControl = 0.0f;
+			gasControl = 1.0f;
+		}
+		if(showLinesInSceneView) {
+			Debug.DrawLine(transform.position, levelWayPointList[myWaypoint].position, Color.red);
+		}
+		// transform.LookAt(levelWayPointList[myWaypoint].position);
+
 	}
 
 	void DecideNextWaypoint()
