@@ -24,6 +24,13 @@ public class EnemyDrive : HoverCraftBase {
 	private Transform rearRightEmitter;
 	private Transform rearEmitter;
 
+	public enum AIMode
+	{
+		FollowTrack,
+		ShortTermOverride
+	};
+	private AIMode AInow = AIMode.ShortTermOverride;
+
 	private static List<Transform> levelWayPointList;
 	private int myWaypoint = -1;
 
@@ -38,15 +45,6 @@ public class EnemyDrive : HoverCraftBase {
 		}
 
 		if(levelWayPointList != null) {
-			/*float nearestWPDist = 9999999.0f;
-			for(int listI=0;listI<levelWayPointList.Count;listI++) {
-				Transform wpEach = levelWayPointList[listI];
-				float distBetween = Vector3.Distance(wpEach.position, transform.position);
-				if(nearestWPDist > distBetween) {
-					myWaypoint = listI;
-					nearestWPDist = distBetween;
-				}
-			}*/
 			myWaypoint = Random.Range(0, levelWayPointList.Count);
 			int nextWP = myWaypoint+1;
 			if(nextWP >= levelWayPointList.Count) {
@@ -86,15 +84,23 @@ public class EnemyDrive : HoverCraftBase {
 	IEnumerator AIbehavior() {
 		while (true) {
 
-			if(levelWayPointList == null) {
-				ResetDefaultDrivingControls();
-				CheckForNearbyObstacles();
-				AvoidNearbyObstacles();
-				AdjustSpeedToAvoidObstacles();
-				//StrikeHoverCars();								//see if there's a hovercar in front, and activate springRam if there is (currently not working)
-				//FollowNextWaypoint();                              //steer toward a particular destination.  (Raycast to it to make sure the way is clear?) (not implemented)
-				//DecideNextWaypoint();                              // (not implemented)  (not quite sure what to do for this yet)
+			// is there any track to try following? if so, default to try that
+			// (avoidance functions below can override this until next AI rethinking)
+			if(myWaypoint != -1) {
+				AInow = AIMode.FollowTrack;
 			}
+
+			ResetDefaultDrivingControls();
+			CheckForNearbyObstacles();
+			AvoidNearbyObstacles();
+			AdjustSpeedToAvoidObstacles();
+
+			if(AInow == AIMode.ShortTermOverride) {
+				Debug.Log("AI " + name + " is temporarily deviating from following track");
+			}
+
+			//StrikeHoverCars();								//see if there's a hovercar in front, and activate sprintRam if there is (currently not working)
+			// FollowNextWaypoint(); // function called in Tick (higher freq than AIbehavior updates)
 
 			//turnControl = Mathf.Clamp(turnControl, -1.0f, 1.0f);
 			yield return new WaitForSeconds(Random.Range(0.20f,0.50f));
@@ -189,6 +195,7 @@ public class EnemyDrive : HoverCraftBase {
 		{ 
 			ShowDebugLines(forwardEmitter.position, hitFore.point, Color.blue);
 			gasControl = Mathf.Clamp((hitFore.distance / maxWhiskerRange), 0.1f, 1.0f);
+			AInow = AIMode.ShortTermOverride;
 		}
 		else { gasControl = 1.0f; }
 
@@ -221,8 +228,13 @@ public class EnemyDrive : HoverCraftBase {
 		Vector3 avoidancePoint = transform.position + vectorAwayFromObstacle;
 		ShowDebugLines(transform.position, avoidancePoint, Color.green);		
 		//float angleTowardAvoidanceVector = Vector3.Angle(vectorAwayFromObstacle, transform.forward);
-		if (transform.InverseTransformPoint(avoidancePoint).x > 0.1f) { turnControl = 1f; }
-		else if (transform.InverseTransformPoint(avoidancePoint).x < -0.1f) { turnControl = -1f; }
+		if (transform.InverseTransformPoint(avoidancePoint).x > 0.1f) {
+			turnControl = 1f;
+			AInow = AIMode.ShortTermOverride;
+		} else if (transform.InverseTransformPoint(avoidancePoint).x < -0.1f) {
+			turnControl = -1f;
+			AInow = AIMode.ShortTermOverride;
+		}
 		
 		//turnControl = Mathf.Clamp(angleTowardAvoidanceVector / 45f, -1f, 1f);
 	}
@@ -255,8 +267,9 @@ public class EnemyDrive : HoverCraftBase {
 
 	void FollowNextWaypoint()
 	{ 
-		if(myWaypoint == -1) { // no waypoints were found in level
-			return;
+		if(myWaypoint == -1 || // no waypoints were found in level
+			AInow != AIMode.FollowTrack) { // some other behavior is overriding control
+			return; 
 		}
 
 		float distTo = Vector3.Distance(transform.position, levelWayPointList[myWaypoint].position);
@@ -293,18 +306,8 @@ public class EnemyDrive : HoverCraftBase {
 			turnControl = 0.0f;
 			gasControl = 1.0f;
 		}
-		if(showLinesInSceneView) {
-			Debug.DrawLine(transform.position, levelWayPointList[myWaypoint].position, Color.red);
-		}
-		// transform.LookAt(levelWayPointList[myWaypoint].position);
+		ShowDebugLines(transform.position, levelWayPointList[myWaypoint].position, Color.red);
 
-	}
-
-	void DecideNextWaypoint()
-	{ 
-		//nothing implemented for htis behavior yet
-		//I imagine will need an enum here to describe the AI's current objectives, like "hunting", "evading", or "baiting".
-		//We can assign these objectives to different colored enemies or simply have the AI cycle between them.
 	}
 
 }
