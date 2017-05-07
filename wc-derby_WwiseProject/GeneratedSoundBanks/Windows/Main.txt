@@ -26,7 +26,6 @@ Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	200028342	ground hit 2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\ground hit 2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDestroy\ground hit 2		1829216
 	770316172	cruise deep	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\cruise deep_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Tilt\cruise deep		143092
-	876509183	wrecking cloud music scratch track	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\wrecking cloud music scratch track_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\wrecking cloud music scratch track		17640064
 	941204851	Cruise2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\Cruise2_A8899385.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Cruise2		352864
 	1041269596	air	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\air_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\air		518540
 

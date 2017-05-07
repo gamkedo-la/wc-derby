@@ -26,7 +26,7 @@
 				<Event Id="3887443310" Name="Play_PlayerEngineTilt" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTilt"/>
 				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact" MaxAttenuation="0.000000"/>
 				<Event Id="266055352" Name="Play_PlayerImpactMain" ObjectPath="\Events\Default Work Unit\Play_PlayerImpactMain" MaxAttenuation="0.000000"/>
-				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward"/>
+				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="200028342" Language="SFX">
@@ -36,10 +36,6 @@
 				<File Id="770316172" Language="SFX">
 					<ShortName>cruise deep.wav</ShortName>
 					<Path>SFX\cruise deep_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="876509183" Language="SFX">
-					<ShortName>wrecking cloud music scratch track.wav</ShortName>
-					<Path>SFX\wrecking cloud music scratch track_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="941204851" Language="SFX">
 					<ShortName>Cruise2.wav</ShortName>
