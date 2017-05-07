@@ -32,11 +32,16 @@ public class EnemyDrive : HoverCraftBase {
 	private AIMode AInow = AIMode.ShortTermOverride;
 
 	private static List<Transform> levelWayPointList;
+	private static WayPointManager waypointManager;
 	private int myWaypoint = -1;
 
+	private static int uniqueID=0; // just to number at time of spawn for easier identification
+
 	protected override void Init() {
+		name = "Enemy#" + (uniqueID++);
 		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
 		if(waypointMaster && levelWayPointList == null) {
+			waypointManager = waypointMaster.GetComponent<WayPointManager>();
 			levelWayPointList = new List<Transform>();
 			for(int i=0;i<waypointMaster.transform.childCount;i++) {
 				Transform wpTransform = waypointMaster.transform.GetChild(i);
@@ -47,7 +52,9 @@ public class EnemyDrive : HoverCraftBase {
 		if(levelWayPointList != null) {
 			myWaypoint = Random.Range(0, levelWayPointList.Count);
 			int nextWP = myWaypoint+1;
-			if(nextWP >= levelWayPointList.Count) {
+			if(waypointManager.isOrdered == false) {
+				nextWP = Random.Range(0, levelWayPointList.Count);
+			} else if(nextWP >= levelWayPointList.Count) {
 				nextWP = 0;
 			}
 			// start ship at random spot between nearest waypoint and next (reduce collisions)
@@ -79,7 +86,13 @@ public class EnemyDrive : HoverCraftBase {
 		FollowNextWaypoint();
 	}
 
-	
+	void OnTriggerEnter(Collider collInfo) {
+		HoverCraftBase hcbScript = collInfo.GetComponentInParent<HoverCraftBase>();
+		if(hcbScript) {
+			sprintRamming = true; // brief! will be overridden/forgotten on next AI update in 0.2-0.5 sec
+			// Debug.Log(name + " attempting to ram " + collInfo.name);
+		}
+	}
 
 	IEnumerator AIbehavior() {
 		while (true) {
@@ -95,9 +108,9 @@ public class EnemyDrive : HoverCraftBase {
 			AvoidNearbyObstacles();
 			AdjustSpeedToAvoidObstacles();
 
-			if(AInow == AIMode.ShortTermOverride) {
+			/*if(AInow == AIMode.ShortTermOverride) {
 				Debug.Log("AI " + name + " is temporarily deviating from following track");
-			}
+			}*/
 
 			//StrikeHoverCars();								//see if there's a hovercar in front, and activate sprintRam if there is (currently not working)
 			// FollowNextWaypoint(); // function called in Tick (higher freq than AIbehavior updates)
@@ -272,12 +285,18 @@ public class EnemyDrive : HoverCraftBase {
 			return; 
 		}
 
-		float distTo = Vector3.Distance(transform.position, levelWayPointList[myWaypoint].position);
+		Vector3 gotoPoint = levelWayPointList[myWaypoint].position;
+		gotoPoint.z = transform.position.z; // hack to ignore height diff
+		float distTo = Vector3.Distance(transform.position, gotoPoint);
 		float closeEnoughToWaypoint = 100.0f;
 		if(distTo < closeEnoughToWaypoint) {
-			myWaypoint++;
-			if(myWaypoint >= levelWayPointList.Count) {
-				myWaypoint = 0;
+			if(waypointManager.isOrdered == false) {
+				myWaypoint = Random.Range(0, levelWayPointList.Count);
+			} else {
+				myWaypoint++;
+				if(myWaypoint >= levelWayPointList.Count) {
+					myWaypoint = 0;
+				}
 			}
 		}
 
