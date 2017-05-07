@@ -24,8 +24,34 @@ public class EnemyDrive : HoverCraftBase {
 	private Transform rearRightEmitter;
 	private Transform rearEmitter;
 
+	private static List<Transform> levelWayPointList;
+	private int myWaypoint = -1;
 
 	protected override void Init() {
+		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
+		if(waypointMaster && levelWayPointList == null) {
+			levelWayPointList = new List<Transform>();
+			for(int i=0;i<waypointMaster.transform.childCount;i++) {
+				Transform wpTransform = waypointMaster.transform.GetChild(i);
+				levelWayPointList.Add(wpTransform);
+			}
+		}
+
+		if(levelWayPointList != null) {
+			float nearestWPDist = 9999999.0f;
+			for(int listI=0;listI<levelWayPointList.Count;listI++) {
+				Transform wpEach = levelWayPointList[listI];
+				float distBetween = Vector3.Distance(wpEach.position, transform.position);
+				if(nearestWPDist > distBetween) {
+					myWaypoint = listI;
+					nearestWPDist = distBetween;
+				}
+				listI++;
+			}
+		}
+
+		// Debug.Log("my nearest waypoint is " + myWaypoint);
+
 		forwardEmitter = transform.FindChild("Raycast Emitters").FindChild("Forward Emitter");
 		foreRightEmitter = transform.FindChild("Raycast Emitters").FindChild("Fore-Right Emitter");
 		foreLeftEmitter = transform.FindChild("Raycast Emitters").FindChild("Fore-Left Emitter");
@@ -47,14 +73,27 @@ public class EnemyDrive : HoverCraftBase {
 	
 
 	IEnumerator AIbehavior() {
-		while (true) {							
-			ResetDefaultDrivingControls();
-			CheckForNearbyObstacles();
-			AvoidNearbyObstacles();
-			AdjustSpeedToAvoidObstacles();
-			//StrikeHoverCars();								//see if there's a hovercar in front, and activate springRam if there is (currently not working)
-			//FollowNextWaypoint();                              //steer toward a particular destination.  (Raycast to it to make sure the way is clear?) (not implemented)
-			//DecideNextWaypoint();                              // (not implemented)  (not quite sure what to do for this yet)
+		while (true) {
+
+			if(levelWayPointList != null) {
+				float distTo = Vector3.Distance(transform.position, levelWayPointList[myWaypoint].position);
+				if(distTo < 200.0f) {
+					myWaypoint++;
+					if(myWaypoint >= levelWayPointList.Count) {
+						myWaypoint = 0;
+					}
+				}
+				transform.LookAt(levelWayPointList[myWaypoint].position);
+				gasControl = 1.0f;
+			} else {
+				ResetDefaultDrivingControls();
+				CheckForNearbyObstacles();
+				AvoidNearbyObstacles();
+				AdjustSpeedToAvoidObstacles();
+				//StrikeHoverCars();								//see if there's a hovercar in front, and activate springRam if there is (currently not working)
+				//FollowNextWaypoint();                              //steer toward a particular destination.  (Raycast to it to make sure the way is clear?) (not implemented)
+				//DecideNextWaypoint();                              // (not implemented)  (not quite sure what to do for this yet)
+			}
 
 			//turnControl = Mathf.Clamp(turnControl, -1.0f, 1.0f);
 			yield return new WaitForSeconds(Random.Range(0.20f,0.50f));
