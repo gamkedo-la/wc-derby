@@ -968,7 +968,7 @@
 						</Sound>
 					</ChildrenList>
 				</BlendContainer>
-				<BlendContainer Name="Player Engine Turn" ID="{5236E265-DC4E-436B-B74F-F2F0644BC195}" ShortID="507312697">
+				<BlendContainer Name="Player Engine Turn Left" ID="{5236E265-DC4E-436B-B74F-F2F0644BC195}" ShortID="507312697">
 					<PropertyList>
 						<Property Name="3DPositionSource" Type="int16" Value="0"/>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
@@ -991,32 +991,6 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="turn" ID="{C675C812-D218-433D-8A20-A9FC1C0AEB00}" ShortID="79084950" Type="SoundFX">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="turn" ID="{C7528203-457A-4D3F-9FA2-C676F941D134}" ShortID="751896086">
-									<Language>SFX</Language>
-									<AudioFile>turn.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="turn" ID="{C7528203-457A-4D3F-9FA2-C676F941D134}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<Sound Name="turn2" ID="{EC6C7F28-FF3B-4094-92FE-1FC7873674C1}" ShortID="135383341" Type="SoundFX">
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -1039,6 +1013,53 @@
 					</ChildrenList>
 					<PositioningInfo>
 						<Position Name="" ID="{4EBDECC7-B32B-4F3B-B83C-E313B263EFA5}"/>
+					</PositioningInfo>
+				</BlendContainer>
+				<BlendContainer Name="Player Engine Turn Right" ID="{3EF15BE8-E66A-46CF-AF07-B2811A1F8A33}" ShortID="435762970">
+					<PropertyList>
+						<Property Name="3DPositionSource" Type="int16" Value="0"/>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+						</Reference>
+						<Reference Name="Effect0" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+							<ObjectRef Name="Brick_Wall_Minus_1dB_Peak_Fast_Release" ID="{2144284E-7ADD-4341-86A4-4E468BEC9A2D}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
+						<Reference Name="Effect1" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+							<ObjectRef Name="High_Impact" ID="{2AFD6FB0-C906-4683-A377-FEEEF72967B0}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
+						<Reference Name="Effect2" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+							<ObjectRef Name="Low_Pass_20KHz" ID="{830124FB-B9D5-4AE8-846E-E94A74652666}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="turn" ID="{6C278BB9-F2E5-42A1-9536-D1CEA2CE5F11}" ShortID="221355469" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="turn" ID="{091C769B-61F2-46F0-8F39-EE7ACAF36FD2}" ShortID="980176998">
+									<Language>SFX</Language>
+									<AudioFile>turn.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="turn" ID="{091C769B-61F2-46F0-8F39-EE7ACAF36FD2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{CBEF10FE-DCD4-4A56-A3E4-EB20BCB10612}"/>
 					</PositioningInfo>
 				</BlendContainer>
 			</ChildrenList>
