@@ -83,6 +83,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_PlayerEngineTurn" ID="{58A5CC92-FC72-4C05-BC8D-0A460CB38560}">
+					<ChildrenList>
+						<Action Name="Play" ID="{1221B072-78DD-40E1-BFBA-CAC2F002AD1B}" ShortID="165442948" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{AD03B8CD-372E-43DD-B448-2381187B2B73}" Global="false">
+									<ObjectRef Name="Player Engine Turn" ID="{5236E265-DC4E-436B-B74F-F2F0644BC195}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
