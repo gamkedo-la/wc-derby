@@ -992,6 +992,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="turn2" ID="{EC6C7F28-FF3B-4094-92FE-1FC7873674C1}" ShortID="135383341" Type="SoundFX">
+							<PropertyList>
+								<Property Name="EnablePanner" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
@@ -1006,6 +1010,14 @@
 									<AudioFile>turn2.wav</AudioFile>
 								</AudioFileSource>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{F0DAC20A-27B6-4413-8226-6FEFE5D71C6A}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="-83.5030549898167"/>
+										<Property Name="PanY" Type="Real64" Value="29.8056155507559"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
 							<ActiveSourceList>
 								<ActiveSource Name="turn2" ID="{464FC7CC-2215-41AE-9F4E-C669F4BC54ED}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -1039,6 +1051,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="turn" ID="{6C278BB9-F2E5-42A1-9536-D1CEA2CE5F11}" ShortID="221355469" Type="SoundFX">
+							<PropertyList>
+								<Property Name="EnablePanner" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
@@ -1053,6 +1069,14 @@
 									<AudioFile>turn.wav</AudioFile>
 								</AudioFileSource>
 							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{90952368-6024-463B-BCBF-CBAB2D9C98E7}">
+									<PropertyList>
+										<Property Name="PanX" Type="Real64" Value="82.2810590631364"/>
+										<Property Name="PanY" Type="Real64" Value="36.2850971922246"/>
+									</PropertyList>
+								</Panner>
+							</PositioningInfo>
 							<ActiveSourceList>
 								<ActiveSource Name="turn" ID="{091C769B-61F2-46F0-8F39-EE7ACAF36FD2}" Platform="Linked"/>
 							</ActiveSourceList>
