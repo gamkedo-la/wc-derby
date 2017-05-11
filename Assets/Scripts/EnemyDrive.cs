@@ -6,55 +6,43 @@ using UnityEngine;
 
 public class EnemyDrive : HoverCraftBase {
 
-	private bool showLinesInSceneView=true;
-	private float maxWhiskerRange = 100;
-	private float aggressionRange = 500;
-	private int obstacleLayer = 10;
-	private float distanceToClosestObstacle;
-	Vector3 closestObstacle;
-	bool obstacleDanger = false;
-	int emitterCycle = 0;
-
-	private Transform forwardEmitter;
-	private Transform foreRightEmitter;
-	private Transform foreLeftEmitter;
-	private Transform sideRightEmitter;
-	private Transform sideLeftEmitter;
-	private Transform rearLeftEmitter;
-	private Transform rearRightEmitter;
-	private Transform rearEmitter;
-
+	private bool pathIsClear = true;
+	private bool showLinesInSceneView = true;
+	private const float obstacleSafetyThreshold = 300f;
+	private Transform[] obstacles;
+	private GameObject listOfObstacles;
+	private float randomTurningDecisionMaker = 1f;
 	public enum AIMode
 	{
 		FollowTrack,
 		ShortTermOverride
 	};
-	private AIMode AInow = AIMode.ShortTermOverride;
+	private AIMode AInow = AIMode.FollowTrack;
 
 	private static List<Transform> levelWayPointList;
 	private static WayPointManager waypointManager;
 	private int myWaypoint = -1;
 
-	private static int uniqueID=0; // just to number at time of spawn for easier identification
+	private static int uniqueID = 0; // just to number at time of spawn for easier identification
 
 	protected override void Init() {
 		name = "Enemy#" + (uniqueID++);
 		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
-		if(waypointMaster && levelWayPointList == null) {
+		if (waypointMaster && levelWayPointList == null) {
 			waypointManager = waypointMaster.GetComponent<WayPointManager>();
 			levelWayPointList = new List<Transform>();
-			for(int i=0;i<waypointMaster.transform.childCount;i++) {
+			for (int i = 0; i < waypointMaster.transform.childCount; i++) {
 				Transform wpTransform = waypointMaster.transform.GetChild(i);
 				levelWayPointList.Add(wpTransform);
 			}
 		}
 
-		if(levelWayPointList != null) {
+		if (levelWayPointList != null) {
 			myWaypoint = Random.Range(0, levelWayPointList.Count);
-			int nextWP = myWaypoint+1;
-			if(waypointManager.isOrdered == false) {
+			int nextWP = myWaypoint + 1;
+			if (waypointManager.isOrdered == false) {
 				nextWP = Random.Range(0, levelWayPointList.Count);
-			} else if(nextWP >= levelWayPointList.Count) {
+			} else if (nextWP >= levelWayPointList.Count) {
 				nextWP = 0;
 			}
 			// start ship at random spot between nearest waypoint and next (reduce collisions)
@@ -66,31 +54,23 @@ public class EnemyDrive : HoverCraftBase {
 
 		}
 
-		forwardEmitter = transform.FindChild("Raycast Emitters").FindChild("Forward Emitter");
-		foreRightEmitter = transform.FindChild("Raycast Emitters").FindChild("Fore-Right Emitter");
-		foreLeftEmitter = transform.FindChild("Raycast Emitters").FindChild("Fore-Left Emitter");
-		sideRightEmitter = transform.FindChild("Raycast Emitters").FindChild("Side-Right Emitter");
-		sideLeftEmitter = transform.FindChild("Raycast Emitters").FindChild("Side-Left Emitter");
-		rearRightEmitter = transform.FindChild("Raycast Emitters").FindChild("Rear-Right Emitter");
-		rearLeftEmitter = transform.FindChild("Raycast Emitters").FindChild("Rear-Left Emitter");
-		rearEmitter = transform.FindChild("Raycast Emitters").FindChild("Rear Emitter");
-		distanceToClosestObstacle = maxWhiskerRange;
+		listOfObstacles = GameObject.FindGameObjectWithTag("ObstacleList");
+		ReadListOfObstacles();
 		StartCoroutine(AIbehavior());
 	}
 
 
 	protected override void Tick()
 	{
-		if (obstacleDanger) { ShowDebugLines(transform.position, closestObstacle, Color.red); }
-
-		FollowNextWaypoint();
+		//FollowNextWaypoint();
+		
 	}
 
 	void OnTriggerEnter(Collider collInfo) {
 		HoverCraftBase hcbScript = collInfo.GetComponentInParent<HoverCraftBase>();
-		if(hcbScript) {
+		if (hcbScript) {
 			sprintRamming = true; // brief! will be overridden/forgotten on next AI update in 0.2-0.5 sec
-			// Debug.Log(name + " attempting to ram " + collInfo.name);
+								  // Debug.Log(name + " attempting to ram " + collInfo.name);
 		}
 	}
 
@@ -99,108 +79,51 @@ public class EnemyDrive : HoverCraftBase {
 
 			// is there any track to try following? if so, default to try that
 			// (avoidance functions below can override this until next AI rethinking)
-			if(myWaypoint != -1) {
+			if (myWaypoint != -1) {
 				AInow = AIMode.FollowTrack;
 			}
-
+			if (Random.Range(1, 6) == 1) { randomTurningDecisionMaker = randomTurningDecisionMaker * -1; }
 			ResetDefaultDrivingControls();
-			CheckForNearbyObstacles();
-			AvoidNearbyObstacles();
-			AdjustSpeedToAvoidObstacles();
+			Vector3 nextWaypoint = FollowNextWaypoint();
+			Vector3 safetyPoint = AvoidObstacles();
+			Vector3 pathToSteerToward = (safetyPoint - transform.position) + (nextWaypoint - transform.position);
+			ShowDebugLines(transform.position, nextWaypoint, Color.yellow);
+			ShowDebugLines(transform.position, safetyPoint, Color.blue);
+			ShowDebugLines(transform.position, (transform.position + pathToSteerToward), Color.green);
 
+
+			
+			if (transform.InverseTransformPoint(safetyPoint).x < -0.5f) { turnControl = turnControl - 1f; }
+			if (transform.InverseTransformPoint(safetyPoint).x > 0.5f) { turnControl = turnControl + 1f; }
+			if (pathIsClear == false && turnControl < 0.1f && transform.InverseTransformPoint(safetyPoint).z < 0) { turnControl = randomTurningDecisionMaker; }
+			if (pathIsClear == false && transform.InverseTransformPoint(safetyPoint).z < 0) { gasControl = 0.05f;} else { gasControl = 1f; }
+			
+			
 			/*if(AInow == AIMode.ShortTermOverride) {
 				Debug.Log("AI " + name + " is temporarily deviating from following track");
 			}*/
 
-			//StrikeHoverCars();								//see if there's a hovercar in front, and activate sprintRam if there is (currently not working)
-			// FollowNextWaypoint(); // function called in Tick (higher freq than AIbehavior updates)
 
-			//turnControl = Mathf.Clamp(turnControl, -1.0f, 1.0f);
-			yield return new WaitForSeconds(Random.Range(0.20f,0.50f));
+			// FollowNextWaypoint();    //function is called in Tick (higher freq than AIbehavior updates)
+
+
+			yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
 		}
 	}
 
 	
+
+
 	private void ResetDefaultDrivingControls()
 	{
-		gasControl = 1.0f;
+		gasControl = 0.5f;
 		turnControl = 0.0f;
 		sprintRamming = false;
-		if (!obstacleDanger) { distanceToClosestObstacle = Mathf.Infinity; closestObstacle = Vector3.zero; }
-	}
-
-	
-	private void CheckForNearbyObstacles()
-	{
-		
-		//emitterCycle = Random.Range(1,9);
-		emitterCycle = emitterCycle + 1;
-		if (emitterCycle > 8) { emitterCycle = 1; }
-		if (emitterCycle == 1) { ActivateEmitter(forwardEmitter, maxWhiskerRange, obstacleLayer); }
-		if (emitterCycle == 2) { ActivateEmitter(foreRightEmitter, maxWhiskerRange, obstacleLayer); }
-		if (emitterCycle == 3) { ActivateEmitter(foreLeftEmitter, maxWhiskerRange, obstacleLayer); }
-		if (emitterCycle == 4) { ActivateEmitter(sideRightEmitter, maxWhiskerRange, obstacleLayer); }
-		if (emitterCycle == 5) { ActivateEmitter(sideLeftEmitter, maxWhiskerRange, obstacleLayer);}
-		if (emitterCycle == 6) { ActivateEmitter(rearLeftEmitter, maxWhiskerRange, obstacleLayer);}
-		if (emitterCycle == 7) { ActivateEmitter(rearRightEmitter, maxWhiskerRange, obstacleLayer);}
-		if (emitterCycle == 8) { ActivateEmitter(rearEmitter, maxWhiskerRange, obstacleLayer);}
-		
-		
-		/*
-		ActivateEmitter(forwardEmitter, whiskerRange, obstacleLayer); 
-		ActivateEmitter(foreRightEmitter, whiskerRange, obstacleLayer); 
-		ActivateEmitter(foreLeftEmitter, whiskerRange, obstacleLayer); 
-		ActivateEmitter(sideRightEmitter, whiskerRange, obstacleLayer); 
-		ActivateEmitter(sideLeftEmitter, whiskerRange, obstacleLayer);
-		ActivateEmitter(rearLeftEmitter, whiskerRange, obstacleLayer); 
-		ActivateEmitter(rearRightEmitter, whiskerRange, obstacleLayer); 
-		ActivateEmitter(rearEmitter, whiskerRange, obstacleLayer);
-		*/
-
-	}
-
-	private void ActivateEmitter(Transform emitterLocation, float whiskerRange, int layerToSearchFor)
-	{
-
-		bool emitForwardBeams = false;
-		bool emitLeftBeams = false;
-		bool emitRightBeams = false;
-		bool emitRearBeams = false;
-
-		if (emitterLocation == forwardEmitter || emitterLocation == foreRightEmitter || emitterLocation == foreLeftEmitter)		{ emitForwardBeams = true; }
-		if (emitterLocation == foreLeftEmitter || emitterLocation == sideLeftEmitter || emitterLocation == rearLeftEmitter)		{ emitLeftBeams = true; }
-		if (emitterLocation == foreRightEmitter || emitterLocation == sideRightEmitter || emitterLocation == rearRightEmitter)	{ emitRightBeams = true; }
-		if (emitterLocation == rearEmitter || emitterLocation == rearLeftEmitter || emitterLocation == rearRightEmitter)		{ emitRearBeams = true; }
-
-		if (emitForwardBeams == true)							{ CheckEmissions (emitterLocation, whiskerRange, layerToSearchFor, transform.forward); }
-		if (emitRearBeams == true)								{ CheckEmissions (emitterLocation, whiskerRange/4, layerToSearchFor, -transform.forward); }
-		if (emitRightBeams == true)								{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, transform.right); }
-		if (emitLeftBeams == true)								{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, -transform.right); }
-		if (emitRightBeams == true && emitRearBeams == true)	{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (transform.right - transform.forward).normalized); } 
-		if (emitRightBeams == true && emitForwardBeams == true)	{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (transform.right + transform.forward).normalized); }
-		if (emitLeftBeams == true && emitForwardBeams == true)	{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (-transform.right + transform.forward).normalized); }
-		if (emitLeftBeams == true && emitRearBeams == true)		{ CheckEmissions (emitterLocation, whiskerRange/2, layerToSearchFor, (-transform.right - transform.forward).normalized); }
-	
-	}
-		
-	private void CheckEmissions( Transform emitterLocation, float beamRange, int layerToSearchFor, Vector3 emissionDirection)
-	{
-		RaycastHit hit;
-		if (Physics.Raycast(emitterLocation.position, emissionDirection, out hit, beamRange, 1 << layerToSearchFor))
-		{
-			ShowDebugLines(emitterLocation.position, hit.point, Color.white);
-			if (distanceToClosestObstacle > hit.distance)
-			{
-				obstacleDanger = true;
-				distanceToClosestObstacle = hit.distance;
-				closestObstacle = hit.point;
-				ShowDebugLines(emitterLocation.position, hit.point, Color.yellow);
-			}
-		}
 	}
 
 
 
+	/*
 	private void AdjustSpeedToAvoidObstacles()
 	{
 		RaycastHit hitFore;
@@ -213,62 +136,67 @@ public class EnemyDrive : HoverCraftBase {
 		else { gasControl = 1.0f; }
 
 	}
+	*/
 
 
 
-	private void ShowDebugLines(Vector3 emitterLoc, Vector3 hitPoint, Color color)
+	private void ShowDebugLines(Vector3 startPoint, Vector3 endPoint, Color color)
 	{
 		if (showLinesInSceneView)
 		{
-		Debug.DrawLine(emitterLoc, hitPoint, color);                //All debug lines are centralized here so we can turn this on and off by adjusting the bool
+		Debug.DrawLine(startPoint, endPoint, color);                //All debug lines are centralized here so we can turn this on and off by adjusting the bool
 		}
 	}
 
 
-	private void AvoidNearbyObstacles()
+	private void ReadListOfObstacles()
 	{
-		if (obstacleDanger) 
+		int obstacleCount = -1;
+		foreach (Transform child in listOfObstacles.transform)
 		{
-			distanceToClosestObstacle = Vector3.Distance(closestObstacle, transform.position);
-			if (distanceToClosestObstacle > maxWhiskerRange) 
+			if (child != listOfObstacles.transform)
+			{ obstacleCount = obstacleCount + 1; }
+		}
+		obstacles = new Transform[obstacleCount+1];
+		obstacleCount = -1;
+		foreach (Transform child in listOfObstacles.transform)
+		{
+			if (child != listOfObstacles.transform) 
 			{ 
-				obstacleDanger = false; 
+				obstacleCount = obstacleCount + 1;
+				obstacles[obstacleCount] = child; 
 			}
 		}
-		if (obstacleDanger == false) { return; }
-
-		Vector3 vectorAwayFromObstacle = transform.position - closestObstacle;
-		Vector3 avoidancePoint = transform.position + vectorAwayFromObstacle;
-		ShowDebugLines(transform.position, avoidancePoint, Color.green);		
-		//float angleTowardAvoidanceVector = Vector3.Angle(vectorAwayFromObstacle, transform.forward);
-		if (transform.InverseTransformPoint(avoidancePoint).x > 0.1f) {
-			turnControl = 1f;
-			AInow = AIMode.ShortTermOverride;
-		} else if (transform.InverseTransformPoint(avoidancePoint).x < -0.1f) {
-			turnControl = -1f;
-			AInow = AIMode.ShortTermOverride;
-		}
-		
-		//turnControl = Mathf.Clamp(angleTowardAvoidanceVector / 45f, -1f, 1f);
 	}
 
 
-	void StrikeHoverCars()		//this doesn't seem to be working at the moment
+	private Vector3 AvoidObstacles()
 	{
-		Vector3 ray58emitter = transform.position + (transform.forward * 5f);
-		RaycastHit aggressionRay58hit;
-		bool aggressionRay58 = Physics.Raycast(ray58emitter, transform.forward, out aggressionRay58hit, aggressionRange);
-		
-		if (aggressionRay58 && aggressionRay58hit.collider.gameObject.GetComponent<Destroyable>()) 
+		Vector3 vectorToDestination = Vector3.zero; //transform.forward * obstacleSafetyThreshold;
+		Vector3 destinationPoint = transform.position + vectorToDestination;
+		pathIsClear = true;
+		foreach (Transform obstacle in obstacles)
 		{
-			Debug.DrawLine(ray58emitter, aggressionRay58hit.point, Color.red);
-			sprintRamming = true; 
+			float obstacleDistance = Vector3.Distance(transform.position, obstacle.position);
+			if (obstacleDistance < obstacleSafetyThreshold)
+			{
+				pathIsClear = false;
+				Vector3 vectorToObstacle = obstacle.position - transform.position;
+				Vector3 obstaclePoint = transform.position + vectorToObstacle;
+				ShowDebugLines(transform.position, obstaclePoint, Color.red);
+				Vector3 dirAwayFromObstacle = -vectorToObstacle.normalized;
+				Vector3 avoidancePoint = transform.position + (dirAwayFromObstacle * (obstacleSafetyThreshold - obstacleDistance));
+				Vector3 vectorToAvoidancePoint = avoidancePoint - transform.position;
+				Vector3 newDestinationVector = vectorToDestination + vectorToAvoidancePoint;
+				vectorToDestination = newDestinationVector;
+				destinationPoint = transform.position + vectorToDestination;
+			}
 		}
-		else 
-		{ 
-			sprintRamming = false; 
-		}
+		return destinationPoint;
 	}
+	
+	
+	
 
 	// helper function borrowed from https://forum.unity3d.com/threads/turn-left-or-right-to-face-a-point.22235/
 	static float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
@@ -277,16 +205,21 @@ public class EnemyDrive : HoverCraftBase {
 		float angle = Vector3.Angle(dirA, dirB);
 		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
 	}
-
-	void FollowNextWaypoint()
-	{ 
-		if(myWaypoint == -1 || // no waypoints were found in level
+	
+	Vector3 FollowNextWaypoint()
+	{ //changing method to instead return a Waypoint
+		if (myWaypoint == -1 || // no waypoints were found in level
 			AInow != AIMode.FollowTrack) { // some other behavior is overriding control
-			return; 
+			return Vector3.zero; 
 		}
 
 		Vector3 gotoPoint = levelWayPointList[myWaypoint].position;
-		gotoPoint.z = transform.position.z; // hack to ignore height diff
+
+		
+
+
+
+		// gotoPoint.z = transform.position.z; // hack to ignore height diff		//in the bowl, y is height. Is there a map where z is height?
 		float distTo = Vector3.Distance(transform.position, gotoPoint);
 		float closeEnoughToWaypoint = 100.0f;
 		if(distTo < closeEnoughToWaypoint) {
@@ -299,7 +232,8 @@ public class EnemyDrive : HoverCraftBase {
 				}
 			}
 		}
-
+		return gotoPoint;
+		/*
 		float turnAmt = AngleAroundAxis(transform.forward,
 			levelWayPointList[myWaypoint].position - transform.position,Vector3.up);
 		float angDeltaForGentleTurn = 10.0f;
@@ -325,8 +259,8 @@ public class EnemyDrive : HoverCraftBase {
 			turnControl = 0.0f;
 			gasControl = 1.0f;
 		}
-		ShowDebugLines(transform.position, levelWayPointList[myWaypoint].position, Color.red);
-
+		//ShowDebugLines(transform.position, levelWayPointList[myWaypoint].position, Color.red);
+		*/
 	}
-
+	
 }

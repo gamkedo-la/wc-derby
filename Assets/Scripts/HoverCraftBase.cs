@@ -170,8 +170,11 @@ public class HoverCraftBase : MonoBehaviour {
 			impendingCrashDetectionNormal = rhInfo.normal.y;
 		}*/
 
-		if (impendingCrashDetectionNormal < 0.1f ||
-			OutOfDome(transform.position + transform.forward * gasControl * 10.0f)) {
+		if (impendingCrashDetectionNormal < 0.1f
+		//	|| OutOfDome(transform.position + transform.forward * gasControl * 10.0f)
+		) 
+		{
+
 			momentum *= 0.5f;
 			enginePower = -1.0f;
 			sprintRamming = false;
