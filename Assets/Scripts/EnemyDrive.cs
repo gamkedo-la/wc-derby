@@ -8,7 +8,7 @@ public class EnemyDrive : HoverCraftBase {
 
 	private bool pathIsClear = true;
 	private bool showLinesInSceneView = true;
-	private const float obstacleSafetyThreshold = 300f;
+	private const float obstacleSafetyThreshold = 100f;
 	private Transform[] obstacles;
 	private GameObject listOfObstacles;
 	private float randomTurningDecisionMaker = 1f;
