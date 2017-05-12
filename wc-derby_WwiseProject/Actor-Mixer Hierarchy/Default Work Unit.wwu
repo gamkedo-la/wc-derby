@@ -972,6 +972,11 @@
 					<PropertyList>
 						<Property Name="3DPositionSource" Type="int16" Value="0"/>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -991,10 +996,15 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="turn2" ID="{EC6C7F28-FF3B-4094-92FE-1FC7873674C1}" ShortID="135383341" Type="SoundFX">
+						<Sound Name="turn" ID="{5069E177-C146-460B-ABB6-274A9CE1F851}" ShortID="772574569" Type="SoundFX">
 							<PropertyList>
 								<Property Name="EnablePanner" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -1005,21 +1015,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="turn2" ID="{464FC7CC-2215-41AE-9F4E-C669F4BC54ED}" ShortID="188538637">
+								<AudioFileSource Name="turn" ID="{3D9505B7-D6BF-4E29-A134-C7F93AEA5F20}" ShortID="165613181">
 									<Language>SFX</Language>
-									<AudioFile>turn2.wav</AudioFile>
+									<AudioFile>turn.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="980176998"/>
+									</ConvertedFileIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<PositioningInfo>
-								<Panner Name="" ID="{F0DAC20A-27B6-4413-8226-6FEFE5D71C6A}">
+								<Panner Name="" ID="{87E88569-7CD3-4D7D-B9E0-4C9053B6A4A0}">
 									<PropertyList>
-										<Property Name="PanX" Type="Real64" Value="-83.5030549898167"/>
-										<Property Name="PanY" Type="Real64" Value="29.8056155507559"/>
+										<Property Name="PanX" Type="Real64" Value="-63.1364562118126"/>
+										<Property Name="PanY" Type="Real64" Value="36.2850971922247"/>
 									</PropertyList>
 								</Panner>
 							</PositioningInfo>
 							<ActiveSourceList>
-								<ActiveSource Name="turn2" ID="{464FC7CC-2215-41AE-9F4E-C669F4BC54ED}" Platform="Linked"/>
+								<ActiveSource Name="turn" ID="{3D9505B7-D6BF-4E29-A134-C7F93AEA5F20}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -1030,6 +1043,7 @@
 				<BlendContainer Name="Player Engine Turn Right" ID="{3EF15BE8-E66A-46CF-AF07-B2811A1F8A33}" ShortID="435762970">
 					<PropertyList>
 						<Property Name="3DPositionSource" Type="int16" Value="0"/>
+						<Property Name="EnablePanner" Type="bool" Value="True"/>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
 					</PropertyList>
 					<ReferenceList>
@@ -1054,6 +1068,11 @@
 							<PropertyList>
 								<Property Name="EnablePanner" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -1083,6 +1102,12 @@
 						</Sound>
 					</ChildrenList>
 					<PositioningInfo>
+						<Panner Name="" ID="{59D14CEB-E071-446A-95E8-D8614AC8CDAA}">
+							<PropertyList>
+								<Property Name="PanX" Type="Real64" Value="94.0936863543788"/>
+								<Property Name="PanY" Type="Real64" Value="34.1252699784017"/>
+							</PropertyList>
+						</Panner>
 						<Position Name="" ID="{CBEF10FE-DCD4-4A56-A3E4-EB20BCB10612}"/>
 					</PositioningInfo>
 				</BlendContainer>

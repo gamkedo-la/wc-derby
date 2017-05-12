@@ -24,6 +24,8 @@
 				<Event Id="4260765717" Name="Play_PlayerDestroy" ObjectPath="\Events\Default Work Unit\Play_PlayerDestroy"/>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
 				<Event Id="3887443310" Name="Play_PlayerEngineTilt" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTilt"/>
+				<Event Id="2022528057" Name="Play_PlayerEngineTurnLeft" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTurnLeft"/>
+				<Event Id="519385068" Name="Play_PlayerEngineTurnRight" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTurnRight"/>
 				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact"/>
 				<Event Id="266055352" Name="Play_PlayerImpactMain" ObjectPath="\Events\Default Work Unit\Play_PlayerImpactMain" MaxAttenuation="0.000000"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward" MaxAttenuation="0.000000"/>
@@ -104,6 +106,10 @@
 				<File Id="974092807" Language="SFX">
 					<ShortName>2 3-Audio-1-16.wav</ShortName>
 					<Path>SFX\2 3-Audio-1-16_9E69E797.wem</Path>
+				</File>
+				<File Id="980176998" Language="SFX">
+					<ShortName>turn.wav</ShortName>
+					<Path>SFX\turn_9E69E797.wem</Path>
 				</File>
 				<File Id="1036227758" Language="SFX">
 					<ShortName>2 3-Audio-1-13.wav</ShortName>

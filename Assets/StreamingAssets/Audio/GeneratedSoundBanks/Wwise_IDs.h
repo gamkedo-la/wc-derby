@@ -16,6 +16,8 @@ namespace AK
         static const AkUniqueID PLAY_PLAYERDESTROY = 4260765717U;
         static const AkUniqueID PLAY_PLAYERENGINE = 3791634299U;
         static const AkUniqueID PLAY_PLAYERENGINETILT = 3887443310U;
+        static const AkUniqueID PLAY_PLAYERENGINETURNLEFT = 2022528057U;
+        static const AkUniqueID PLAY_PLAYERENGINETURNRIGHT = 519385068U;
         static const AkUniqueID PLAY_PLAYERIMPACT = 2485643559U;
         static const AkUniqueID PLAY_PLAYERIMPACTMAIN = 266055352U;
         static const AkUniqueID WCFORWARD = 775327610U;

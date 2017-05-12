@@ -1,6 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
 	266055352	Play_PlayerImpactMain			\Default Work Unit\Play_PlayerImpactMain	
+	519385068	Play_PlayerEngineTurnRight			\Default Work Unit\Play_PlayerEngineTurnRight	
 	775327610	wcforward			\Default Work Unit\wcforward	
+	2022528057	Play_PlayerEngineTurnLeft			\Default Work Unit\Play_PlayerEngineTurnLeft	
 	2485643559	Play_PlayerImpact			\Default Work Unit\Play_PlayerImpact	
 	3791634299	Play_PlayerEngine			\Default Work Unit\Play_PlayerEngine	
 	3887443310	Play_PlayerEngineTilt			\Default Work Unit\Play_PlayerEngineTilt	
@@ -46,6 +48,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	936048086	2 3-Audio-1-5	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 3-Audio-1-5_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-5		441064
 	941204851	Cruise2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\Cruise2_A8899385.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Cruise2		352864
 	974092807	2 3-Audio-1-16	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 3-Audio-1-16_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-16		234536
+	980176998	turn	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\turn_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Turn Right\turn		121340
 	1036227758	2 3-Audio-1-13	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 3-Audio-1-13_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-13		279828
 	1041269596	air	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\air_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\air		518540
 	1069944084	2 3-Audio-1-4	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Windows\SFX\2 3-Audio-1-4_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-4		394208
