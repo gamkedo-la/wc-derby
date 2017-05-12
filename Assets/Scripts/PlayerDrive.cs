@@ -6,8 +6,8 @@ public class PlayerDrive : HoverCraftBase {
 	private float targetFOV = 60.0f;
 	private Vector3 camStartVect;
 
-	private uint turnLeftID;
-	private uint turnRightID;
+	//private uint turnLeftID;
+	//private uint turnRightID;
 
 	protected override void Init () {
 		if(useCarCollisionTuning) {
@@ -20,8 +20,8 @@ public class PlayerDrive : HoverCraftBase {
 		}
 		camStartVect = Camera.main.transform.position - bodyToTilt.transform.position;
 
-		turnLeftID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnLeft");
-		turnRightID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnRight");
+		//turnLeftID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnLeft");
+		//turnRightID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnRight");
 	}
 
 	protected override void Tick () {
@@ -58,10 +58,12 @@ public class PlayerDrive : HoverCraftBase {
 		}
 
 		if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
-			AkSoundEngine.PostEvent(turnLeftID, gameObject);
+			//AkSoundEngine.PostEvent(turnLeftID, gameObject);
+			GetComponent<AkTriggerTurnLeft>().TurningLeft();
 		}
 		if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
-			AkSoundEngine.PostEvent(turnRightID, gameObject);
+			//AkSoundEngine.PostEvent(turnRightID, gameObject);
+			GetComponent<AkTriggerTurnRight>().TurningRight();
 		}
 
 		float tiltAmt = Mathf.DeltaAngle(0.0f, bodyToTilt.eulerAngles.x);
