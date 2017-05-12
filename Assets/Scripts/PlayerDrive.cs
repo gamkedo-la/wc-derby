@@ -6,8 +6,8 @@ public class PlayerDrive : HoverCraftBase {
 	private float targetFOV = 60.0f;
 	private Vector3 camStartVect;
 
-	//private uint turnLeftID;
-	//private uint turnRightID;
+	private uint turnLeftID;
+	private uint turnRightID;
 
 	protected override void Init () {
 		if(useCarCollisionTuning) {
@@ -58,12 +58,10 @@ public class PlayerDrive : HoverCraftBase {
 		}
 
 		if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
-			//AkSoundEngine.PostEvent(turnLeftID, gameObject);
-			GetComponent<AkTriggerTurnLeft>().TurnLeft();
+			AkSoundEngine.PostEvent(turnLeftID, gameObject);
 		}
 		if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
-			//AkSoundEngine.PostEvent(turnRightID, gameObject);
-			GetComponent<AkTriggerTurnRight>().TurnRight();
+			AkSoundEngine.PostEvent(turnRightID, gameObject);
 		}
 
 		float tiltAmt = Mathf.DeltaAngle(0.0f, bodyToTilt.eulerAngles.x);
