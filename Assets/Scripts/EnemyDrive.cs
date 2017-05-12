@@ -94,9 +94,11 @@ public class EnemyDrive : HoverCraftBase {
 			ShowDebugLines(transform.position, (transform.position + pathToSteerToward), Color.green);
 
 
-			
-			if (transform.InverseTransformPoint(safetyPoint).x < -0.5f) { turnControl = turnControl - 1f; }
-			if (transform.InverseTransformPoint(safetyPoint).x > 0.5f) { turnControl = turnControl + 1f; }
+			float distanceToTurn = Vector3.Angle(transform.forward, transform.InverseTransformVector(safetyPoint - transform.position));
+			if (distanceToTurn > 80f) { distanceToTurn = 80f; }
+			distanceToTurn = distanceToTurn / 80f;
+			if (transform.InverseTransformPoint(safetyPoint).x < -0.5f) { turnControl = turnControl - distanceToTurn; }
+			if (transform.InverseTransformPoint(safetyPoint).x > 0.5f) { turnControl = turnControl + distanceToTurn; }
 			if (pathIsClear == false && turnControl < 0.1f && transform.InverseTransformPoint(safetyPoint).z < 0) { turnControl = randomTurningDecisionMaker; }
 			if (pathIsClear == false && transform.InverseTransformPoint(safetyPoint).z < 0) { gasControl = 0.05f;} else { gasControl = 1f; }
 			
