@@ -6,6 +6,9 @@ public class PlayerDrive : HoverCraftBase {
 	private float targetFOV = 60.0f;
 	private Vector3 camStartVect;
 
+	private uint turnLeftID;
+	private uint turnRightID;
+
 	protected override void Init () {
 		if(useCarCollisionTuning) {
 			Vector3 camPosHigher = Camera.main.transform.localPosition;
@@ -16,6 +19,9 @@ public class PlayerDrive : HoverCraftBase {
 			uliScript.TurnOff();
 		}
 		camStartVect = Camera.main.transform.position - bodyToTilt.transform.position;
+
+		turnLeftID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnLeft");
+		turnRightID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnRight");
 	}
 
 	protected override void Tick () {
@@ -50,6 +56,14 @@ public class PlayerDrive : HoverCraftBase {
 				sprintRamming = false;
 			}
 		}
+
+		if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+			AkSoundEngine.PostEvent(turnLeftID, gameObject);
+		}
+		if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
+			AkSoundEngine.PostEvent(turnRightID, gameObject);
+		}
+
 		float tiltAmt = Mathf.DeltaAngle(0.0f, bodyToTilt.eulerAngles.x);
 		float maxTiltDetected = 30.0f;
 		tiltAmt = Mathf.Clamp(tiltAmt, -maxTiltDetected, maxTiltDetected) / -maxTiltDetected;

@@ -55,7 +55,9 @@ public class EnemyDrive : HoverCraftBase {
 		}
 
 		listOfObstacles = GameObject.FindGameObjectWithTag("ObstacleList");
-		ReadListOfObstacles();
+		if(listOfObstacles) {
+			ReadListOfObstacles();
+		}
 		StartCoroutine(AIbehavior());
 	}
 
@@ -175,21 +177,21 @@ public class EnemyDrive : HoverCraftBase {
 		Vector3 vectorToDestination = Vector3.zero; //transform.forward * obstacleSafetyThreshold;
 		Vector3 destinationPoint = transform.position + vectorToDestination;
 		pathIsClear = true;
-		foreach (Transform obstacle in obstacles)
-		{
-			float obstacleDistance = Vector3.Distance(transform.position, obstacle.position);
-			if (obstacleDistance < obstacleSafetyThreshold)
-			{
-				pathIsClear = false;
-				Vector3 vectorToObstacle = obstacle.position - transform.position;
-				Vector3 obstaclePoint = transform.position + vectorToObstacle;
-				ShowDebugLines(transform.position, obstaclePoint, Color.red);
-				Vector3 dirAwayFromObstacle = -vectorToObstacle.normalized;
-				Vector3 avoidancePoint = transform.position + (dirAwayFromObstacle * (obstacleSafetyThreshold - obstacleDistance));
-				Vector3 vectorToAvoidancePoint = avoidancePoint - transform.position;
-				Vector3 newDestinationVector = vectorToDestination + vectorToAvoidancePoint;
-				vectorToDestination = newDestinationVector;
-				destinationPoint = transform.position + vectorToDestination;
+		if(obstacles != null) {
+			foreach(Transform obstacle in obstacles) {
+				float obstacleDistance = Vector3.Distance(transform.position, obstacle.position);
+				if(obstacleDistance < obstacleSafetyThreshold) {
+					pathIsClear = false;
+					Vector3 vectorToObstacle = obstacle.position - transform.position;
+					Vector3 obstaclePoint = transform.position + vectorToObstacle;
+					ShowDebugLines(transform.position, obstaclePoint, Color.red);
+					Vector3 dirAwayFromObstacle = -vectorToObstacle.normalized;
+					Vector3 avoidancePoint = transform.position + (dirAwayFromObstacle * (obstacleSafetyThreshold - obstacleDistance));
+					Vector3 vectorToAvoidancePoint = avoidancePoint - transform.position;
+					Vector3 newDestinationVector = vectorToDestination + vectorToAvoidancePoint;
+					vectorToDestination = newDestinationVector;
+					destinationPoint = transform.position + vectorToDestination;
+				}
 			}
 		}
 		return destinationPoint;
