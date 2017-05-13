@@ -8,9 +8,9 @@ public class EnemyDrive : HoverCraftBase {
 
 	private bool pathIsClear = true;
 	private bool showLinesInSceneView = true;
-	private const float obstacleSafetyThreshold = 100f;
+	private float obstacleSafetyThreshold;
 	private Transform[] obstacles;
-	private GameObject listOfObstacles;
+	private LevelAISettings levelAIAvoidanceManager;
 	private float randomTurningDecisionMaker = 1f;
 	public enum AIMode
 	{
@@ -26,6 +26,7 @@ public class EnemyDrive : HoverCraftBase {
 	private static int uniqueID = 0; // just to number at time of spawn for easier identification
 
 	protected override void Init() {
+		
 		name = "Enemy#" + (uniqueID++);
 		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
 		if (waypointMaster && levelWayPointList == null) {
@@ -54,9 +55,10 @@ public class EnemyDrive : HoverCraftBase {
 
 		}
 
-		listOfObstacles = GameObject.FindGameObjectWithTag("ObstacleList");
-		if(listOfObstacles) {
-			ReadListOfObstacles();
+		levelAIAvoidanceManager = GameObject.FindGameObjectWithTag("ObstacleList").GetComponent<LevelAISettings>();
+		obstacleSafetyThreshold = levelAIAvoidanceManager.AIdetectionRange;
+		if(levelAIAvoidanceManager) {
+			this.obstacles = levelAIAvoidanceManager.obstacles;
 		}
 		StartCoroutine(AIbehavior());
 	}
@@ -98,7 +100,7 @@ public class EnemyDrive : HoverCraftBase {
 			if (transform.InverseTransformPoint(safetyPoint).x < -0.5f) { turnControl = turnControl - 1f; }
 			if (transform.InverseTransformPoint(safetyPoint).x > 0.5f) { turnControl = turnControl + 1f; }
 			if (pathIsClear == false && turnControl < 0.1f && transform.InverseTransformPoint(safetyPoint).z < 0) { turnControl = randomTurningDecisionMaker; }
-			if (pathIsClear == false && transform.InverseTransformPoint(safetyPoint).z < 0) { gasControl = 0.05f;} else { gasControl = 1f; }
+			if (pathIsClear == false && transform.InverseTransformPoint(safetyPoint).z < 0) { gasControl = 0.1f;} else { gasControl = 1f; }
 			
 			
 			/*if(AInow == AIMode.ShortTermOverride) {
@@ -150,7 +152,16 @@ public class EnemyDrive : HoverCraftBase {
 		}
 	}
 
+	private void OnDrawGizmos()
+	{
+		if (showLinesInSceneView)
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(transform.position, obstacleSafetyThreshold);
+		}
+	}
 
+	/*												// We can read this list from the AI Level Manager now instead of doing it each time an enemy is spawned.
 	private void ReadListOfObstacles()
 	{
 		int obstacleCount = -1;
@@ -169,7 +180,7 @@ public class EnemyDrive : HoverCraftBase {
 				obstacles[obstacleCount] = child; 
 			}
 		}
-	}
+	}*/
 
 
 	private Vector3 AvoidObstacles()
