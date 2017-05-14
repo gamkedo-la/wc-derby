@@ -69,8 +69,9 @@ public class EnemyDrive : HoverCraftBase {
 
 	protected override void Tick()
 	{
-		//FollowNextWaypoint();
-		
+		if(waypointManager.isOrdered) {
+			SteerTowardPoint(levelWayPointList[myWaypoint].position);
+		}
 	}
 
 	void OnTriggerEnter(Collider collInfo) {
@@ -109,9 +110,6 @@ public class EnemyDrive : HoverCraftBase {
 			/*if(AInow == AIMode.ShortTermOverride) {
 				Debug.Log("AI " + name + " is temporarily deviating from following track");
 			}*/
-
-
-			// FollowNextWaypoint();    //function is called in Tick (higher freq than AIbehavior updates)
 
 
 			yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
@@ -223,19 +221,15 @@ public class EnemyDrive : HoverCraftBase {
 	}
 	
 	Vector3 FollowNextWaypoint()
-	{ //changing method to instead return a Waypoint
-		if (myWaypoint == -1 || // no waypoints were found in level
-			AInow != AIMode.FollowTrack) { // some other behavior is overriding control
+	{ // returns a Waypoint
+		if(myWaypoint == -1 || // no waypoints were found in level
+		    AInow != AIMode.FollowTrack) { // some other behavior is overriding control
 			return Vector3.zero; 
 		}
 
 		Vector3 gotoPoint = levelWayPointList[myWaypoint].position;
 
-		
-
-
-
-		// gotoPoint.z = transform.position.z; // hack to ignore height diff		//in the bowl, y is height. Is there a map where z is height?
+		gotoPoint.y = transform.position.y; // hack to ignore height diff (earlier was erroneously using .z)
 		float distTo = Vector3.Distance(transform.position, gotoPoint);
 		float closeEnoughToWaypoint = 100.0f;
 		if(distTo < closeEnoughToWaypoint) {
@@ -249,9 +243,12 @@ public class EnemyDrive : HoverCraftBase {
 			}
 		}
 		return gotoPoint;
-		/*
+	}
+
+	// currently only aims for waypoint in ordered track maps, but could also point to targeted craft, or generated destination
+	void SteerTowardPoint(Vector3 driveToPt) {
 		float turnAmt = AngleAroundAxis(transform.forward,
-			levelWayPointList[myWaypoint].position - transform.position,Vector3.up);
+			driveToPt - transform.position,Vector3.up);
 		float angDeltaForGentleTurn = 10.0f;
 		float angDeltaForSharpTurn = 30.0f;
 		float gentleTurn = 0.5f;
@@ -275,8 +272,7 @@ public class EnemyDrive : HoverCraftBase {
 			turnControl = 0.0f;
 			gasControl = 1.0f;
 		}
-		//ShowDebugLines(transform.position, levelWayPointList[myWaypoint].position, Color.red);
-		*/
+		ShowDebugLines(transform.position, levelWayPointList[myWaypoint].position, Color.cyan);
 	}
 	
 }

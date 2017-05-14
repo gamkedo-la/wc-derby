@@ -6,10 +6,13 @@ public class PlayerDrive : HoverCraftBase {
 	private float targetFOV = 60.0f;
 	private Vector3 camStartVect;
 
+	public static PlayerDrive instance;
+
 	//private uint turnLeftID;
 	//private uint turnRightID;
 
 	protected override void Init () {
+		instance = this;
 		if(useCarCollisionTuning) {
 			Vector3 camPosHigher = Camera.main.transform.localPosition;
 			camPosHigher.y *= 1.3f;
