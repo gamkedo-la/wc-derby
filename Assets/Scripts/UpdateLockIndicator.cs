@@ -13,6 +13,9 @@ public class UpdateLockIndicator : MonoBehaviour {
 	void Awake () {
 		if(isPlayerSoUseUI) {
 			lockBox = GameObject.Find("RamLockIndicator").GetComponent<Image>();
+			if(lockBox) {
+				lockBox.enabled = false;
+			}
 			allEnemies = GameObject.Find("EnemySpawnerAndListMgmt").GetComponent<ScatterSpawn>();
 		} else {
 			allEnemies = GameObject.Find("PlayerSpawnerAndTargetLookup").GetComponent<ScatterSpawn>();

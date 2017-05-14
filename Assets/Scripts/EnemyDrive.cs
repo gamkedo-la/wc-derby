@@ -55,10 +55,13 @@ public class EnemyDrive : HoverCraftBase {
 
 		}
 
-		levelAIAvoidanceManager = GameObject.FindGameObjectWithTag("ObstacleList").GetComponent<LevelAISettings>();
-		obstacleSafetyThreshold = levelAIAvoidanceManager.AIdetectionRange;
-		if(levelAIAvoidanceManager) {
-			this.obstacles = levelAIAvoidanceManager.obstacles;
+		GameObject obstacleList = GameObject.FindGameObjectWithTag("ObstacleList");
+		if(obstacleList) {
+			levelAIAvoidanceManager = obstacleList.GetComponent<LevelAISettings>();
+			if(levelAIAvoidanceManager) {
+				obstacleSafetyThreshold = levelAIAvoidanceManager.AIdetectionRange;
+				this.obstacles = levelAIAvoidanceManager.obstacles;
+			}
 		}
 		StartCoroutine(AIbehavior());
 	}
