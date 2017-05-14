@@ -23,6 +23,10 @@ public class EnemyDrive : HoverCraftBase {
 	private static WayPointManager waypointManager;
 	private int myWaypoint = -1;
 
+	private bool isAttackingPlayer = false;
+
+	private float attackSightRange = 300.0f;
+
 	private static int uniqueID = 0; // just to number at time of spawn for easier identification
 
 	protected override void Init() {
@@ -69,7 +73,9 @@ public class EnemyDrive : HoverCraftBase {
 
 	protected override void Tick()
 	{
-		if(waypointManager.isOrdered) {
+		if(isAttackingPlayer && PlayerDrive.instance) {
+			SteerTowardPoint(PlayerDrive.instance.transform.position);
+		} else if(waypointManager.isOrdered) {
 			SteerTowardPoint(levelWayPointList[myWaypoint].position);
 		}
 	}
@@ -99,7 +105,19 @@ public class EnemyDrive : HoverCraftBase {
 			ShowDebugLines(transform.position, safetyPoint, Color.blue);
 			ShowDebugLines(transform.position, (transform.position + pathToSteerToward), Color.green);
 
+			if(levelAIAvoidanceManager == null && // level doesn't have obstacles defined (currently hilly level)
+				isAttackingPlayer == false && // enemy isn't already attacking player
+				PlayerDrive.instance) { // player exists
 
+				RaycastHit rhInfo;
+				Vector3 vectorToPlayer = PlayerDrive.instance.transform.position - transform.position;
+				if(vectorToPlayer.magnitude < attackSightRange) {
+					Ray hereToPlayer = new Ray(transform.position, vectorToPlayer);
+					if(Physics.Raycast(hereToPlayer, out rhInfo, ignoreVehicleLayerMask) == false) { // unobstructed
+						isAttackingPlayer = true;
+					}
+				}
+			}
 			
 			if (transform.InverseTransformPoint(safetyPoint).x < -0.5f) { turnControl = turnControl - 1f; }
 			if (transform.InverseTransformPoint(safetyPoint).x > 0.5f) { turnControl = turnControl + 1f; }
