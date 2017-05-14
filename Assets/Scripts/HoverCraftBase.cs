@@ -27,6 +27,7 @@ public class HoverCraftBase : MonoBehaviour {
 
 	private float percHookOut = 0.0f;
 
+	protected int maxHealth = 3;
 	public int health = 3;
 
 	LineRenderer cableHook;
@@ -80,7 +81,7 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 
 		momentum = Vector3.zero;
-		ignoreVehicleLayerMask = ~LayerMask.GetMask("Player","Enemy","Obstacle");
+		ignoreVehicleLayerMask = ~LayerMask.GetMask("Player","Enemy","Obstacle","Item");
 
 		if(useCarCollisionTuning) {
 			shipScale = 20.0f;
@@ -313,35 +314,45 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 	}
 
+	protected void ChangeHealth(int healthChange) {
+		health += healthChange;
+		if(health > maxHealth) {
+			health = maxHealth;
+		}
+		if(health < 0) {
+			health = 0;
+		}
+		UpdateModelBasedOnHealth();
+	}
+
+	private void UpdateModelBasedOnHealth() {
+		Transform modelTransform = GetComponentInChildren<Animator>().transform;
+
+		modelTransform.Find("body__Back_Panel").gameObject.SetActive(health>2);
+		modelTransform.Find("Gamkedo_Logo_top").gameObject.SetActive(health>2);
+		modelTransform.Find("body__Top_Panel").gameObject.SetActive(health>2);
+		modelTransform.Find("body__Right_Panel_x").gameObject.SetActive(health>2);
+		modelTransform.Find("body__Left_Panel_x").gameObject.SetActive(health>2);
+		modelTransform.Find("body__front_vent").gameObject.SetActive(health>2);
+		damage_smoke.SetActive(health<3); // unhide the smoke particle system
+
+		modelTransform.Find("blade").gameObject.SetActive(health>1);
+		modelTransform.Find("body__rear_vent").gameObject.SetActive(health>1);
+		modelTransform.Find("spring_left").gameObject.SetActive(health>1);
+		modelTransform.Find("spring_right").gameObject.SetActive(health>1);
+
+		if(health < 1) {
+			gameObject.SendMessage("Destruction");
+		}
+	}
+
 	void OnCollisionEnter(Collision collInfo) {
 		HoverCraftBase hcbScript = collInfo.collider.GetComponentInParent<HoverCraftBase>();
 		if(hcbScript) {
 			float otherSpeed = hcbScript.totalActualSpeedNow;
 			float selfSpeed = totalActualSpeedNow;
 			if(selfSpeed > otherSpeed) {
-				hcbScript.health--;
-				Transform modelTransform = hcbScript.GetComponentInChildren<Animator>().transform;
-				switch(hcbScript.health) {
-				case 2:
-					modelTransform.Find("body__Back_Panel").gameObject.SetActive(false);
-					modelTransform.Find("Gamkedo_Logo_top").gameObject.SetActive(false);
-					modelTransform.Find("body__Top_Panel").gameObject.SetActive(false);
-					modelTransform.Find("body__Right_Panel_x").gameObject.SetActive(false);
-					modelTransform.Find("body__Left_Panel_x").gameObject.SetActive(false);
-					modelTransform.Find("body__front_vent").gameObject.SetActive(false);
-					damage_smoke.SetActive(true); // unhide the smoke particle system
-					break;
-				case 1:
-					modelTransform.Find("blade").gameObject.SetActive(false);
-					modelTransform.Find("body__rear_vent").gameObject.SetActive(false);
-					modelTransform.Find("spring_left").gameObject.SetActive(false);
-					modelTransform.Find("spring_right").gameObject.SetActive(false);
-					break;
-				case 0:
-				default:
-					hcbScript.gameObject.SendMessage("Destruction");
-					break;
-				}
+				hcbScript.ChangeHealth(-1);
 				Vector3 pushVect = hcbScript.bodyToTilt.transform.position -
 					bodyToTilt.transform.position;
 				float bangBackPowerWinner = 10.0f;

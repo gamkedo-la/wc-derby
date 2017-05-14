@@ -36,7 +36,7 @@ public class ScatterSpawn : MonoBehaviour {
 				Quaternion.AngleAxis(randAng*Mathf.Rad2Deg+180.0f,Vector3.up)); // point inward at first
 			spawnedList.Add(nextSpawned);
 
-			if(playerRadarPt == null) {
+			if(playerRadarPt == null && prefabRadar != null) {
 				GameObject nextRadarPt = GameObject.Instantiate(prefabRadar);
 				nextRadarPt.transform.SetParent(radarArea.transform);
 				allRadarPt.Add(nextRadarPt.GetComponent<Image>());

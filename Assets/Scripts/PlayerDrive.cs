@@ -76,5 +76,11 @@ public class PlayerDrive : HoverCraftBase {
 		AkSoundEngine.SetRTPCValue ("Player_Tilt", tiltAmt);
 	}
 
+	void OnTriggerEnter(Collider whichColl) {
+		if(whichColl.gameObject.layer == LayerMask.NameToLayer("Item") && health<maxHealth) { 
+			ChangeHealth(maxHealth);
+			Destroy(whichColl.gameObject);
+		}
+	}
 }
 // AkSoundEngine.SetRTPCValue ("Player_Tilt", Input.GetAxis("Vertical"));
