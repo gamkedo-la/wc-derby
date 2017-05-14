@@ -40,6 +40,8 @@ public class ScatterSpawn : MonoBehaviour {
 				GameObject nextRadarPt = GameObject.Instantiate(prefabRadar);
 				nextRadarPt.transform.SetParent(radarArea.transform);
 				allRadarPt.Add(nextRadarPt.GetComponent<Image>());
+
+				PlayerDrive.instance = nextSpawned.GetComponent<PlayerDrive>();
 			}
 		}
 	}

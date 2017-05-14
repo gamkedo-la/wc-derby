@@ -29,11 +29,17 @@ public class EnemyDrive : HoverCraftBase {
 
 	private static int uniqueID = 0; // just to number at time of spawn for easier identification
 
+	public static void ResetStatics() {
+		levelWayPointList = null;
+		waypointManager = null;
+		uniqueID = 0;
+	}
+
 	protected override void Init() {
 		
 		name = "Enemy#" + (uniqueID++);
 		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
-		if (waypointMaster && levelWayPointList == null) {
+		if (waypointMaster && waypointManager == null) {
 			waypointManager = waypointMaster.GetComponent<WayPointManager>();
 			levelWayPointList = new List<Transform>();
 			for (int i = 0; i < waypointMaster.transform.childCount; i++) {
@@ -42,12 +48,12 @@ public class EnemyDrive : HoverCraftBase {
 			}
 		}
 
-		if (levelWayPointList != null) {
+		if(levelWayPointList != null) {
 			myWaypoint = Random.Range(0, levelWayPointList.Count);
 			int nextWP = myWaypoint + 1;
-			if (waypointManager.isOrdered == false) {
+			if(waypointManager.isOrdered == false) {
 				nextWP = Random.Range(0, levelWayPointList.Count);
-			} else if (nextWP >= levelWayPointList.Count) {
+			} else if(nextWP >= levelWayPointList.Count) {
 				nextWP = 0;
 			}
 			// start ship at random spot between nearest waypoint and next (reduce collisions)
@@ -56,7 +62,8 @@ public class EnemyDrive : HoverCraftBase {
 			// and point toward the next waypoint
 			transform.LookAt(levelWayPointList[nextWP].position);
 			myWaypoint = nextWP;
-
+		} else {
+			myWaypoint = -1;
 		}
 
 		GameObject obstacleList = GameObject.FindGameObjectWithTag("ObstacleList");
@@ -66,7 +73,13 @@ public class EnemyDrive : HoverCraftBase {
 				obstacleSafetyThreshold = levelAIAvoidanceManager.AIdetectionRange;
 				this.obstacles = levelAIAvoidanceManager.obstacles;
 			}
+		} else {
+			levelAIAvoidanceManager = null;
+			this.obstacles = null;
 		}
+
+		isAttackingPlayer = false;
+
 		StartCoroutine(AIbehavior());
 	}
 
@@ -75,7 +88,7 @@ public class EnemyDrive : HoverCraftBase {
 	{
 		if(isAttackingPlayer && PlayerDrive.instance) {
 			SteerTowardPoint(PlayerDrive.instance.transform.position);
-		} else if(waypointManager.isOrdered) {
+		} else if(waypointManager && waypointManager.isOrdered) {
 			SteerTowardPoint(levelWayPointList[myWaypoint].position);
 		}
 	}
@@ -241,7 +254,8 @@ public class EnemyDrive : HoverCraftBase {
 	Vector3 FollowNextWaypoint()
 	{ // returns a Waypoint
 		if(myWaypoint == -1 || // no waypoints were found in level
-		    AInow != AIMode.FollowTrack) { // some other behavior is overriding control
+			AInow != AIMode.FollowTrack || // some other behavior is overriding control
+			levelWayPointList == null) { // no waypoints defined  
 			return Vector3.zero; 
 		}
 
@@ -290,7 +304,7 @@ public class EnemyDrive : HoverCraftBase {
 			turnControl = 0.0f;
 			gasControl = 1.0f;
 		}
-		ShowDebugLines(transform.position, levelWayPointList[myWaypoint].position, Color.cyan);
+		ShowDebugLines(transform.position, driveToPt, Color.cyan);
 	}
 	
 }
