@@ -35,6 +35,10 @@
 					<ShortName>2 3-Audio-1-12.wav</ShortName>
 					<Path>SFX\2 3-Audio-1-12_9E69E797.wem</Path>
 				</File>
+				<File Id="125253258" Language="SFX">
+					<ShortName>SWEEP.wav</ShortName>
+					<Path>SFX\SWEEP_9E69E797.wem</Path>
+				</File>
 				<File Id="200028342" Language="SFX">
 					<ShortName>ground hit 2.wav</ShortName>
 					<Path>SFX\ground hit 2_9E69E797.wem</Path>

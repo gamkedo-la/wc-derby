@@ -30,6 +30,7 @@ Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	99445994	2 3-Audio-1-12	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-12_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-12		166820
+	125253258	SWEEP	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\SWEEP_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Turn Right\SWEEP		75864
 	200028342	ground hit 2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\ground hit 2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDestroy\ground hit 2		1829216
 	239276578	2 3-Audio-1-14	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-14_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-14		493692
 	243466131	2 3-Audio-1-15	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-15_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-15		214180
