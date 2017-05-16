@@ -13,6 +13,9 @@ public class EnemyDrive : HoverCraftBase {
 	private Transform[] obstacles;
 	private LevelAISettings levelAIAvoidanceManager;
 	private float randomTurningDecisionMaker = 1f;
+	[SerializeField] private GameObject headlights;  //assigned in inspector
+
+
 	public enum AIMode
 	{
 		FollowTrack,
@@ -92,6 +95,9 @@ public class EnemyDrive : HoverCraftBase {
 		} else if(waypointManager && waypointManager.isOrdered) {
 			SteerTowardPoint(levelWayPointList[myWaypoint].position);
 		}
+
+		
+		
 	}
 
 	void OnTriggerEnter(Collider collInfo) {
@@ -99,6 +105,14 @@ public class EnemyDrive : HoverCraftBase {
 		if (hcbScript) {
 			sprintRamming = true; // brief! will be overridden/forgotten on next AI update in 0.2-0.5 sec
 								  // Debug.Log(name + " attempting to ram " + collInfo.name);
+		}
+	}
+
+	void ShineHeadlights (bool headlightStatus)
+	{
+		if (headlights && headlights.activeSelf != headlightStatus)
+		{
+			headlights.SetActive(headlightStatus);
 		}
 	}
 
@@ -131,6 +145,7 @@ public class EnemyDrive : HoverCraftBase {
 						isAttackingPlayer = true;
 					}
 				}
+				
 			}
 
 			float rightTurnAmount = Vector3.Angle(pathToSteerToward, transform.forward);
@@ -141,13 +156,13 @@ public class EnemyDrive : HoverCraftBase {
 			if (pathToSteerToward.x > 0.001f) { turnControl = turnControl + rightTurnAmount; }
 			if (pathIsClear == false && turnControl < 0.001f && pathToSteerToward.z < 0) { turnControl = randomTurningDecisionMaker; }
 			if (pathIsClear == false && pathToSteerToward.z < 0) { gasControl = 0.1f; } else { gasControl = 1f; }
-			
+
+			ShineHeadlights(isAttackingPlayer);
 
 
 
 
 
-			
 			/*if(AInow == AIMode.ShortTermOverride) {
 				Debug.Log("AI " + name + " is temporarily deviating from following track");
 			}*/
