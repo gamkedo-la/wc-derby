@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyDrive : HoverCraftBase {
 
+	private const float maxHandlingTurnAngle = 80f;
 	private bool pathIsClear = true;
 	private bool showLinesInSceneView = true;
 	private float obstacleSafetyThreshold;
@@ -131,12 +132,21 @@ public class EnemyDrive : HoverCraftBase {
 					}
 				}
 			}
+
+			float rightTurnAmount = Vector3.Angle(pathToSteerToward, transform.forward);
+			rightTurnAmount = rightTurnAmount / 80;
+			rightTurnAmount = Mathf.Clamp(rightTurnAmount, 0, maxHandlingTurnAngle);
+			float leftTurnAmount = -rightTurnAmount;
+			if (pathToSteerToward.x < -0.001f) { turnControl = turnControl - leftTurnAmount; }
+			if (pathToSteerToward.x > 0.001f) { turnControl = turnControl + rightTurnAmount; }
+			if (pathIsClear == false && turnControl < 0.001f && pathToSteerToward.z < 0) { turnControl = randomTurningDecisionMaker; }
+			if (pathIsClear == false && pathToSteerToward.z < 0) { gasControl = 0.1f; } else { gasControl = 1f; }
 			
-			if (transform.InverseTransformPoint(safetyPoint).x < -0.5f) { turnControl = turnControl - 1f; }
-			if (transform.InverseTransformPoint(safetyPoint).x > 0.5f) { turnControl = turnControl + 1f; }
-			if (pathIsClear == false && turnControl < 0.1f && transform.InverseTransformPoint(safetyPoint).z < 0) { turnControl = randomTurningDecisionMaker; }
-			if (pathIsClear == false && transform.InverseTransformPoint(safetyPoint).z < 0) { gasControl = 0.1f;} else { gasControl = 1f; }
-			
+
+
+
+
+
 			
 			/*if(AInow == AIMode.ShortTermOverride) {
 				Debug.Log("AI " + name + " is temporarily deviating from following track");
