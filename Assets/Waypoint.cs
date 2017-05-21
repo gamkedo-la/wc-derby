@@ -10,8 +10,15 @@ public class Waypoint : MonoBehaviour {
 		return next[ Random.Range(0,next.Length) ];
 	}
 
+	// -1.0f is left side of track, 1.0f is right side of track
+	public Vector3 trackPtForOffset(float offsetHere) {
+		Vector3 trackPerpLine = transform.right;
+		float trackWidthHere = transform.localScale.x;
+		return transform.position + 0.5f * trackPerpLine * trackWidthHere * offsetHere;
+	}
+
 	[DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
-	static void DrawGizmoForMyScript(Waypoint obj, GizmoType gizmoType)
+	static void DrawGizmoForWaypoint(Waypoint obj, GizmoType gizmoType)
 	{
 		Vector3 position = obj.transform.position;
 
@@ -24,23 +31,19 @@ public class Waypoint : MonoBehaviour {
 			Gizmos.color = Color.green;
 			for(int i = 0; i < obj.next.Length; i++) {
 				Gizmos.DrawLine(position, obj.next[i].transform.position);
-				//Vector3 barDim = Vector3.one * 40.0f;
-				//Gizmos.DrawCube(transform.position, barDim);
 			}
 
-			float trackWidthHere = obj.transform.localScale.x;
-			Vector3 trackPerpLine = obj.transform.right;
 			Gizmos.color = Color.yellow;
-			Gizmos.DrawLine(position, position+0.5f*trackPerpLine*trackWidthHere);
-			Gizmos.DrawLine(position, position-0.5f*trackPerpLine*trackWidthHere);
+			Vector3 trackRightEdge = obj.trackPtForOffset(1.0f);
+			Vector3 trackLeftEdge = obj.trackPtForOffset(-1.0f);
+			Gizmos.DrawLine(position, trackRightEdge);
+			Gizmos.DrawLine(position, trackLeftEdge);
 			for(int i=0;i<obj.next.Length;i++) {
-				Vector3 nextPos = obj.next[i].transform.position;
-				float nextWidthHere = obj.next[i].transform.localScale.x;
-				Vector3 nextPerpLine = obj.next[i].transform.right;
+				Waypoint nextWP = obj.next[i];
 
 				Gizmos.color = Color.cyan;
-				Gizmos.DrawLine(nextPos+0.5f*nextPerpLine*nextWidthHere, position+0.5f*trackPerpLine*trackWidthHere);
-				Gizmos.DrawLine(nextPos-0.5f*nextPerpLine*nextWidthHere, position-0.5f*trackPerpLine*trackWidthHere);
+				Gizmos.DrawLine(nextWP.trackPtForOffset(1.0f), trackRightEdge);
+				Gizmos.DrawLine(nextWP.trackPtForOffset(-1.0f), trackLeftEdge);
 			}
 		}
 

@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEditor;
 
 public class EnemyDrive : HoverCraftBase {
 
@@ -15,6 +14,9 @@ public class EnemyDrive : HoverCraftBase {
 	private float randomTurningDecisionMaker = 1f;
 	[SerializeField] private GameObject headlights;  //assigned in inspector
 
+	private float myTrackLaneOffset = 0.0f;
+	private float percLeftToNextWP = 1.0f;
+	private float totalDistToNextWP = 0.0f;
 
 	public enum AIMode
 	{
@@ -26,6 +28,8 @@ public class EnemyDrive : HoverCraftBase {
 	private static List<Transform> levelWayPointList;
 	private static WayPointManager waypointManager;
 	private Waypoint myWaypoint = null;
+	private Vector3 prevWPTrackLeft;
+	private Vector3 prevWPTrackRight;
 
 	private bool isAttackingPlayer = false;
 
@@ -39,8 +43,11 @@ public class EnemyDrive : HoverCraftBase {
 		uniqueID = 0;
 	}
 
+	void randomizeTrackLaneOffset() {
+		myTrackLaneOffset = Random.Range(-1.0f,1.0f);
+	}
+
 	protected override void Init() {
-		
 		name = "Enemy#" + (uniqueID++);
 		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
 		if (waypointMaster && waypointManager == null) {
@@ -64,7 +71,13 @@ public class EnemyDrive : HoverCraftBase {
 				Vector3.Lerp(myWaypoint.transform.position,
 					nextWP.transform.position, Random.Range(0.0f, 1.0f));
 			transform.LookAt(nextWP.transform.position);
+			randomizeTrackLaneOffset();
+			prevWPTrackLeft = myWaypoint.trackPtForOffset(-1.0f);
+			prevWPTrackRight = myWaypoint.trackPtForOffset(1.0f);
+			totalDistToNextWP = Vector3.Distance(nextWP.trackPtForOffset(myTrackLaneOffset),
+													myWaypoint.trackPtForOffset(myTrackLaneOffset));
 			myWaypoint = nextWP;
+			percLeftToNextWP = 1.0f;
 		} else {
 			myWaypoint = null;
 		}
@@ -92,7 +105,27 @@ public class EnemyDrive : HoverCraftBase {
 		if(isAttackingPlayer && PlayerDrive.instance) {
 			SteerTowardPoint(PlayerDrive.instance.transform.position);
 		} else if(waypointManager && waypointManager.isOrdered) {
-			SteerTowardPoint(myWaypoint.transform.position);
+			SteerTowardPoint(myWaypoint.trackPtForOffset(myTrackLaneOffset));
+
+			// override if going outside track
+			if(waypointManager.enforceTrackWalls) {
+				Vector3 nextWPTrackLeft = myWaypoint.trackPtForOffset(-1.0f);
+				Vector3 nextWPTrackRight = myWaypoint.trackPtForOffset(1.0f);
+
+				Vector3 positionLeft = Vector3.Lerp(nextWPTrackLeft, prevWPTrackLeft, percLeftToNextWP);
+				Vector3 positionRight = Vector3.Lerp(nextWPTrackRight, prevWPTrackRight, percLeftToNextWP);
+
+				float angleFromLeftEdge = AngleAroundAxis(transform.position - prevWPTrackLeft,
+					nextWPTrackLeft - prevWPTrackLeft,Vector3.up);
+				if(angleFromLeftEdge > 0.0f) {
+					SteerTowardPoint(positionLeft);
+				}
+				float angleFromRightEdge = AngleAroundAxis(transform.position - prevWPTrackRight,
+					nextWPTrackRight - prevWPTrackRight,Vector3.up);
+				if(angleFromRightEdge < 0.0f) {
+					SteerTowardPoint(positionRight);
+				}				
+			}
 		}
 
 		
@@ -157,10 +190,6 @@ public class EnemyDrive : HoverCraftBase {
 			if (pathIsClear == false && pathToSteerToward.z < 0) { gasControl = 0.1f; } else { gasControl = 1f; }
 
 			ShineHeadlights(isAttackingPlayer);
-
-
-
-
 
 			/*if(AInow == AIMode.ShortTermOverride) {
 				Debug.Log("AI " + name + " is temporarily deviating from following track");
@@ -274,6 +303,28 @@ public class EnemyDrive : HoverCraftBase {
 		float angle = Vector3.Angle(dirA, dirB);
 		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
 	}
+
+	/*
+	[DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
+	static void DrawGizmoForEnemyDrive(EnemyDrive obj, GizmoType gizmoType)
+	{
+		Vector3 nextWPTrackLeft = obj.myWaypoint.trackPtForOffset(-1.0f);
+		Vector3 nextWPTrackRight = obj.myWaypoint.trackPtForOffset(1.0f);
+
+		Vector3 positionLeft = Vector3.Lerp(nextWPTrackLeft, obj.prevWPTrackLeft, obj.percLeftToNextWP);
+		Vector3 positionRight = Vector3.Lerp(nextWPTrackRight, obj.prevWPTrackRight, obj.percLeftToNextWP);
+
+		Vector3 barDim = Vector3.one * 40.0f;
+		float angleFromLeftEdge = AngleAroundAxis(obj.transform.position - obj.prevWPTrackLeft,
+			nextWPTrackLeft - obj.prevWPTrackLeft,Vector3.up);
+		float angleFromRightEdge = AngleAroundAxis(obj.transform.position - obj.prevWPTrackRight,
+			nextWPTrackRight - obj.prevWPTrackRight,Vector3.up);
+		Debug.Log(Mathf.RoundToInt(angleFromLeftEdge) + " " + Mathf.RoundToInt(angleFromRightEdge));
+		Gizmos.color = (angleFromLeftEdge > 0.0f ? Color.red : Color.cyan);
+		Gizmos.DrawCube(positionLeft, barDim);
+		Gizmos.color = (angleFromRightEdge < 0.0f ? Color.red : Color.yellow);
+		Gizmos.DrawCube(positionRight, barDim);
+	}*/
 	
 	Vector3 FollowNextWaypoint()
 	{ // returns a Waypoint
@@ -283,18 +334,26 @@ public class EnemyDrive : HoverCraftBase {
 			return Vector3.zero; 
 		}
 
-		Vector3 gotoPoint = myWaypoint.transform.position;
+		Vector3 gotoPoint = myWaypoint.trackPtForOffset(myTrackLaneOffset);
 
 		gotoPoint.y = transform.position.y; // hack to ignore height diff (earlier was erroneously using .z)
 		float distTo = Vector3.Distance(transform.position, gotoPoint);
-		float closeEnoughToWaypoint = 100.0f;
+		float closeEnoughToWaypoint = 140.0f;
+		percLeftToNextWP = distTo / totalDistToNextWP;
+
 		if(distTo < closeEnoughToWaypoint) {
 			if(waypointManager.isOrdered == false) {
 				myWaypoint = levelWayPointList[Random.Range(0, levelWayPointList.Count)].GetComponent<Waypoint>();
 			} else {
+				prevWPTrackLeft = myWaypoint.trackPtForOffset(-1.0f);
+				prevWPTrackRight = myWaypoint.trackPtForOffset(1.0f);
 				myWaypoint = myWaypoint.randNext();
+				randomizeTrackLaneOffset();
+				totalDistToNextWP = Vector3.Distance(transform.position, myWaypoint.trackPtForOffset(myTrackLaneOffset));
+				percLeftToNextWP = 1.0f;
 			}
 		}
+
 		return gotoPoint;
 	}
 

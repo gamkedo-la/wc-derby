@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class WayPointManager : MonoBehaviour {
 	public bool isOrdered = true;
+	public bool enforceTrackWalls = false;
 }
