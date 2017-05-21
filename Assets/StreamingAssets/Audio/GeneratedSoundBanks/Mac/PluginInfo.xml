@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginInfo Project="wc-derby_WwiseProject" Platform="Mac" BasePlatform="Mac">
+	<Plugins>
+		<Plugin Name="Wwise Tone Generator" ID="6684674" DLL="ToneGen"/>
+		<Plugin Name="Wwise Parametric EQ" ID="6881283" DLL="ParametricEQ"/>
+		<Plugin Name="Wwise Compressor" ID="7077891" DLL="AkCompressor"/>
+		<Plugin Name="Wwise Peak Limiter" ID="7208963" DLL="AkPeakLimiter"/>
+		<Plugin Name="Wwise Guitar Distortion" ID="8257539" DLL="AkGuitarDistortion"/>
+		<Plugin Name="Wwise Pitch Shifter" ID="8912899" DLL="AkPitchShifter"/>
+		<Plugin Name="Wwise Harmonizer" ID="9043971" DLL="AkHarmonizer"/>
+		<Plugin Name="Wwise Gain" ID="9109507" DLL="AkGain"/>
+	</Plugins>
+</PluginInfo>
