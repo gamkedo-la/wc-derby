@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour {
 	void ResetStaticsAndLoadScene(int sceneIndex) {
 		EnemyDrive.ResetStatics();
+		HoverCraftBase.ResetStatic();
 		SceneManager.LoadScene(sceneIndex);
 	}
 	void Update () {

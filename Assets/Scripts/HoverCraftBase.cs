@@ -58,6 +58,10 @@ public class HoverCraftBase : MonoBehaviour {
 		Debug.Log( gameObject.name + " is missing a Tick override" );
 	}
 
+	public static void ResetStatic() {
+		domeRadius = 0.0f;
+	}
+
 	// Use this for initialization
 	void Start () {
 		if(snowPuffPfxPrefab == null) {
