@@ -28,6 +28,13 @@ public class PlayerDrive : HoverCraftBase {
 	}
 
 	protected override void Tick () {
+		if(Input.GetKey(KeyCode.C)) {
+			Camera.main.fieldOfView = 77.0f;
+			Camera.main.transform.position = domeCenter + Vector3.up * domeRadius*1.3f;
+			Camera.main.transform.LookAt(domeCenter);
+			return;
+		}
+
 		if(Input.GetKeyDown(KeyCode.Space)) {
 			sprintRamming = !sprintRamming;
 			targetFOV = ((useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ? 77.0f : 60.0f);
