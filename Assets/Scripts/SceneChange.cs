@@ -18,5 +18,8 @@ public class SceneChange : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
 			ResetStaticsAndLoadScene(2);
 		}
+		if(Input.GetKeyDown(KeyCode.Alpha4)) {
+			ResetStaticsAndLoadScene(3);
+		}
 	}
 }
