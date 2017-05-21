@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpinTrap : MonoBehaviour {
+	public Vector3 spinAxis = Vector3.forward;
+	public float spinRate = -600.0f;
 	void Update () {
-		transform.Rotate(Vector3.forward, Time.deltaTime * -600.0f);
+		transform.Rotate(spinAxis, Time.deltaTime * spinRate);
 	}
 }

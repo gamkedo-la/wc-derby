@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEditor;
 
 public class Waypoint : MonoBehaviour {
-	public Transform[] next;
+	public Waypoint[] next;
 
-	void OnDrawGizmosSelected() {
+	public Waypoint randNext() {
+		return next[ Random.Range(0,next.Length) ];
 	}
 
 	[DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
@@ -22,25 +23,25 @@ public class Waypoint : MonoBehaviour {
 		if(obj.next != null && obj.next.Length > 0) {
 			Gizmos.color = Color.green;
 			for(int i = 0; i < obj.next.Length; i++) {
-				Gizmos.DrawLine(position, obj.next[i].position);
+				Gizmos.DrawLine(position, obj.next[i].transform.position);
 				//Vector3 barDim = Vector3.one * 40.0f;
 				//Gizmos.DrawCube(transform.position, barDim);
 			}
-		}
 
-		float trackWidthHere = obj.transform.localScale.x;
-		Vector3 trackPerpLine = obj.transform.right;
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawLine(position, position+0.5f*trackPerpLine*trackWidthHere);
-		Gizmos.DrawLine(position, position-0.5f*trackPerpLine*trackWidthHere);
-		for(int i=0;i<obj.next.Length;i++) {
-			Vector3 nextPos = obj.next[i].position;
-			float nextWidthHere = obj.next[i].localScale.x;
-			Vector3 nextPerpLine = obj.next[i].right;
+			float trackWidthHere = obj.transform.localScale.x;
+			Vector3 trackPerpLine = obj.transform.right;
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawLine(position, position+0.5f*trackPerpLine*trackWidthHere);
+			Gizmos.DrawLine(position, position-0.5f*trackPerpLine*trackWidthHere);
+			for(int i=0;i<obj.next.Length;i++) {
+				Vector3 nextPos = obj.next[i].transform.position;
+				float nextWidthHere = obj.next[i].transform.localScale.x;
+				Vector3 nextPerpLine = obj.next[i].transform.right;
 
-			Gizmos.color = Color.cyan;
-			Gizmos.DrawLine(nextPos+0.5f*nextPerpLine*nextWidthHere, position+0.5f*trackPerpLine*trackWidthHere);
-			Gizmos.DrawLine(nextPos-0.5f*nextPerpLine*nextWidthHere, position-0.5f*trackPerpLine*trackWidthHere);
+				Gizmos.color = Color.cyan;
+				Gizmos.DrawLine(nextPos+0.5f*nextPerpLine*nextWidthHere, position+0.5f*trackPerpLine*trackWidthHere);
+				Gizmos.DrawLine(nextPos-0.5f*nextPerpLine*nextWidthHere, position-0.5f*trackPerpLine*trackWidthHere);
+			}
 		}
 
 	}

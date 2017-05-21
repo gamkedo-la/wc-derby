@@ -25,7 +25,7 @@ public class EnemyDrive : HoverCraftBase {
 
 	private static List<Transform> levelWayPointList;
 	private static WayPointManager waypointManager;
-	private int myWaypoint = -1;
+	private Waypoint myWaypoint = null;
 
 	private bool isAttackingPlayer = false;
 
@@ -53,21 +53,20 @@ public class EnemyDrive : HoverCraftBase {
 		}
 
 		if(levelWayPointList != null) {
-			myWaypoint = Random.Range(0, levelWayPointList.Count);
-			int nextWP = myWaypoint + 1;
+			int myWaypointIdx = Random.Range(0, levelWayPointList.Count);
+			myWaypoint = levelWayPointList[ myWaypointIdx ].GetComponent<Waypoint>();
+			Waypoint nextWP = myWaypoint.randNext();
 			if(waypointManager.isOrdered == false) {
-				nextWP = Random.Range(0, levelWayPointList.Count);
-			} else if(nextWP >= levelWayPointList.Count) {
-				nextWP = 0;
+				nextWP = levelWayPointList[ Random.Range(0, levelWayPointList.Count) ].GetComponent<Waypoint>();
 			}
-			// start ship at random spot between nearest waypoint and next (reduce collisions)
+			// start ship at random spot between nearest waypoint and next (reduce start collisions)
 			transform.position =
-				Vector3.Lerp(levelWayPointList[myWaypoint].position, levelWayPointList[nextWP].position, Random.Range(0.0f, 1.0f));
-			// and point toward the next waypoint
-			transform.LookAt(levelWayPointList[nextWP].position);
+				Vector3.Lerp(myWaypoint.transform.position,
+					nextWP.transform.position, Random.Range(0.0f, 1.0f));
+			transform.LookAt(nextWP.transform.position);
 			myWaypoint = nextWP;
 		} else {
-			myWaypoint = -1;
+			myWaypoint = null;
 		}
 
 		GameObject obstacleList = GameObject.FindGameObjectWithTag("ObstacleList");
@@ -93,7 +92,7 @@ public class EnemyDrive : HoverCraftBase {
 		if(isAttackingPlayer && PlayerDrive.instance) {
 			SteerTowardPoint(PlayerDrive.instance.transform.position);
 		} else if(waypointManager && waypointManager.isOrdered) {
-			SteerTowardPoint(levelWayPointList[myWaypoint].position);
+			SteerTowardPoint(myWaypoint.transform.position);
 		}
 
 		
@@ -121,7 +120,7 @@ public class EnemyDrive : HoverCraftBase {
 
 			// is there any track to try following? if so, default to try that
 			// (avoidance functions below can override this until next AI rethinking)
-			if (myWaypoint != -1) {
+			if (myWaypoint != null) {
 				AInow = AIMode.FollowTrack;
 			}
 			if (Random.Range(1, 6) == 1) { randomTurningDecisionMaker = randomTurningDecisionMaker * -1; }
@@ -278,25 +277,22 @@ public class EnemyDrive : HoverCraftBase {
 	
 	Vector3 FollowNextWaypoint()
 	{ // returns a Waypoint
-		if(myWaypoint == -1 || // no waypoints were found in level
+		if(myWaypoint == null || // no waypoints were found in level
 			AInow != AIMode.FollowTrack || // some other behavior is overriding control
 			levelWayPointList == null) { // no waypoints defined  
 			return Vector3.zero; 
 		}
 
-		Vector3 gotoPoint = levelWayPointList[myWaypoint].position;
+		Vector3 gotoPoint = myWaypoint.transform.position;
 
 		gotoPoint.y = transform.position.y; // hack to ignore height diff (earlier was erroneously using .z)
 		float distTo = Vector3.Distance(transform.position, gotoPoint);
 		float closeEnoughToWaypoint = 100.0f;
 		if(distTo < closeEnoughToWaypoint) {
 			if(waypointManager.isOrdered == false) {
-				myWaypoint = Random.Range(0, levelWayPointList.Count);
+				myWaypoint = levelWayPointList[Random.Range(0, levelWayPointList.Count)].GetComponent<Waypoint>();
 			} else {
-				myWaypoint++;
-				if(myWaypoint >= levelWayPointList.Count) {
-					myWaypoint = 0;
-				}
+				myWaypoint = myWaypoint.randNext();
 			}
 		}
 		return gotoPoint;
