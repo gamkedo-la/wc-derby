@@ -15,11 +15,55 @@
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
 					</ValueList>
 				</Property>
+				<Property Name="General\LatestLanguage" Type="int32" Value="12"/>
+				<Property Name="General\LatestPlatform" Type="string" Value="Mac"/>
+				<Property Name="GenerateSoundBanks\SelectedLanguages" Type="string" Value="DAAAAA=="/>
+				<Property Name="GenerateSoundBanks\SelectedPlatforms" Type="string" Value="UaPR0dyLtUKH6Cdf8vXWLFCUC8lX+TNPk/e3m/D13Fg="/>
+				<Property Name="GenerateSoundBanks\SelectedSoundBanks" Type="string" Value="SoXLMa732U6eXpt4PgF+2A=="/>
+				<Property Name="HardwareController\CurrentSession" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
+				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
+				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
+				<Property Name="Mixing Desk\LastSession" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
+				<Property Name="MonitoringManager\WatchMgr\GameSyncWatches" Type="string" Value=""/>
+				<Property Name="MonitoringManager\WatchMgr\Watches" Type="string" Value=""/>
+				<Property Name="MonitoringManager\WatchMgr\WatchesVersion" Type="int32" Value="5"/>
+				<Property Name="ProjectExplorer\Expanded_10_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_11_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_12_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_13_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_14_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_15_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_16_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_17_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_18_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_19_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_1_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_20_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_2_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_3_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_4_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_5_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_6_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_7_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_8_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
+				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
+				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{2388DAEA-9775-46C6-A2ED-C5222A397756}"/>
+				<Property Name="ProjectExplorer\FirstVisible_3_1" Type="string" Value="{A69BF0FC-D84A-487C-ABDD-56F71CB2A126}"/>
+				<Property Name="ProjectExplorer\FirstVisible_4_1" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
+				<Property Name="ProjectExplorer\FirstVisible_6_1" Type="string" Value="{C98E673F-A24C-48A8-960F-10565FFE70A0}"/>
+				<Property Name="ProjectExplorer\FirstVisible_8_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
+				<Property Name="RTPC\GameParameterSimValue\{5637C591-7E81-4968-95F4-1FAA6CB17C84}" Type="Real64" Value="0"/>
+				<Property Name="RTPC\GameParameterSimValue\{73F9AC3F-1949-4D0F-8A48-C43D8DBA5221}" Type="Real64" Value="0"/>
+				<Property Name="RTPC\GameParameterSimValue\{7A0D7056-FD4E-4C1B-9AEB-494A123CB00E}" Type="Real64" Value="50"/>
+				<Property Name="RTPC\GameParameterSimValue\{F814E01B-05D8-4C8C-A261-DB4B6594F66B}" Type="Real64" Value="0"/>
+				<Property Name="SoundBank Manager\Expand States" Type="string" Value=""/>
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks\"/>
+				<Property Name="SoundBankPathUserOverride" Type="bool" Value="True"/>
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
-						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
-						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
+						<Value Platform="Mac">..\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Mac\</Value>
+						<Value Platform="Windows">..\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdDescription" Type="string">
