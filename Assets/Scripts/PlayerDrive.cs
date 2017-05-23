@@ -84,9 +84,22 @@ public class PlayerDrive : HoverCraftBase {
 	}
 
 	void OnTriggerEnter(Collider whichColl) {
-		if(whichColl.gameObject.layer == LayerMask.NameToLayer("Item") && health<maxHealth) { 
-			ChangeHealth(maxHealth);
-			Destroy(whichColl.gameObject);
+		if(whichColl.gameObject.layer == LayerMask.NameToLayer("Item")) { 
+			ItemPickup ipScript = whichColl.gameObject.GetComponent<ItemPickup>();
+			switch(ipScript.powerupType) {
+			case ItemPickup.ItemKind.Health:
+				if(health < maxHealth) {
+					ChangeHealth(maxHealth);
+					Destroy(whichColl.gameObject);
+				}
+				break;
+			case ItemPickup.ItemKind.Shield:
+				if(hasShield == false) {
+					setShieldState(true);
+					Destroy(whichColl.gameObject);
+				}
+				break;
+			}
 		}
 	}
 }

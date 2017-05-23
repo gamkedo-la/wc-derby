@@ -9,6 +9,7 @@ public class HoverCraftBase : MonoBehaviour {
 	static protected float domeRadius = 0.0f;
 	Vector3 momentum;
 	public Transform bodyToTilt;
+	public GameObject shieldActiveMesh;
 
 	public Vector3 bangBackMomentum = Vector3.zero;
 
@@ -29,6 +30,7 @@ public class HoverCraftBase : MonoBehaviour {
 
 	protected int maxHealth = 3;
 	public int health = 3;
+	protected bool hasShield = false;
 
 	LineRenderer cableHook;
 
@@ -101,6 +103,8 @@ public class HoverCraftBase : MonoBehaviour {
 
 		damage_smoke = transform.Find("damage_smoke").gameObject;
 		damage_smoke.SetActive(false); // hide
+
+		setShieldState(hasShield);
 	}
 
 	float heightUnderMe(Vector3 atPos) {
@@ -350,13 +354,25 @@ public class HoverCraftBase : MonoBehaviour {
 		}
 	}
 
+	protected void setShieldState(bool setTo) {
+		hasShield = setTo;
+
+		if(shieldActiveMesh) {
+			shieldActiveMesh.SetActive(hasShield);
+		}
+	}
+
 	void OnCollisionEnter(Collision collInfo) {
 		HoverCraftBase hcbScript = collInfo.collider.GetComponentInParent<HoverCraftBase>();
 		if(hcbScript) {
 			float otherSpeed = hcbScript.totalActualSpeedNow;
 			float selfSpeed = totalActualSpeedNow;
 			if(selfSpeed > otherSpeed) {
-				hcbScript.ChangeHealth(-1);
+				if(hcbScript.hasShield) {
+					hcbScript.setShieldState(false);
+				} else {
+					hcbScript.ChangeHealth(-1);
+				}
 				Vector3 pushVect = hcbScript.bodyToTilt.transform.position -
 					bodyToTilt.transform.position;
 				float bangBackPowerWinner = 10.0f;
