@@ -9,7 +9,7 @@ public class WayPointEditor : MonoBehaviour {
 	{
 		Vector3 position = obj.transform.position;
 
-		Vector3 barDim = Vector3.one * 40.0f;
+		Vector3 barDim = Vector3.one * 20.0f;
 		Gizmos.color = Color.red;
 		Gizmos.DrawCube(position, barDim);
 		barDim = Vector3.one * 40.0f;
@@ -18,6 +18,7 @@ public class WayPointEditor : MonoBehaviour {
 			Gizmos.color = Color.green;
 			for(int i = 0; i < obj.next.Length; i++) {
 				Gizmos.DrawLine(position, obj.next[i].transform.position);
+				Gizmos.DrawCube(Vector3.Lerp(position, obj.next[i].transform.position,0.05f), barDim*0.25f);
 			}
 
 			Gizmos.color = Color.yellow;
