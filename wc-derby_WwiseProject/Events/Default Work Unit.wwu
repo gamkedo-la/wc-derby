@@ -105,6 +105,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Shield" ID="{6AB1C072-CC22-4B82-8025-C6FEF1E99BAD}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

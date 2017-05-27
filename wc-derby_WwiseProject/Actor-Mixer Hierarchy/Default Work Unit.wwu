@@ -1177,6 +1177,48 @@
 						<Position Name="" ID="{CBEF10FE-DCD4-4A56-A3E4-EB20BCB10612}"/>
 					</PositioningInfo>
 				</BlendContainer>
+				<BlendContainer Name="Shield" ID="{93DCA231-C873-4CB6-A098-013A24B87EDC}" ShortID="15479689">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Metal Drones 01" ID="{080789F2-7B05-4435-9D3C-3D3EAB86BFD1}" ShortID="953216734" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-11</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Metal Drones 01" ID="{09D0D8DB-F51A-4C4B-B1E8-10FE44AC6435}" ShortID="680338062">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="6.19642857142855"/>
+										<Property Name="TrimEnd" Type="Real64" Value="9.32142857142854"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Metal Drones 01.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Metal Drones 01" ID="{09D0D8DB-F51A-4C4B-B1E8-10FE44AC6435}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</BlendContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
