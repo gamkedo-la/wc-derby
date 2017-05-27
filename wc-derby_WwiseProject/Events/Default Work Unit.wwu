@@ -106,6 +106,7 @@
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_Shield" ID="{6AB1C072-CC22-4B82-8025-C6FEF1E99BAD}"/>
+				<Event Name="Play_MenuMusic" ID="{05F188DF-C28B-4454-8B40-2DB318C9DCFF}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
