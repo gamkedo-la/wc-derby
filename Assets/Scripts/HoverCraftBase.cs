@@ -53,11 +53,24 @@ public class HoverCraftBase : MonoBehaviour {
 	protected float ramBoostMult = 3.0f;
 	public float totalActualSpeedNow = 0.0f;
 
+	// waypoint info (used by player if constrained to track)
+	public static List<Transform> levelWayPointList;
+	public static WayPointManager waypointManager;
+	protected Waypoint prevWaypoint = null;
+	protected Waypoint myWaypoint = null;
+	protected float myTrackLaneOffset = 0.0f;
+	protected float percLeftToNextWP = 1.0f;
+	protected float totalDistToNextWP = 0.0f;
+
 	protected virtual void Init() {
 		Debug.Log( gameObject.name + " is missing an Init override" );
 	}
 	protected virtual void Tick() {
 		Debug.Log( gameObject.name + " is missing a Tick override" );
+	}
+
+	protected void randomizeTrackLaneOffset() {
+		myTrackLaneOffset = Random.Range(-1.0f,1.0f);
 	}
 
 	public static void ResetStatic() {
@@ -93,8 +106,41 @@ public class HoverCraftBase : MonoBehaviour {
 			shipScale = 20.0f;
 		}
 
-		Init();
 		transform.localScale *= shipScale;
+
+		Init();
+
+		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
+		if (waypointMaster && waypointManager == null) {
+			waypointManager = waypointMaster.GetComponent<WayPointManager>();
+			levelWayPointList = new List<Transform>();
+			for (int i = 0; i < waypointMaster.transform.childCount; i++) {
+				Transform wpTransform = waypointMaster.transform.GetChild(i);
+				levelWayPointList.Add(wpTransform);
+			}
+		}
+
+		if(levelWayPointList != null) {
+			int myWaypointIdx = Random.Range(0, levelWayPointList.Count);
+			myWaypoint = levelWayPointList[ myWaypointIdx ].GetComponent<Waypoint>();
+			Waypoint nextWP = myWaypoint.randNext();
+			if(waypointManager.isOrdered == false) {
+				nextWP = levelWayPointList[ Random.Range(0, levelWayPointList.Count) ].GetComponent<Waypoint>();
+			}
+			// start ship at random spot between nearest waypoint and next (reduce start collisions)
+			transform.position =
+				Vector3.Lerp(myWaypoint.transform.position,
+					nextWP.transform.position, Random.Range(0.0f, 1.0f));
+			transform.LookAt(nextWP.transform.position);
+			randomizeTrackLaneOffset();
+			totalDistToNextWP = Vector3.Distance(nextWP.trackPtForOffset(myTrackLaneOffset),
+				myWaypoint.trackPtForOffset(myTrackLaneOffset));
+			prevWaypoint = myWaypoint;
+			myWaypoint = nextWP;
+			percLeftToNextWP = 1.0f;
+		} else {
+			myWaypoint = null;
+		}
 
 		Light[] glowBulbs = GetComponentsInChildren<Light>();
 		for(int i = 0; i < glowBulbs.Length; i++) {
@@ -401,4 +447,13 @@ public class HoverCraftBase : MonoBehaviour {
 			}
 		}
 	}
+
+	// helper function borrowed from https://forum.unity3d.com/threads/turn-left-or-right-to-face-a-point.22235/
+	protected float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
+		dirA = dirA - Vector3.Project(dirA, axis);
+		dirB = dirB - Vector3.Project(dirB, axis);
+		float angle = Vector3.Angle(dirA, dirB);
+		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
+	}
+
 }

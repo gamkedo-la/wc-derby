@@ -13,22 +13,12 @@ public class EnemyDrive : HoverCraftBase {
 	private float randomTurningDecisionMaker = 1f;
 	[SerializeField] private GameObject headlights;  //assigned in inspector
 
-	private float myTrackLaneOffset = 0.0f;
-	private float percLeftToNextWP = 1.0f;
-	private float totalDistToNextWP = 0.0f;
-
 	public enum AIMode
 	{
 		FollowTrack,
 		ShortTermOverride
 	};
 	private AIMode AInow = AIMode.FollowTrack;
-
-	private static List<Transform> levelWayPointList;
-	private static WayPointManager waypointManager;
-	private Waypoint myWaypoint = null;
-	private Vector3 prevWPTrackLeft;
-	private Vector3 prevWPTrackRight;
 
 	private bool isAttackingPlayer = false;
 
@@ -42,44 +32,8 @@ public class EnemyDrive : HoverCraftBase {
 		uniqueID = 0;
 	}
 
-	void randomizeTrackLaneOffset() {
-		myTrackLaneOffset = Random.Range(-1.0f,1.0f);
-	}
-
 	protected override void Init() {
 		name = "Enemy#" + (uniqueID++);
-		GameObject waypointMaster = GameObject.Find("AI_WayPoints");
-		if (waypointMaster && waypointManager == null) {
-			waypointManager = waypointMaster.GetComponent<WayPointManager>();
-			levelWayPointList = new List<Transform>();
-			for (int i = 0; i < waypointMaster.transform.childCount; i++) {
-				Transform wpTransform = waypointMaster.transform.GetChild(i);
-				levelWayPointList.Add(wpTransform);
-			}
-		}
-
-		if(levelWayPointList != null) {
-			int myWaypointIdx = Random.Range(0, levelWayPointList.Count);
-			myWaypoint = levelWayPointList[ myWaypointIdx ].GetComponent<Waypoint>();
-			Waypoint nextWP = myWaypoint.randNext();
-			if(waypointManager.isOrdered == false) {
-				nextWP = levelWayPointList[ Random.Range(0, levelWayPointList.Count) ].GetComponent<Waypoint>();
-			}
-			// start ship at random spot between nearest waypoint and next (reduce start collisions)
-			transform.position =
-				Vector3.Lerp(myWaypoint.transform.position,
-					nextWP.transform.position, Random.Range(0.0f, 1.0f));
-			transform.LookAt(nextWP.transform.position);
-			randomizeTrackLaneOffset();
-			prevWPTrackLeft = myWaypoint.trackPtForOffset(-1.0f);
-			prevWPTrackRight = myWaypoint.trackPtForOffset(1.0f);
-			totalDistToNextWP = Vector3.Distance(nextWP.trackPtForOffset(myTrackLaneOffset),
-													myWaypoint.trackPtForOffset(myTrackLaneOffset));
-			myWaypoint = nextWP;
-			percLeftToNextWP = 1.0f;
-		} else {
-			myWaypoint = null;
-		}
 
 		GameObject obstacleList = GameObject.FindGameObjectWithTag("ObstacleList");
 		if(obstacleList) {
@@ -110,6 +64,9 @@ public class EnemyDrive : HoverCraftBase {
 			if(waypointManager.enforceTrackWalls) {
 				Vector3 nextWPTrackLeft = myWaypoint.trackPtForOffset(-1.0f);
 				Vector3 nextWPTrackRight = myWaypoint.trackPtForOffset(1.0f);
+
+				Vector3 prevWPTrackLeft = prevWaypoint.trackPtForOffset(-1.0f);
+				Vector3 prevWPTrackRight = prevWaypoint.trackPtForOffset(1.0f);
 
 				Vector3 positionLeft = Vector3.Lerp(nextWPTrackLeft, prevWPTrackLeft, percLeftToNextWP);
 				Vector3 positionRight = Vector3.Lerp(nextWPTrackRight, prevWPTrackRight, percLeftToNextWP);
@@ -292,17 +249,6 @@ public class EnemyDrive : HoverCraftBase {
 		return destinationPoint;
 	}
 	
-	
-	
-
-	// helper function borrowed from https://forum.unity3d.com/threads/turn-left-or-right-to-face-a-point.22235/
-	static float AngleAroundAxis (Vector3 dirA, Vector3 dirB, Vector3 axis) {
-		dirA = dirA - Vector3.Project(dirA, axis);
-		dirB = dirB - Vector3.Project(dirB, axis);
-		float angle = Vector3.Angle(dirA, dirB);
-		return angle * (Vector3.Dot(axis, Vector3.Cross(dirA, dirB)) < 0 ? -1 : 1);
-	}
-	
 	Vector3 FollowNextWaypoint()
 	{ // returns a Waypoint
 		if(myWaypoint == null || // no waypoints were found in level
@@ -322,8 +268,7 @@ public class EnemyDrive : HoverCraftBase {
 			if(waypointManager.isOrdered == false) {
 				myWaypoint = levelWayPointList[Random.Range(0, levelWayPointList.Count)].GetComponent<Waypoint>();
 			} else {
-				prevWPTrackLeft = myWaypoint.trackPtForOffset(-1.0f);
-				prevWPTrackRight = myWaypoint.trackPtForOffset(1.0f);
+				prevWaypoint = myWaypoint;
 				myWaypoint = myWaypoint.randNext();
 				randomizeTrackLaneOffset();
 				totalDistToNextWP = Vector3.Distance(transform.position, myWaypoint.trackPtForOffset(myTrackLaneOffset));
