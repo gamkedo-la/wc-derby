@@ -107,6 +107,17 @@
 				</Event>
 				<Event Name="Play_Shield" ID="{6AB1C072-CC22-4B82-8025-C6FEF1E99BAD}"/>
 				<Event Name="Play_MenuMusic" ID="{05F188DF-C28B-4454-8B40-2DB318C9DCFF}"/>
+				<Event Name="Play_Spanner" ID="{C97B895B-A965-4591-AEE8-11F077157965}">
+					<ChildrenList>
+						<Action Name="Play" ID="{5E8C030F-CC8A-4B8F-BD81-AD07FE6A491A}" ShortID="665502539" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{B36BF1F2-3FAF-4DF9-BC10-D1C182D6EE48}" Global="false">
+									<ObjectRef Name="Spanner" ID="{BCBA3A6C-06E3-4B80-AD49-2D814A23E6BF}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

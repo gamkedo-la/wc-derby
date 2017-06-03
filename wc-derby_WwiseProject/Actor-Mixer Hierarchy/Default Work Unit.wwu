@@ -1187,14 +1187,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Metal Drones 01" ID="{080789F2-7B05-4435-9D3C-3D3EAB86BFD1}" ShortID="953216734" Type="SoundFX">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-11</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
+						<Sound Name="Shield sfx" ID="{F601EA71-FA3F-4C18-B10C-299F1464D0EC}" ShortID="228375266" Type="SoundFX">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
@@ -1204,17 +1197,13 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Metal Drones 01" ID="{09D0D8DB-F51A-4C4B-B1E8-10FE44AC6435}" ShortID="680338062">
-									<PropertyList>
-										<Property Name="FadeOutDuration" Type="Real64" Value="6.19642857142855"/>
-										<Property Name="TrimEnd" Type="Real64" Value="9.32142857142854"/>
-									</PropertyList>
+								<AudioFileSource Name="Shield sfx" ID="{FCDCFF38-89E4-4A0F-B071-CF2E017D06FD}" ShortID="227765371">
 									<Language>SFX</Language>
-									<AudioFile>Metal Drones 01.wav</AudioFile>
+									<AudioFile>Shield sfx.wav</AudioFile>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Metal Drones 01" ID="{09D0D8DB-F51A-4C4B-B1E8-10FE44AC6435}" Platform="Linked"/>
+								<ActiveSource Name="Shield sfx" ID="{FCDCFF38-89E4-4A0F-B071-CF2E017D06FD}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -1253,6 +1242,37 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="w_c_loop_sample" ID="{597A8611-E3C7-4C0B-AC9B-FC2779F4628C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</BlendContainer>
+				<BlendContainer Name="Spanner" ID="{BCBA3A6C-06E3-4B80-AD49-2D814A23E6BF}" ShortID="715501291">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Spanner sfx" ID="{8DD05519-707C-4A55-8EA9-47B690F877A3}" ShortID="392368160" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{907BBE30-1D10-48C2-8F09-20EB82707AEF}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Spanner sfx" ID="{492AC1E5-1550-452D-AE4A-BBD4098F6516}" ShortID="429233686">
+									<Language>SFX</Language>
+									<AudioFile>Spanner sfx.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Spanner sfx" ID="{492AC1E5-1550-452D-AE4A-BBD4098F6516}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
