@@ -27,7 +27,7 @@ public class TitleScreenGUI : MonoBehaviour {
 	public void guiStartLevel(string levelName) {
 		Debug.Log("guiPressLevel " + levelName);
 		guiAudio.Play();
-		SceneManager.LoadSceneAsync(levelName);
+		SceneManager.LoadScene(levelName);
 	}
 	public void guiPressBack() {
 		Debug.Log("guiPressBack");

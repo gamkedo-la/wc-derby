@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScatterSpawn : MonoBehaviour {
 	public GameObject[] prefabList;
@@ -16,11 +17,16 @@ public class ScatterSpawn : MonoBehaviour {
 	private List<Image> allRadarPt = new List<Image>();
 	public Image playerRadarPt;
 
+	private bool returnToTitleScreenIfLastRemoved = false;
+
 	Vector3 domeCenter;
 	float domeRadius;
 
 	// Use this for initialization
 	void Start () {
+		returnToTitleScreenIfLastRemoved = (name == "EnemySpawnerAndListMgmt" ||
+			name=="PlayerSpawnerAndTargetLookup");
+
 		GameObject theDome = GameObject.Find("domeMeasure");
 		domeCenter = theDome.transform.position;
 		domeRadius = theDome.transform.localScale.y * 0.5f;
@@ -47,7 +53,7 @@ public class ScatterSpawn : MonoBehaviour {
 	}
 
 	void Update() {
-		spawnedList.RemoveAll(delegate (GameObject o) { return o == null; });
+		clearEmptiesAndCheckIfMenuReturn();
 
 		if(counterUI && lastShownSize != spawnedList.Count) {
 			lastShownSize = spawnedList.Count;
@@ -80,8 +86,21 @@ public class ScatterSpawn : MonoBehaviour {
 		return scaledPos;
 	}
 
-	public HoverCraftBase nearestAheadOf(Transform relativeTo) {
+	IEnumerator WaitThenReset() {
+		yield return new WaitForSeconds(2.5f);
+		SceneManager.LoadScene("titlescreen");
+	}
+
+	void clearEmptiesAndCheckIfMenuReturn() {
+		int wasHowMany = spawnedList.Count;
 		spawnedList.RemoveAll(delegate (GameObject o) { return o == null; });
+		if(wasHowMany > 0 && spawnedList.Count == 0 && returnToTitleScreenIfLastRemoved) {
+			StartCoroutine(WaitThenReset());
+		}
+	}
+
+	public HoverCraftBase nearestAheadOf(Transform relativeTo) {
+		clearEmptiesAndCheckIfMenuReturn();
 
 		HoverCraftBase toRet = null;
 		float coneAhead = 35.0f;
