@@ -24,29 +24,13 @@ public class TitleScreenGUI : MonoBehaviour {
 		Debug.Log("guiHover " + whichOne);
 		guiAudio.Play();
 	}
-	public void guiPressStart() {
-		Debug.Log("guiPressStart");
-		SceneManager.LoadSceneAsync("MainPlay");
+	public void guiStartLevel(string levelName) {
+		Debug.Log("guiPressLevel " + levelName);
 		guiAudio.Play();
-	}
-	public void guiPressHelp() {
-		Debug.Log("guiPressHelp");
-		guiAudio.Play();
-	}
-	public void guiPressCredits() {
-		Debug.Log("guiPressCredits");
-		guiAudio.Play();
-	}
-	public void guiPressLevel(int whichOne) {
-		Debug.Log("guiPressLevel " + whichOne);
-		guiAudio.Play();
+		SceneManager.LoadSceneAsync(levelName);
 	}
 	public void guiPressBack() {
 		Debug.Log("guiPressBack");
-		guiAudio.Play();
-	}
-	public void guiPressConfig() {
-		Debug.Log("guiPressConfig");
 		guiAudio.Play();
 	}
 
