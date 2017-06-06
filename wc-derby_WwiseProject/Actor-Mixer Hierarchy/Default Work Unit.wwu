@@ -1165,6 +1165,10 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="Shield sfx" ID="{FCDCFF38-89E4-4A0F-B071-CF2E017D06FD}" ShortID="227765371">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="2.03390761661808"/>
+										<Property Name="TrimEnd" Type="Real64" Value="4.3595642766035"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>Shield sfx.wav</AudioFile>
 								</AudioFileSource>
@@ -1214,6 +1218,13 @@
 					</ChildrenList>
 				</BlendContainer>
 				<BlendContainer Name="Spanner" ID="{BCBA3A6C-06E3-4B80-AD49-2D814A23E6BF}" ShortID="715501291">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
@@ -1223,7 +1234,22 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Spanner sfx" ID="{8DD05519-707C-4A55-8EA9-47B690F877A3}" ShortID="392368160" Type="SoundFX">
+						<Sound Name="Spanner2" ID="{B1193C7C-CB15-4316-9481-4997C53EA45B}" ShortID="547562598" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5C107AFF-C158-445F-9163-FB3FCE7403BB}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="303"/>
+													<Property Name="Min" Type="Real64" Value="-51"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
@@ -1233,13 +1259,13 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Spanner sfx" ID="{492AC1E5-1550-452D-AE4A-BBD4098F6516}" ShortID="429233686">
+								<AudioFileSource Name="Spanner2" ID="{39998D46-DF2D-4D83-9F4E-51DF760546D3}" ShortID="750364171">
 									<Language>SFX</Language>
-									<AudioFile>Spanner sfx.wav</AudioFile>
+									<AudioFile>Spanner2.wav</AudioFile>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Spanner sfx" ID="{492AC1E5-1550-452D-AE4A-BBD4098F6516}" Platform="Linked"/>
+								<ActiveSource Name="Spanner2" ID="{39998D46-DF2D-4D83-9F4E-51DF760546D3}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
