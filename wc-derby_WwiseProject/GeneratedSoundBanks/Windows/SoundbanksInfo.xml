@@ -21,7 +21,7 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="2570041344" Name="Play_MenuMusic" ObjectPath="\Events\Default Work Unit\Play_MenuMusic" MaxAttenuation="0.000000"/>
+				<Event Id="2570041344" Name="Play_MenuMusic" ObjectPath="\Events\Default Work Unit\Play_MenuMusic"/>
 				<Event Id="4260765717" Name="Play_PlayerDestroy" ObjectPath="\Events\Default Work Unit\Play_PlayerDestroy"/>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
 				<Event Id="3887443310" Name="Play_PlayerEngineTilt" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTilt"/>
@@ -29,7 +29,8 @@
 				<Event Id="519385068" Name="Play_PlayerEngineTurnRight" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTurnRight"/>
 				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact"/>
 				<Event Id="266055352" Name="Play_PlayerImpactMain" ObjectPath="\Events\Default Work Unit\Play_PlayerImpactMain" MaxAttenuation="0.000000"/>
-				<Event Id="1988178265" Name="Play_Shield" ObjectPath="\Events\Default Work Unit\Play_Shield" MaxAttenuation="0.000000"/>
+				<Event Id="1988178265" Name="Play_Shield" ObjectPath="\Events\Default Work Unit\Play_Shield"/>
+				<Event Id="723381229" Name="Play_Spanner" ObjectPath="\Events\Default Work Unit\Play_Spanner"/>
 				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -44,6 +45,10 @@
 				<File Id="200028342" Language="SFX">
 					<ShortName>ground hit 2.wav</ShortName>
 					<Path>SFX\ground hit 2_B43F6475.wem</Path>
+				</File>
+				<File Id="227765371" Language="SFX">
+					<ShortName>Shield sfx.wav</ShortName>
+					<Path>SFX\Shield sfx_213F32B6.wem</Path>
 				</File>
 				<File Id="239276578" Language="SFX">
 					<ShortName>2 3-Audio-1-14.wav</ShortName>
@@ -89,9 +94,17 @@
 					<ShortName>2 3-Audio-1-9.wav</ShortName>
 					<Path>SFX\2 3-Audio-1-9_9E69E797.wem</Path>
 				</File>
+				<File Id="676130824" Language="SFX">
+					<ShortName>w_c_loop_sample.wav</ShortName>
+					<Path>SFX\w_c_loop_sample_9E69E797.wem</Path>
+				</File>
 				<File Id="717798996" Language="SFX">
 					<ShortName>2 3-Audio-1-17.wav</ShortName>
 					<Path>SFX\2 3-Audio-1-17_9E69E797.wem</Path>
+				</File>
+				<File Id="750364171" Language="SFX">
+					<ShortName>Spanner2.wav</ShortName>
+					<Path>SFX\Spanner2_9E69E797.wem</Path>
 				</File>
 				<File Id="770316172" Language="SFX">
 					<ShortName>cruise deep.wav</ShortName>
