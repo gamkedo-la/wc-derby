@@ -105,8 +105,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Shield" ID="{6AB1C072-CC22-4B82-8025-C6FEF1E99BAD}"/>
-				<Event Name="Play_MenuMusic" ID="{05F188DF-C28B-4454-8B40-2DB318C9DCFF}"/>
+				<Event Name="Play_Shield" ID="{6AB1C072-CC22-4B82-8025-C6FEF1E99BAD}">
+					<ChildrenList>
+						<Action Name="Play" ID="{F3FE5287-F2BB-44A9-9D6F-408095184358}" ShortID="1061622767" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{B9BB67F9-1484-4994-9B65-CB4892C4AA4C}" Global="false">
+									<ObjectRef Name="Shield" ID="{93DCA231-C873-4CB6-A098-013A24B87EDC}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MenuMusic" ID="{05F188DF-C28B-4454-8B40-2DB318C9DCFF}">
+					<ChildrenList>
+						<Action Name="Play" ID="{2F78A676-8A44-45EE-BCAB-EAF39DAD3E9A}" ShortID="27455264" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{7CBC508F-842B-45D2-ADC1-CB79F9938353}" Global="false">
+									<ObjectRef Name="Menu Music" ID="{3A99CB34-B4CF-4C89-8B8B-4B8B54632E09}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Play_Spanner" ID="{C97B895B-A965-4591-AEE8-11F077157965}">
 					<ChildrenList>
 						<Action Name="Play" ID="{5E8C030F-CC8A-4B8F-BD81-AD07FE6A491A}" ShortID="665502539" Type="Play" Scope="One" Global="false">

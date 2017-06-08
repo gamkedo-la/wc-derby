@@ -22,6 +22,7 @@ namespace AK
         static const AkUniqueID PLAY_PLAYERIMPACT = 2485643559U;
         static const AkUniqueID PLAY_PLAYERIMPACTMAIN = 266055352U;
         static const AkUniqueID PLAY_SHIELD = 1988178265U;
+        static const AkUniqueID PLAY_SPANNER = 723381229U;
         static const AkUniqueID WCFORWARD = 775327610U;
     } // namespace EVENTS
 
