@@ -8,11 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreenGUI : MonoBehaviour {
 
-	private AudioSource guiAudio;
-
 	void Start () {
 		Debug.Log("Starting Titlescreen...");
-		guiAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -22,16 +19,13 @@ public class TitleScreenGUI : MonoBehaviour {
 
 	public void guiHover(int whichOne) {
 		Debug.Log("guiHover " + whichOne);
-		guiAudio.Play();
 	}
 	public void guiStartLevel(string levelName) {
 		Debug.Log("guiPressLevel " + levelName);
-		guiAudio.Play();
 		SceneManager.LoadScene(levelName);
 	}
 	public void guiPressBack() {
 		Debug.Log("guiPressBack");
-		guiAudio.Play();
 	}
 
 }
