@@ -36,24 +36,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_PlayerImpactMain" ID="{3E10900D-CD24-4E5D-94E3-D6A07BEA3D5C}">
-					<ChildrenList>
-						<Action Name="Play" ID="{9D156300-F104-414C-984E-691BA73D963A}" ShortID="912111492" Type="Play" Scope="One" Global="false">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ElementList>
-								<Element ID="{C3E311B6-188E-4397-8A24-3C77CB8B9458}" Global="false">
-									<ObjectRef Name="Player Impacts" ID="{3485FA5B-8B9B-4A0E-8B75-FA635C802BBF}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
-								</Element>
-							</ElementList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_PlayerDestroy" ID="{A8AF9F95-8917-4434-9F88-5BD716B84139}">
 					<ChildrenList>
 						<Action Name="Play" ID="{89E00566-7157-4946-A3A9-1086D30C4F14}" ShortID="283899009" Type="Play" Scope="One" Global="false">
@@ -131,12 +113,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_MainMusic" ID="{7A837913-1F69-4D42-AC3C-0A240FD50988}">
+				<Event Name="Play_Music" ID="{3933A1F6-9EF9-4404-8B63-50E86BF63138}">
 					<ChildrenList>
-						<Action Name="Play" ID="{5DA280AF-FEE6-48BA-A640-0B2333C616D0}" ShortID="1029995366" Type="Play" Scope="One" Global="false">
+						<Action Name="Play" ID="{8A993944-CE35-42E5-AEF5-CB6CFF778434}" ShortID="274919461" Type="Play" Scope="One" Global="false">
 							<ElementList>
-								<Element ID="{5EAB33EF-37E3-4DD8-A0BA-5525A57A30FE}" Global="false">
-									<ObjectRef Name="Main Music" ID="{BE6C0543-6A27-42B1-890B-2540BC504D78}" WorkUnitID="{E6A880DC-32BC-4360-A855-C20F3EE45665}"/>
+								<Element ID="{D2D5116F-F473-4DEF-88A5-59B8E55FA968}" Global="false">
+									<ObjectRef Name="Player Impacts" ID="{3485FA5B-8B9B-4A0E-8B75-FA635C802BBF}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
 								</Element>
 							</ElementList>
 						</Action>

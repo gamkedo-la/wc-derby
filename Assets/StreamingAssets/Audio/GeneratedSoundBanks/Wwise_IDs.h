@@ -15,13 +15,13 @@ namespace AK
     {
         static const AkUniqueID PLAY_MENUBEEP = 1416254859U;
         static const AkUniqueID PLAY_MENUMUSIC = 2570041344U;
+        static const AkUniqueID PLAY_MUSIC = 2932040671U;
         static const AkUniqueID PLAY_PLAYERDESTROY = 4260765717U;
         static const AkUniqueID PLAY_PLAYERENGINE = 3791634299U;
         static const AkUniqueID PLAY_PLAYERENGINETILT = 3887443310U;
         static const AkUniqueID PLAY_PLAYERENGINETURNLEFT = 2022528057U;
         static const AkUniqueID PLAY_PLAYERENGINETURNRIGHT = 519385068U;
         static const AkUniqueID PLAY_PLAYERIMPACT = 2485643559U;
-        static const AkUniqueID PLAY_PLAYERIMPACTMAIN = 266055352U;
         static const AkUniqueID PLAY_SHIELD = 1988178265U;
         static const AkUniqueID PLAY_SPANNER = 723381229U;
     } // namespace EVENTS
