@@ -117,8 +117,8 @@
 					<ChildrenList>
 						<Action Name="Play" ID="{8A993944-CE35-42E5-AEF5-CB6CFF778434}" ShortID="274919461" Type="Play" Scope="One" Global="false">
 							<ElementList>
-								<Element ID="{D2D5116F-F473-4DEF-88A5-59B8E55FA968}" Global="false">
-									<ObjectRef Name="Player Impacts" ID="{3485FA5B-8B9B-4A0E-8B75-FA635C802BBF}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								<Element ID="{464BA7CC-55F9-43AC-A586-9691F19F78AC}" Global="false">
+									<ObjectRef Name="Music" ID="{11761D4A-A733-4D60-BE04-283DE5F3107B}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
 								</Element>
 							</ElementList>
 						</Action>
