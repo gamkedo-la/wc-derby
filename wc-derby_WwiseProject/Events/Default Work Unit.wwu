@@ -3,24 +3,6 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{FD38D16D-5BEE-428B-B34C-9136273B722C}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="wcforward" ID="{04EBE743-6999-4F8A-9C20-4014F5C3A3E0}">
-					<ChildrenList>
-						<Action Name="Play" ID="{B576A676-EBB7-44F4-86D1-C3AC5699AED5}" ShortID="341394015" Type="Play" Scope="One" Global="false">
-							<PropertyList>
-								<Property Name="Inclusion" Type="bool">
-									<ValueList>
-										<Value>False</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ElementList>
-								<Element ID="{FD20863A-32A9-4EA8-AFC9-03B7ED89FAD9}" Global="false">
-									<ObjectRef Name="wrecking cloud music scratch track" ID="{B16EA8CF-C98C-475B-889B-C6F37557F817}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
-								</Element>
-							</ElementList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_PlayerEngine" ID="{2A91AB85-7743-4260-8CEB-5743544BBAD7}">
 					<ChildrenList>
 						<Action Name="Play" ID="{AF58DF94-EC2E-47F2-B7B2-8795842612FC}" ShortID="168883096" Type="Play" Scope="One" Global="false">
@@ -149,7 +131,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_MainMusic" ID="{7A837913-1F69-4D42-AC3C-0A240FD50988}"/>
+				<Event Name="Play_MainMusic" ID="{7A837913-1F69-4D42-AC3C-0A240FD50988}">
+					<ChildrenList>
+						<Action Name="Play" ID="{5DA280AF-FEE6-48BA-A640-0B2333C616D0}" ShortID="1029995366" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{5EAB33EF-37E3-4DD8-A0BA-5525A57A30FE}" Global="false">
+									<ObjectRef Name="Main Music" ID="{BE6C0543-6A27-42B1-890B-2540BC504D78}" WorkUnitID="{E6A880DC-32BC-4360-A855-C20F3EE45665}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

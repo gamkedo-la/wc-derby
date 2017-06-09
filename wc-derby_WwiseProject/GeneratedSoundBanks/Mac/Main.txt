@@ -2,7 +2,6 @@ Event	ID	Name			Wwise Object Path	Notes
 	266055352	Play_PlayerImpactMain			\Default Work Unit\Play_PlayerImpactMain	
 	519385068	Play_PlayerEngineTurnRight			\Default Work Unit\Play_PlayerEngineTurnRight	
 	723381229	Play_Spanner			\Default Work Unit\Play_Spanner	
-	775327610	wcforward			\Default Work Unit\wcforward	
 	1416254859	Play_MenuBeep			\Default Work Unit\Play_MenuBeep	
 	1988178265	Play_Shield			\Default Work Unit\Play_Shield	
 	2022528057	Play_PlayerEngineTurnLeft			\Default Work Unit\Play_PlayerEngineTurnLeft	

@@ -32,7 +32,6 @@
 				<Event Id="266055352" Name="Play_PlayerImpactMain" ObjectPath="\Events\Default Work Unit\Play_PlayerImpactMain" MaxAttenuation="0.000000"/>
 				<Event Id="1988178265" Name="Play_Shield" ObjectPath="\Events\Default Work Unit\Play_Shield"/>
 				<Event Id="723381229" Name="Play_Spanner" ObjectPath="\Events\Default Work Unit\Play_Spanner"/>
-				<Event Id="775327610" Name="wcforward" ObjectPath="\Events\Default Work Unit\wcforward" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="99445994" Language="SFX">
