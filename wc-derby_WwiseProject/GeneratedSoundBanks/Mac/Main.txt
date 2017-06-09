@@ -3,6 +3,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	519385068	Play_PlayerEngineTurnRight			\Default Work Unit\Play_PlayerEngineTurnRight	
 	723381229	Play_Spanner			\Default Work Unit\Play_Spanner	
 	775327610	wcforward			\Default Work Unit\wcforward	
+	1416254859	Play_MenuBeep			\Default Work Unit\Play_MenuBeep	
 	1988178265	Play_Shield			\Default Work Unit\Play_Shield	
 	2022528057	Play_PlayerEngineTurnLeft			\Default Work Unit\Play_PlayerEngineTurnLeft	
 	2485643559	Play_PlayerImpact			\Default Work Unit\Play_PlayerImpact	
@@ -51,6 +52,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	717798996	2 3-Audio-1-17	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-17_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-17		245468
 	750364171	Spanner2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Spanner2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Spanner\Spanner2		300496
 	770316172	cruise deep	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\cruise deep_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Tilt\cruise deep		143092
+	811163275	menu_beep_next	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\menu_beep_next_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Menu Beep\menu_beep_next		27568
 	858658369	2 3-Audio-1-6	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-6_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-6		238828
 	936048086	2 3-Audio-1-5	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-5_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-5		441064
 	941204851	Cruise2	C:\Users\Micky\Desktop\Gamkedo\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Cruise2_A8899385.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Cruise2		352864

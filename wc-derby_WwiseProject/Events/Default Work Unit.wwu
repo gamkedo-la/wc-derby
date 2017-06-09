@@ -138,6 +138,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MenuBeep" ID="{BE54E9CF-B406-4B18-A392-128CC03E428D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{E437BDCA-15DC-4ADF-8F95-DA4C8C1DB411}" ShortID="749650932" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{502FA1FB-D12F-42F6-B19D-FB0E47F975F4}" Global="false">
+									<ObjectRef Name="Menu Beep" ID="{9C0BDE8C-3B58-4560-AF73-9C552E8030DA}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_MENUBEEP = 1416254859U;
         static const AkUniqueID PLAY_MENUMUSIC = 2570041344U;
         static const AkUniqueID PLAY_PLAYERDESTROY = 4260765717U;
         static const AkUniqueID PLAY_PLAYERENGINE = 3791634299U;

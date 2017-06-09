@@ -21,6 +21,7 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1416254859" Name="Play_MenuBeep" ObjectPath="\Events\Default Work Unit\Play_MenuBeep"/>
 				<Event Id="2570041344" Name="Play_MenuMusic" ObjectPath="\Events\Default Work Unit\Play_MenuMusic"/>
 				<Event Id="4260765717" Name="Play_PlayerDestroy" ObjectPath="\Events\Default Work Unit\Play_PlayerDestroy"/>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
@@ -109,6 +110,10 @@
 				<File Id="770316172" Language="SFX">
 					<ShortName>cruise deep.wav</ShortName>
 					<Path>SFX\cruise deep_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="811163275" Language="SFX">
+					<ShortName>menu_beep_next.wav</ShortName>
+					<Path>SFX\menu_beep_next_9E69E797.wem</Path>
 				</File>
 				<File Id="858658369" Language="SFX">
 					<ShortName>2 3-Audio-1-6.wav</ShortName>
