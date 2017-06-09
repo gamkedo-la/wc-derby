@@ -149,6 +149,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MainMusic" ID="{7A837913-1F69-4D42-AC3C-0A240FD50988}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
