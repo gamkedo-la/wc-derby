@@ -23,13 +23,13 @@
 			<IncludedEvents>
 				<Event Id="1416254859" Name="Play_MenuBeep" ObjectPath="\Events\Default Work Unit\Play_MenuBeep"/>
 				<Event Id="2570041344" Name="Play_MenuMusic" ObjectPath="\Events\Default Work Unit\Play_MenuMusic"/>
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music"/>
 				<Event Id="4260765717" Name="Play_PlayerDestroy" ObjectPath="\Events\Default Work Unit\Play_PlayerDestroy"/>
 				<Event Id="3791634299" Name="Play_PlayerEngine" ObjectPath="\Events\Default Work Unit\Play_PlayerEngine"/>
 				<Event Id="3887443310" Name="Play_PlayerEngineTilt" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTilt"/>
 				<Event Id="2022528057" Name="Play_PlayerEngineTurnLeft" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTurnLeft"/>
 				<Event Id="519385068" Name="Play_PlayerEngineTurnRight" ObjectPath="\Events\Default Work Unit\Play_PlayerEngineTurnRight"/>
 				<Event Id="2485643559" Name="Play_PlayerImpact" ObjectPath="\Events\Default Work Unit\Play_PlayerImpact"/>
-				<Event Id="266055352" Name="Play_PlayerImpactMain" ObjectPath="\Events\Default Work Unit\Play_PlayerImpactMain" MaxAttenuation="0.000000"/>
 				<Event Id="1988178265" Name="Play_Shield" ObjectPath="\Events\Default Work Unit\Play_Shield"/>
 				<Event Id="723381229" Name="Play_Spanner" ObjectPath="\Events\Default Work Unit\Play_Spanner"/>
 			</IncludedEvents>
