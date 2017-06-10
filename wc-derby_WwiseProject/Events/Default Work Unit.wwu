@@ -124,6 +124,24 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Stop_MenuMusic" ID="{0AC04042-6FA6-404B-B56F-47137381171B}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{43403B87-1B84-4570-BAC6-6B460FC069F2}" ShortID="120650607" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{EE3E92ED-0A73-4E8B-9953-932DF2DA479D}" Global="false">
+									<ObjectRef Name="Menu Music" ID="{3A99CB34-B4CF-4C89-8B8B-4B8B54632E09}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Stop" ID="{C2DF5A44-9509-43CC-AE96-965534BA4AEC}" ShortID="320108358" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{07117C91-CB47-4CFF-B973-063913E6CC5F}" Global="false">
+									<ObjectRef Name="Menu Beep" ID="{9C0BDE8C-3B58-4560-AF73-9C552E8030DA}" WorkUnitID="{A780EED7-355E-4734-9A8A-89CB46A3500B}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
