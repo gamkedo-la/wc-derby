@@ -12,6 +12,7 @@ public class HoverCraftBase : MonoBehaviour {
 	public GameObject shieldActiveMesh;
 
 	public Vector3 bangBackMomentum = Vector3.zero;
+	private float verticalVelocity = 0.0f;
 
 	private float timeSinceLastPuff = 0.0f;
 	private float timeBetweenPuffs = 0.6f;
@@ -298,8 +299,14 @@ public class HoverCraftBase : MonoBehaviour {
 		Vector3 newPos = transform.position;
 		newPos += bangBackMomentum;
 		bangBackMomentum *= 0.9f;
-		newPos.y += (goalHeightHere-newPos.y) * (goalHeightHere > newPos.y ? 3.0f : 1.0f ) * Time.deltaTime;
-		newPos.y = Mathf.Max(newPos.y, minHeightHere);
+		verticalVelocity += (goalHeightHere > newPos.y ? 2.0f*(goalHeightHere-newPos.y) : -2.3f);
+		newPos.y += verticalVelocity * Time.deltaTime;
+		if(newPos.y < minHeightHere) {
+			newPos.y = minHeightHere;
+			if(verticalVelocity > 0.0f) {
+				verticalVelocity *= -0.4f;
+			}
+		}
 		transform.position = newPos;
 
 		float heightForward = 0.0f;
