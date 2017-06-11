@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class TitleScreenGUI : MonoBehaviour {
 
 	void Start () {
-		Debug.Log("Starting Titlescreen...");
+		//Debug.Log("Starting Titlescreen...");
 	}
 	
 	// Update is called once per frame
@@ -18,14 +18,14 @@ public class TitleScreenGUI : MonoBehaviour {
 	// menu button click events:
 
 	public void guiHover(int whichOne) {
-		Debug.Log("guiHover " + whichOne);
+		//Debug.Log("guiHover " + whichOne);
 	}
 	public void guiStartLevel(string levelName) {
-		Debug.Log("guiPressLevel " + levelName);
+		//Debug.Log("guiPressLevel " + levelName);
 		SceneManager.LoadScene(levelName);
 	}
 	public void guiPressBack() {
-		Debug.Log("guiPressBack");
+		//Debug.Log("guiPressBack");
 	}
 
 }

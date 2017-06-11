@@ -88,7 +88,7 @@ public class ScatterSpawn : MonoBehaviour {
 
 		if(counterUI && lastShownSize != spawnedList.Count) {
 			lastShownSize = spawnedList.Count;
-			counterUI.text = lastShownSize + "/" + howMany;
+			counterUI.text = "Spacebar to Ram\nRemaining Targets: "+lastShownSize + "/" + howMany;
 		}
 
 		if(radarArea) {
