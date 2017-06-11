@@ -1271,6 +1271,13 @@
 					</ChildrenList>
 				</BlendContainer>
 				<BlendContainer Name="Menu Beep" ID="{9C0BDE8C-3B58-4560-AF73-9C552E8030DA}" ShortID="672714121">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-22</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F954DC70-6667-4EF8-9A81-0F71AE3416D4}"/>
