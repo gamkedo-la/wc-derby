@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ScatterSpawn : MonoBehaviour {
 	public GameObject[] prefabList;
@@ -105,7 +104,7 @@ public class ScatterSpawn : MonoBehaviour {
 		text.font = ArialFont;
 
 		yield return new WaitForSeconds(3.5f);
-		SceneManager.LoadScene("titlescreen");
+		SceneChange.ResetStaticsAndLoadScene("titlescreen");
 	}
 
 	void clearEmptiesAndCheckIfMenuReturn() {

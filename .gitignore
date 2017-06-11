@@ -31,3 +31,9 @@ $RECYCLE.BIN/
 Desktop.ini
 
 *.pdb
+
+Assets/StreamingAssets/Audio/GeneratedSoundBanks/Mac/English(US).meta
+
+Assets/StreamingAssets/Audio/GeneratedSoundBanks/Windows/English(US).meta
+
+Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
