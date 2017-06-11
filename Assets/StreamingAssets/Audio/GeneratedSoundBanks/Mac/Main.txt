@@ -1,9 +1,12 @@
 Event	ID	Name			Wwise Object Path	Notes
-	266055352	Play_PlayerImpactMain			\Default Work Unit\Play_PlayerImpactMain	
 	519385068	Play_PlayerEngineTurnRight			\Default Work Unit\Play_PlayerEngineTurnRight	
-	775327610	wcforward			\Default Work Unit\wcforward	
+	723381229	Play_Spanner			\Default Work Unit\Play_Spanner	
+	1416254859	Play_MenuBeep			\Default Work Unit\Play_MenuBeep	
+	1988178265	Play_Shield			\Default Work Unit\Play_Shield	
 	2022528057	Play_PlayerEngineTurnLeft			\Default Work Unit\Play_PlayerEngineTurnLeft	
 	2485643559	Play_PlayerImpact			\Default Work Unit\Play_PlayerImpact	
+	2570041344	Play_MenuMusic			\Default Work Unit\Play_MenuMusic	
+	2932040671	Play_Music			\Default Work Unit\Play_Music	
 	3791634299	Play_PlayerEngine			\Default Work Unit\Play_PlayerEngine	
 	3887443310	Play_PlayerEngineTilt			\Default Work Unit\Play_PlayerEngineTilt	
 	4260765717	Play_PlayerDestroy			\Default Work Unit\Play_PlayerDestroy	
@@ -29,27 +32,43 @@ Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	941951411	Wwise Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Engine Sawtooth\Wwise Tone Generator	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	15716425	Main Music-11	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-11_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-11		4233676
+	80565718	Main Music-5	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-5_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-5		2822472
 	99445994	2 3-Audio-1-12	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-12_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-12		166820
 	125253258	SWEEP	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\SWEEP_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Turn Right\SWEEP		75864
 	200028342	ground hit 2	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\ground hit 2_B43F6475.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlayerDestroy\ground hit 2		404272
+	227765371	Shield sfx	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Shield sfx_213F32B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Shield\Shield sfx		769092
 	239276578	2 3-Audio-1-14	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-14_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-14		493692
 	243466131	2 3-Audio-1-15	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-15_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-15		214180
 	272283515	2 3-Audio-1-2	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-2		221600
+	297954553	Main Music-3	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-3_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-3		2822472
 	323748554	2 3-Audio-1-1	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-1		122720
 	328863445	2 3-Audio-1-8	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-8_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-8		122720
+	357950857	Main Music-7	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-7_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-7		5644876
+	380300549	Main Music-10	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-10		5644876
+	411143992	Main Music-6	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-6_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-6		2822472
 	441090530	2 3-Audio-1-3	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-3_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-3		273280
 	446847666	2 3-Audio-1	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1		186456
+	456352702	Main Music-9	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-9_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-9		5644876
+	483748666	Main Music-2	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-2		2822472
 	545225661	2 3-Audio-1-10	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-10		277416
+	580528422	Main Music-1	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-1		2822472
 	584267636	2 3-Audio-1-11	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-11_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-11		173708
 	604040427	2 3-Audio-1-7	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-7_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-7		259328
+	645843696	Main Music-8	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-8_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-8		4233672
+	647545640	Main Music-4	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music-4_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music-4		2822472
 	654251924	2 3-Audio-1-9	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-9_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-9		119360
+	676130824	w_c_loop_sample	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\w_c_loop_sample_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Menu Music\w_c_loop_sample		5998656
 	717798996	2 3-Audio-1-17	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-17_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-17		245468
+	750364171	Spanner2	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Spanner2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Spanner\Spanner2		300496
 	770316172	cruise deep	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\cruise deep_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Tilt\cruise deep		143092
+	811163275	menu_beep_next	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\menu_beep_next_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Menu Beep\menu_beep_next		27568
 	858658369	2 3-Audio-1-6	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-6_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-6		238828
 	936048086	2 3-Audio-1-5	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-5_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-5		441064
 	941204851	Cruise2	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Cruise2_A8899385.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\Cruise2		352864
 	974092807	2 3-Audio-1-16	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-16_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-16		234536
 	980176998	turn	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\turn_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine Turn Right\turn		121340
+	1003971471	Main Music	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\Main Music_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Music\Main Music		4233672
 	1036227758	2 3-Audio-1-13	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-13_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-13		279828
 	1041269596	air	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\air_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Engine\air		518540
 	1069944084	2 3-Audio-1-4	Y:\Documents\Unity Projects\wc-derby\wc-derby_WwiseProject\.cache\Mac\SFX\2 3-Audio-1-4_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Impacts\2 3-Audio-1-4		394208

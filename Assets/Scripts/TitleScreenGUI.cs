@@ -18,13 +18,16 @@ public class TitleScreenGUI : MonoBehaviour {
 	// menu button click events:
 
 	public void guiHover(int whichOne) {
+		AkSoundEngine.PostEvent ("Play_MenuBeep", gameObject);
 		//Debug.Log("guiHover " + whichOne);
 	}
 	public void guiStartLevel(string levelName) {
+		AkSoundEngine.PostEvent ("Play_MenuBeep", gameObject);
 		//Debug.Log("guiPressLevel " + levelName);
 		SceneManager.LoadScene(levelName);
 	}
 	public void guiPressBack() {
+		AkSoundEngine.PostEvent ("Play_MenuBeep", gameObject);
 		//Debug.Log("guiPressBack");
 	}
 
