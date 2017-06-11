@@ -42,7 +42,7 @@ public class ScatterSpawn : MonoBehaviour {
 				Quaternion.AngleAxis(randAng*Mathf.Rad2Deg+180.0f,Vector3.up)); // point inward at first
 			spawnedList.Add(nextSpawned);
 
-			if(playerRadarPt == null && prefabRadar != null) {
+			if(notPlayer()) {
 				GameObject nextRadarPt = GameObject.Instantiate(prefabRadar);
 				nextRadarPt.transform.SetParent(radarArea.transform);
 				allRadarPt.Add(nextRadarPt.GetComponent<Image>());
@@ -50,6 +50,10 @@ public class ScatterSpawn : MonoBehaviour {
 				PlayerDrive.instance = nextSpawned.GetComponent<PlayerDrive>();
 			}
 		}
+	}
+
+	bool notPlayer() {
+		return (playerRadarPt == null && prefabRadar != null);
 	}
 
 	void Update() {
@@ -87,7 +91,20 @@ public class ScatterSpawn : MonoBehaviour {
 	}
 
 	IEnumerator WaitThenReset() {
-		yield return new WaitForSeconds(2.5f);
+		Text text = GameObject.Find("Canvas").AddComponent<Text>();
+		text.text = (notPlayer() ? "YOU WON!" : "OUCH!");
+		text.color = Color.yellow;
+		text.fontSize = 80;
+		text.alignment = TextAnchor.MiddleCenter;
+		RectTransform rt = text.rectTransform;
+		rt.anchorMin = Vector2.zero;
+		rt.anchorMax = Vector2.one;
+		rt.sizeDelta = Vector2.zero;
+
+		Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+		text.font = ArialFont;
+
+		yield return new WaitForSeconds(3.5f);
 		SceneManager.LoadScene("titlescreen");
 	}
 
