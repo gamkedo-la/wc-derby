@@ -8,7 +8,7 @@ public class HoverOverGround : MonoBehaviour {
 		float lookdownFromAboveHeight = 2.0f;
 		RaycastHit rhInfo;
 		if(Physics.Raycast(atPos+Vector3.up*lookdownFromAboveHeight,
-			-Vector3.up*lookdownFromAboveHeight,out rhInfo,8.0f)) {
+			-Vector3.up*lookdownFromAboveHeight,out rhInfo,8.0f,HoverCraftBase.ignoreVehicleLayerMask)) {
 			return rhInfo.point.y;
 		}
 		else if (Terrain.activeTerrain != null) {
