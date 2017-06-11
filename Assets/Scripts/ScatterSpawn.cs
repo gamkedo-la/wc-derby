@@ -41,6 +41,34 @@ public class ScatterSpawn : MonoBehaviour {
 				Quaternion.AngleAxis(randAng*Mathf.Rad2Deg+180.0f,Vector3.up)); // point inward at first
 			spawnedList.Add(nextSpawned);
 
+			// note: brutally copy/pasted last minute from HoverCraftBase, in a refactor should be shared code
+			List<Transform> levelWayPointList = null;
+			WayPointManager waypointManager = null;
+
+			GameObject waypointMaster = GameObject.Find("AI_WayPoints");
+			if (waypointMaster) {
+				waypointManager = waypointMaster.GetComponent<WayPointManager>();
+				levelWayPointList = new List<Transform>();
+				for (int w = 0; w < waypointMaster.transform.childCount; w++) {
+					Transform wpTransform = waypointMaster.transform.GetChild(w);
+					levelWayPointList.Add(wpTransform);
+				}
+			}
+
+			if(levelWayPointList != null) {
+				int myWaypointIdx = Random.Range(0, levelWayPointList.Count);
+				Waypoint myWaypoint;
+				myWaypoint = levelWayPointList[ myWaypointIdx ].GetComponent<Waypoint>();
+				Waypoint nextWP = myWaypoint.randNext();
+				if(waypointManager.isOrdered == false) {
+					nextWP = levelWayPointList[ Random.Range(0, levelWayPointList.Count) ].GetComponent<Waypoint>();
+				}
+				// start ship at random spot between nearest waypoint and next (reduce start collisions)
+				nextSpawned.transform.position =
+					Vector3.Lerp(myWaypoint.transform.position,
+						nextWP.transform.position, Random.Range(0.0f, 1.0f));
+			}
+
 			if(notPlayer()) {
 				GameObject nextRadarPt = GameObject.Instantiate(prefabRadar);
 				nextRadarPt.transform.SetParent(radarArea.transform);
