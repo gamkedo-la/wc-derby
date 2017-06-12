@@ -182,6 +182,55 @@ public class HoverCraftBase : MonoBehaviour {
 		if(bangBackMomentum.magnitude > stunnedBangMagnitude) {
 			turnControl = gasControl = 0.0f;
 		}
+
+		if(waypointManager && waypointManager.isOrdered) {
+			if(waypointManager.enforceTrackWalls) {
+				Waypoint nextWP = null;
+				for(int i = 0; i < HoverCraftBase.levelWayPointList.Count; i++) {
+					Waypoint eachWP = HoverCraftBase.levelWayPointList[i].GetComponent<Waypoint>();
+					nextWP = eachWP.pointIsAlong(transform.position);
+					if(nextWP != null) {
+						myWaypoint = nextWP;
+						prevWaypoint = eachWP;
+						break;
+					}
+				}
+				Vector3 gotoPoint = myWaypoint.transform.position;
+				Vector3 prevPoint = prevWaypoint.transform.position;
+
+				gotoPoint.y = transform.position.y; // hack to ignore height diff (earlier was erroneously using .z)
+				prevPoint.y = transform.position.y;
+				Vector3 nearestPt = Vector3.Project(transform.position - prevPoint,
+					(gotoPoint - prevPoint).normalized) +
+					prevPoint;
+
+				/*Vector3 showBallPt;
+				if(Input.GetKey(KeyCode.Alpha1)) {
+					showBallPt = gotoPoint;
+				} else if(Input.GetKey(KeyCode.Alpha2)) {
+					showBallPt = prevPoint;
+				} else if(Input.GetKey(KeyCode.Alpha3)) {
+					showBallPt = prevPoint + (gotoPoint - prevPoint).normalized * ((gotoPoint - prevPoint).magnitude * 0.5f);
+				} else {
+					showBallPt = nearestPt;
+				}
+				GameObject.Find("DebugBall").transform.position = showBallPt;*/
+
+				float distTo = Vector3.Distance(nearestPt, gotoPoint);
+				float distToPrev = Vector3.Distance(nearestPt, prevPoint);
+				float totalDist = Vector3.Distance(gotoPoint, prevPoint);
+
+				float widthHere = Mathf.Lerp(prevWaypoint.transform.localScale.x,
+					myWaypoint.transform.localScale.x,
+					distToPrev/totalDist) * 0.5f;
+				float distFromPt = Vector3.Distance(transform.position, nearestPt);
+				Debug.Log(widthHere);
+				if(distFromPt > widthHere) {
+					transform.position = nearestPt + widthHere * (transform.position - nearestPt).normalized;
+				}
+			}
+		}
+
 		RaycastHit rhInfo;
 
 		if(sprintRamming && useCarCollisionTuning == false) {
@@ -280,7 +329,7 @@ public class HoverCraftBase : MonoBehaviour {
 	public static Vector3 ForceIntoDome(Vector3 whereAt) {						
 		Vector3 centerDelta = (whereAt - domeCenter);							
 		if(centerDelta.magnitude > domeRadius) {								
-			return domeCenter + domeRadius * centerDelta.normalized;
+			return domeCenter + (domeRadius-3.0f) * centerDelta.normalized;
 		} else {
 			return whereAt;
 		}
@@ -317,7 +366,7 @@ public class HoverCraftBase : MonoBehaviour {
 				heightUnderMe(transform.position + transform.forward * 15.0f),
 				heightUnderMe(transform.position + transform.forward * 25.0f));
 
-		if(Physics.Raycast(transform.position,-Vector3.up*8.0f*shipScale,out rhInfo, 8.0f*shipScale, ignoreVehicleLayerMask)) {
+		if(Physics.Raycast(transform.position,-Vector3.up*13.0f*shipScale,out rhInfo, 13.0f*shipScale, ignoreVehicleLayerMask)) {
 			Vector3 pointAhead = transform.forward;
 			if(heightForward != 0.0f) {
 				pointAhead = transform.forward + Vector3.up * (heightForward - rhInfo.point.y)*0.1f;

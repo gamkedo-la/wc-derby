@@ -42,41 +42,6 @@ public class PlayerDrive : HoverCraftBase {
 			targetFOV = ((useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ? 77.0f : 60.0f);
 		}
 
-		if(waypointManager && waypointManager.isOrdered) {
-			if(waypointManager.enforceTrackWalls) {
-				Waypoint nextWP = null;
-				for(int i = 0; i < HoverCraftBase.levelWayPointList.Count; i++) {
-					Waypoint eachWP = HoverCraftBase.levelWayPointList[i].GetComponent<Waypoint>();
-					nextWP = eachWP.pointIsAlong(transform.position);
-					if(nextWP != null) {
-						myWaypoint = nextWP;
-						prevWaypoint = eachWP;
-						break;
-					}
-				}
-				Vector3 gotoPoint = myWaypoint.transform.position;
-				Vector3 prevPoint = prevWaypoint.transform.position;
-
-				gotoPoint.y = transform.position.y; // hack to ignore height diff (earlier was erroneously using .z)
-				prevPoint.y = transform.position.y;
-				Vector3 nearestPt = Vector3.Project(transform.position - prevPoint,
-					(gotoPoint - prevPoint).normalized) +
-					prevPoint;
-
-				float distTo = Vector3.Distance(nearestPt, gotoPoint);
-				float distToPrev = Vector3.Distance(nearestPt, prevPoint);
-				float totalDist = Vector3.Distance(gotoPoint, prevPoint);
-
-				float widthHere = Mathf.Lerp(prevWaypoint.transform.localScale.x,
-												myWaypoint.transform.localScale.x,
-												distToPrev/totalDist) * 0.5f;
-				float distFromPt = Vector3.Distance(transform.position, nearestPt);
-				if(distFromPt > widthHere) {
-					transform.position = nearestPt + widthHere * (transform.position - nearestPt).normalized;
-				}
-			}
-		}
-
 		float cameraK = 0.8f;
 		Camera.main.fieldOfView = cameraK * Camera.main.fieldOfView + (1.0f-cameraK) * targetFOV;
 
@@ -91,9 +56,12 @@ public class PlayerDrive : HoverCraftBase {
 		} else {
 			Camera.main.transform.position = projectedCamPos;
 		}
-			
-		Camera.main.transform.localRotation = Quaternion.AngleAxis(
-			(HaveEnemyHooked() ? 2.0f : 0.15f)*Random.Range(-1.0f,1.0f)*gasControl,Vector3.forward);
+		transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+		Vector3 cutXTilt = transform.rotation.eulerAngles;
+		cutXTilt.x = 0.0f; // dunno what was causing this bug but it was bad
+		transform.rotation = Quaternion.Euler(cutXTilt);
+		/*Camera.main.transform.localRotation = Quaternion.AngleAxis(
+			(HaveEnemyHooked() ? 2.0f : 0.15f)*Random.Range(-1.0f,1.0f)*gasControl,Vector3.forward);*/
 		
 		if(sprintRamming == false) {
 			turnControl = Input.GetAxis("Horizontal");
