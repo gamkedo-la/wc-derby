@@ -216,7 +216,7 @@ public class HoverCraftBase : MonoBehaviour {
 		transform.Rotate(Vector3.up, turnControl * 80.0f * Time.deltaTime);
 		momentum *= 0.94f;
 		momentum += transform.forward * bodyToTilt.forward.y * Time.deltaTime * -7.0f;
-		momentum += transform.right * bodyToTilt.right.y * Time.deltaTime * -10.0f;
+		momentum += transform.right * bodyToTilt.right.y * Time.deltaTime * -40.0f;
 
 		float impendingCrashDetectionNormal = 1.0f;
 		/*if(Physics.Raycast(transform.position,											//Removed while working on AI
