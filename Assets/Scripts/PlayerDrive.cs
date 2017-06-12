@@ -8,11 +8,13 @@ public class PlayerDrive : HoverCraftBase {
 
 	public static PlayerDrive instance;
 
-	//private uint turnLeftID;
-	//private uint turnRightID;
+	private AkTriggerTurnLeft akTurnLeft;
+	private AkTriggerTurnRight akTurnRight;
 
 	protected override void Init () {
 		instance = this;
+		akTurnLeft = GetComponent<AkTriggerTurnLeft>();
+		akTurnRight = GetComponent<AkTriggerTurnRight>();
 		if(useCarCollisionTuning) {
 			Vector3 camPosHigher = Camera.main.transform.localPosition;
 			camPosHigher.y *= 1.3f;

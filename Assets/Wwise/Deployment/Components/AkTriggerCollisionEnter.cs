@@ -14,7 +14,7 @@ public class AkTriggerCollisionEnter : AkTriggerBase
 	{
 		if(triggerDelegate != null) 
 		{
-			triggerDelegate(in_other.gameObject);
+			//// triggerDelegate(in_other.gameObject);
 		}
 	}
 }
