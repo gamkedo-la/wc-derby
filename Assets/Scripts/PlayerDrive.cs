@@ -96,11 +96,13 @@ public class PlayerDrive : HoverCraftBase {
 			case ItemPickup.ItemKind.Health:
 				if(health < maxHealth) {
 					ChangeHealth(maxHealth);
+					AkSoundEngine.PostEvent ("Play_Spanner", gameObject);
 					Destroy(whichColl.gameObject);
 				}
 				break;
 			case ItemPickup.ItemKind.Shield:
 				if(hasShield == false) {
+					AkSoundEngine.PostEvent ("Play_Shield", gameObject);
 					setShieldState(true);
 					Destroy(whichColl.gameObject);
 				}

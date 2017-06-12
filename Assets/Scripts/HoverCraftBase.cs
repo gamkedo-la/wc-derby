@@ -496,6 +496,8 @@ public class HoverCraftBase : MonoBehaviour {
 					(transform.position+hcbScript.transform.position)*0.5f,
 					Quaternion.identity);
 				snowGO.transform.localScale *= 3.35f;
+
+				AkSoundEngine.PostEvent ("Play_PlayerImpact", gameObject);
 				/*
 				pushVect = Quaternion.AngleAxis(90.0f, Vector3.up) * pushVect;
 				hcbScript.bodyToTilt.Rotate(pushVect,70.0f);
