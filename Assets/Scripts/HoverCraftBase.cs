@@ -224,7 +224,7 @@ public class HoverCraftBase : MonoBehaviour {
 					myWaypoint.transform.localScale.x,
 					distToPrev/totalDist) * 0.5f;
 				float distFromPt = Vector3.Distance(transform.position, nearestPt);
-				Debug.Log(widthHere);
+				// Debug.Log(widthHere);
 				if(distFromPt > widthHere) {
 					transform.position = nearestPt + widthHere * (transform.position - nearestPt).normalized;
 				}

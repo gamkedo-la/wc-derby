@@ -29,6 +29,24 @@ public class PlayerDrive : HoverCraftBase {
 		//turnRightID = AkSoundEngine.GetIDFromString("Play_PlayerEngineTurnRight");
 	}
 
+	IEnumerator unboostWaiting = null;
+	IEnumerator unboost() {
+		yield return new WaitForSeconds(3.0f);
+		if(sprintRamming) {
+			toggleSprintRamWithCameraFOVEffect();
+		}
+	}
+
+	void toggleSprintRamWithCameraFOVEffect() {
+		sprintRamming = !sprintRamming;
+		targetFOV = ((useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ? 77.0f : 60.0f);
+		if(sprintRamming) {
+			AkSoundEngine.PostEvent ("Play_PlayerEngineTurnLeft", gameObject);
+		} else {
+			AkSoundEngine.PostEvent("Play_PlayerEngineTurnRight", gameObject);
+		}
+	}
+
 	protected override void Tick () {
 		if(Input.GetKey(KeyCode.C)) {
 			Camera.main.fieldOfView = 77.0f;
@@ -38,8 +56,14 @@ public class PlayerDrive : HoverCraftBase {
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)) {
-			sprintRamming = !sprintRamming;
-			targetFOV = ((useCarCollisionTuning ? sprintRamming : HaveEnemyHooked()) ? 77.0f : 60.0f);
+			toggleSprintRamWithCameraFOVEffect();
+			if(sprintRamming) {
+				if(unboostWaiting != null) {
+					StopCoroutine(unboostWaiting);
+				}
+				unboostWaiting = unboost();
+				StartCoroutine(unboostWaiting);
+			}
 		}
 
 		float cameraK = 0.8f;
@@ -73,14 +97,14 @@ public class PlayerDrive : HoverCraftBase {
 			}
 		}
 
-		if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+		/*if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
 			//AkSoundEngine.PostEvent(turnLeftID, gameObject);
 			GetComponent<AkTriggerTurnLeft>().TurningLeft();
 		}
 		if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
 			//AkSoundEngine.PostEvent(turnRightID, gameObject);
 			GetComponent<AkTriggerTurnRight>().TurningRight();
-		}
+		}*/
 
 		float tiltAmt = Mathf.DeltaAngle(0.0f, bodyToTilt.eulerAngles.x);
 		float maxTiltDetected = 30.0f;
